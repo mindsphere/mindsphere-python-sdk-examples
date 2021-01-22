@@ -1,0 +1,109 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>test_urls.html</title><style></style></head><body id="preview">
+<h2><a id="TOKEN_URLS_0"></a>TOKEN URLS</h2>
+<h4><a id="1Switch_token_type_from_User_token_to_Technical_token_and_vice_versa_2"></a>1-Switch token type from User token to Technical token and vice versa.</h4>
+<p>This end point will display after switching what is the current token type. All the subsequent api calls will use this new changed token type. If You want to make api call with other token type, then hit this end point again. <a href="http://127.0.0.1:8000/tokentype/">http://127.0.0.1:8000/tokentype/</a></p>
+<h4><a id="2Current_token_5"></a>2-Current token.</h4>
+<p>You need to login to access the token. You can use this to view the current token.<br>
+<a href="http://127.0.0.1:8000/token">http://127.0.0.1:8000/token</a></p>
+<h4><a id="3Check_the_logs_You_need_to_login_to_access_the_token_9"></a>3-Check the logs You need to login to access the token.</h4>
+<p><a href="http://127.0.0.1:8000/logs">http://127.0.0.1:8000/logs</a><br>
+<a href="http://127.0.0.1:8000/logs/?lines=100">http://127.0.0.1:8000/logs/?lines=100</a></p>
+<h4><a id="4Clear_the_logs_13"></a>4-Clear the logs</h4>
+<p>You need to have super user access</p>
+<p><a href="http://127.0.0.1:8000/cls">http://127.0.0.1:8000/cls</a></p>
+<h2><a id="ASSET_MANAGEMENT_URLS_18"></a>ASSET MANAGEMENT URLS</h2>
+<h4><a id="1_Create_aspect_type_20"></a>1. Create aspect type</h4>
+<p>input-Your tenant name <a href="http://127.0.0.1:8000/aspects/%7BYour_tenant%7D">http://127.0.0.1:8000/aspects/{Your_tenant}</a><br>
+save “id” and “name” from the response</p>
+<h4><a id="2Create_asset_type_24"></a>2.Create asset type</h4>
+<p>input:Your tenant name, name From step1 response, id From step1 response<br>
+<a href="http://127.0.0.1:8000/assettype/%7BYour_tenant%7D?aspectname=%7BnameFromstep1response%7D&amp;aspectid=%7BidFromstep1response%7D">http://127.0.0.1:8000/assettype/{Your_tenant}?aspectname={nameFromstep1response}&amp;aspectid={idFromstep1response}</a><br>
+save “id” from response</p>
+<h4><a id="3Create_asset_29"></a>3.Create asset</h4>
+<p>input:“id” from step 2 response<br>
+<a href="http://127.0.0.1:8000/assets/%7BidFromStep2%7D/">http://127.0.0.1:8000/assets/{idFromStep2}/</a><br>
+save “etag” and “asset_id” from response</p>
+<h4><a id="4Create_a_file_34"></a>4.Create a file</h4>
+<p>input: Not reqd <a href="http://127.0.0.1:8000/assetfiles">http://127.0.0.1:8000/assetfiles</a><br>
+save “id” from response</p>
+<h4><a id="5Associate_the_file_with_created_asset_38"></a>5.Associate the file with created asset</h4>
+<p>input:asset id from step3,etag from step3, any value for key,fileid from step 4<br>
+<a href="http://127.0.0.1:8000/assetfiles/%7Basset_id%7D?ifmatch=%7Betag%7D&amp;key=%7Bany_string%7D&amp;fileid=%7Bfileid%7D">http://127.0.0.1:8000/assetfiles/{asset_id}?ifmatch={etag}&amp;key={any_string}&amp;fileid={fileid}</a><br>
+save “etag” from response</p>
+<h4><a id="6Add_location_to_asset_43"></a>6.Add location to asset</h4>
+<p>input-asset id from step 3, asset etag from step 5<br>
+<a href="http://127.0.0.1:8000/assetlocation/%7Basset_id%7D/%7Basset_etag%7D">http://127.0.0.1:8000/assetlocation/{asset_id}/{asset_etag}</a></p>
+<h4><a id="7Get_asset_by_ID_47"></a>7.Get asset by ID</h4>
+<p>input-asset id from step 3 response<br>
+<a href="http://127.0.0.1:8000/assetsget/%7BidFromStep3%7D/">http://127.0.0.1:8000/assetsget/{idFromStep3}/</a><br>
+save “etag” Ensure the response has “file_assignments” and “location” populated</p>
+<h4><a id="8Delete_asset_by_id_52"></a>8.Delete asset by id</h4>
+<p>input-asset id from step 3 response, asset etag from step 7<br>
+<a href="http://127.0.0.1:8000/assetsdelete/%7BidFromStep3%7D?ifmatch=%7Betag%7D">http://127.0.0.1:8000/assetsdelete/{idFromStep3}?ifmatch={etag}</a></p>
+<h4><a id="9List_all_assets_56"></a>9.List all assets</h4>
+<p>input-not required<br>
+<a href="http://127.0.0.1:8000/assets">http://127.0.0.1:8000/assets</a></p>
+<h2><a id="IOT_FILESERVICE_URLS_60"></a>IOT FILESERVICE URLS</h2>
+<h4><a id="1_create_file_62"></a>1. create file</h4>
+<p>input        :  path param (entity)<br>
+description  :  Create file<br>
+urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreate/%7Bentity_id%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreate/{entity_id}</a><br>
+save         : “file_path”</p>
+<h4><a id="2_get_file_68"></a>2. get file</h4>
+<p>input        : path param (entity_id and file_path) and take path value from step1<br>
+description  : Get content of the file<br>
+urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicegetfile/%7Bentity_id%7D/%7Bfile_path%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicegetfile/{entity_id}/{file_path}</a><br>
+output       : get content of file_path</p>
+<h4><a id="3_search_file_74"></a>3. search file</h4>
+<p>input        :  entity id required<br>
+description  : Under specified entity, list the number of files<br>
+urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicesearch/%7Bentity_id%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicesearch/{entity_id}</a></p>
+<h4><a id="4_multipart_file__initialising_the_file_79"></a>4. multipart file : initialising the file</h4>
+<p>input        : query param (upload = start) ,  path param (entity and file path) and path should be unique like ex : (india121)<br>
+description  : For initialising the file, required to pass upload=start<br>
+urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/%7Bentity_id%7D/%7Bfile_path%7D?upload=start">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/{entity_id}/{file_path}?upload=start</a><br>
+output       : Intitated file upload for the path : filepath</p>
+<h4><a id="41_multipart_file__uploading_the_file_part_1_85"></a>4.1 multipart file : uploading the file part 1</h4>
+<p>input        : query param (part_num = 1) and path param (entity and file path)<br>
+description  : For uploading part requires minuium 5MB file and specify the part_num<br>
+urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/%7Bentity_id%7D/%7Bfile_path%7D?part_num=1">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/{entity_id}/{file_path}?part_num=1</a><br>
+output       : Uploaded file for the part1</p>
+<h4><a id="42_multipart_file__uploading_the_file_part_2_91"></a>4.2 multipart file : uploading the file part 2</h4>
+<p>input        : query param (part_num = 2) and path param (entity and file path)<br>
+description  : For uploading part requires minuium 5MB file and specify the part_num<br>
+urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/%7Bentity_id%7D/%7Bfile_path%7D?part_num=2">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/{entity_id}/{file_path}?part_num=2</a><br>
+output       : Uploaded file for the part2</p>
+<h4><a id="43_multipart_file__listing_number_of_part_uploaded_properly_97"></a>4.3 multipart file : listing number of part uploaded properly</h4>
+<p>input       : entity and path<br>
+description : Listed out number of parts uploaded sucessfully<br>
+urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicelistmultipart/%7Bentity_id%7D/%7Bfile_path%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicelistmultipart/{entity_id}/{file_path}</a><br>
+output      : view number of the file part are uploaded sucessfully</p>
+<h4><a id="44_multipart_file__complete_the_file_103"></a>4.4 multipart file : complete the file</h4>
+<p>input       : query param (upload = complete) and path param (entity and file path)<br>
+description : After uploading the parts , pass query param (upload = complete)<br>
+urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/%7Bentity_id%7D/%7Bfile_path%7D?upload=complete">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/{entity_id}/{file_path}?upload=complete</a><br>
+output      : Successfully uploaded file for the path : file path<br>
+save file path and provide file path in step 2 to see content of the file</p>
+<h2><a id="EVENT_ANALYTICS_URLS_110"></a>EVENT ANALYTICS URLS</h2>
+<h4><a id="1_top_events_112"></a>1. top events</h4>
+<p>input       : not required<br>
+description :  listing the topest events<br>
+urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/topevents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/topevents</a></p>
+<h4><a id="2_count_events_117"></a>2. count events</h4>
+<p>input       : not required<br>
+description : list the count of events<br>
+urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/countevents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/countevents</a></p>
+<h4><a id="3_filter_events_122"></a>3. filter events</h4>
+<p>input       : not required<br>
+description : filtering the events<br>
+urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/filterevents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/filterevents</a></p>
+<h4><a id="4_remove_duplicates_127"></a>4. remove duplicates</h4>
+<p>input       : not required<br>
+description : removeing duplicates from events<br>
+urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/removeduplicateevent">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/removeduplicateevent</a></p>
+<h4><a id="5_pattern_matching_132"></a>5. pattern matching</h4>
+<p>input       : not required<br>
+description : matching the event in pattern<br>
+urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/patternmatching">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/patternmatching</a></p>
+
+</body></html>

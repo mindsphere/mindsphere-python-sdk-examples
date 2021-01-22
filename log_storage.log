@@ -1,0 +1,394 @@
+2019-02-24 21:17:40,857 [INFO] django.server: "GET / HTTP/1.1" 200 7
+2019-02-24 21:17:41,331 [WARNING] django.server: "GET /favicon.ico HTTP/1.1" 404 4381
+2019-02-24 21:18:13,560 [INFO] django.server: "GET /logs/ HTTP/1.1" 200 154
+2019-02-24 21:19:22,073 [INFO] django.server: "GET /logs/ HTTP/1.1" 200 230
+2019-02-24 21:19:27,713 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-24 21:20:20,768 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 5305
+2019-02-24 21:20:21,540 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 5305
+2019-02-24 21:20:23,306 [INFO] django.server: "GET /admin/logout/ HTTP/1.1" 200 1197
+2019-02-25 11:38:08,675 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-25 11:38:09,128 [WARNING] django.server: "GET /favicon.ico HTTP/1.1" 404 4381
+2019-02-25 14:53:30,114 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-25 20:52:28,487 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-25 20:52:28,961 [WARNING] django.server: "GET /favicon.ico HTTP/1.1" 404 4381
+2019-02-25 23:51:25,651 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-25 23:51:34,070 [INFO] django.server: "GET /admin HTTP/1.1" 301 0
+2019-02-25 23:51:34,083 [INFO] django.server: "GET /admin/ HTTP/1.1" 302 0
+2019-02-25 23:51:34,154 [INFO] django.server: "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1809
+2019-02-25 23:51:34,170 [INFO] django.server: "GET /static/admin/css/base.css HTTP/1.1" 200 16225
+2019-02-25 23:51:34,170 [INFO] django.server: "GET /static/admin/css/login.css HTTP/1.1" 200 1203
+2019-02-25 23:51:34,177 [INFO] django.server: "GET /static/admin/css/responsive.css HTTP/1.1" 200 17976
+2019-02-25 23:51:34,828 [INFO] django.server: "GET /admin/ HTTP/1.1" 302 0
+2019-02-25 23:51:34,851 [INFO] django.server: "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1809
+2019-02-25 23:51:34,874 [INFO] django.server: "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+2019-02-25 23:51:35,035 [INFO] django.server: "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 81348
+2019-02-25 23:51:35,036 [INFO] django.server: "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 80304
+2019-02-25 23:51:42,688 [INFO] django.server: "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+2019-02-25 23:51:42,715 [INFO] django.server: "GET /admin/ HTTP/1.1" 200 5305
+2019-02-25 23:51:42,730 [INFO] django.server: "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+2019-02-25 23:51:42,740 [INFO] django.server: "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+2019-02-25 23:51:42,740 [INFO] django.server: "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+2019-02-25 23:51:42,743 [INFO] django.server: "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 82564
+2019-02-26 00:54:44,957 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-26 01:22:45,397 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-26 01:30:18,366 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-26 01:30:33,450 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-26 01:30:44,696 [ERROR] django.server: "GET / HTTP/1.1" 500 92650
+2019-02-26 01:31:26,577 [INFO] root: path :D:\python_workspace_31dec\python-demo-app/test_urls.txt
+2019-02-26 01:31:26,578 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-26 01:36:11,501 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-26 01:36:16,865 [INFO] django.server: "GET /logs/ HTTP/1.1" 200 3336
+2019-02-26 01:36:32,005 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-26 01:36:39,611 [INFO] django.server: "GET /assetfiles HTTP/1.1" 301 0
+2019-02-26 01:36:39,614 [INFO] root: Using USER Token for /assetfiles/
+2019-02-26 01:36:39,615 [INFO] root: FilesClient.upload_file() invoked.
+2019-02-26 01:36:39,619 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 01:36:39,620 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 01:36:39,633 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 01:36:41,011 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 01:36:41,019 [INFO] root: FilesClient.upload_file()  --> Proceeding for API Invoker.
+2019-02-26 01:36:41,020 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/assetmanagement/v3/files
+2019-02-26 01:36:41,024 [DEBUG] root: params : {}; body : {'name': 'integ_204340', 'scope': 'private'}; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 01:36:41,027 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 01:36:42,624 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "POST /api/assetmanagement/v3/files HTTP/1.1" 201 526
+2019-02-26 01:36:42,658 [INFO] django.server: "GET /assetfiles/ HTTP/1.1" 200 637
+2019-02-26 10:41:11,042 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-26 10:41:11,117 [WARNING] django.server: "GET /favicon.ico HTTP/1.1" 404 5257
+2019-02-26 10:41:19,937 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india?part_num=2
+2019-02-26 10:47:56,109 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-26 10:48:03,281 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india?part_num=1
+2019-02-26 10:48:29,341 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 10:48:29,345 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 10:48:29,345 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 10:48:29,363 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 10:48:30,239 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 10:48:30,243 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 10:48:30,332 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india
+2019-02-26 10:48:34,206 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 10:48:39,164 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india?part=1 HTTP/1.1" 409 0
+2019-02-26 10:48:39,168 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india?part_num=1 HTTP/1.1" 500 113
+2019-02-26 11:05:47,945 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-26 11:06:20,571 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india3?upload=start
+2019-02-26 11:06:29,262 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 11:06:29,264 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 11:06:29,264 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:06:29,270 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 11:06:31,830 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 11:06:31,834 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 11:06:31,834 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india3
+2019-02-26 11:06:31,835 [DEBUG] root: params : {'part': None, 'upload': 'start'}; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:06:31,837 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 11:06:32,981 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india3?upload=start HTTP/1.1" 201 0
+2019-02-26 11:06:32,984 [INFO] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india3?upload=start HTTP/1.1" 200 26
+2019-02-26 11:06:48,377 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india3?part_num=1
+2019-02-26 11:07:06,045 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india3?part_num=1 HTTP/1.1" 500 105339
+2019-02-26 11:07:32,926 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india3?part_num=1
+2019-02-26 11:07:32,980 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india3?part_num=1 HTTP/1.1" 500 105500
+2019-02-26 11:07:37,946 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india3?part_num=1
+2019-02-26 11:07:37,992 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india3?part_num=1 HTTP/1.1" 500 105500
+2019-02-26 11:32:43,705 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india3?part_num=1
+2019-02-26 11:32:43,757 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india3?part_num=1 HTTP/1.1" 500 105496
+2019-02-26 11:34:30,782 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india3?upload=start
+2019-02-26 11:34:30,783 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 11:34:30,784 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 11:34:30,785 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:34:30,790 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 11:34:43,389 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 11:34:43,392 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 11:34:43,392 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india3
+2019-02-26 11:34:43,393 [DEBUG] root: params : {'part': None, 'upload': 'start'}; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:34:43,396 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 11:34:44,440 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india3?upload=start HTTP/1.1" 400 None
+2019-02-26 11:34:44,442 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india3?upload=start HTTP/1.1" 500 4
+2019-02-26 11:35:59,190 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?upload=start
+2019-02-26 11:35:59,190 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 11:35:59,192 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 11:35:59,192 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:35:59,196 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 11:36:00,092 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 11:36:00,096 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 11:36:00,097 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india4
+2019-02-26 11:36:00,117 [DEBUG] root: params : {'part': None, 'upload': 'start'}; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:36:00,120 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 11:36:05,404 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india4?upload=start HTTP/1.1" 201 0
+2019-02-26 11:36:05,409 [INFO] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?upload=start HTTP/1.1" 200 26
+2019-02-26 11:36:21,386 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=1
+2019-02-26 11:36:21,437 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=1 HTTP/1.1" 500 105361
+2019-02-26 11:36:38,189 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?partnum=1
+2019-02-26 11:36:38,189 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 11:36:38,190 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 11:36:38,191 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:36:38,194 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 11:36:39,025 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 11:36:39,030 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 11:36:39,033 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india4
+2019-02-26 11:36:39,057 [DEBUG] root: params : {'part': None, 'upload': None}; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:36:39,059 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 11:36:40,007 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india4 HTTP/1.1" 400 None
+2019-02-26 11:36:40,011 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?partnum=1 HTTP/1.1" 500 4
+2019-02-26 11:37:27,723 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?partnum=1
+2019-02-26 11:37:27,724 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 11:37:27,725 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 11:37:27,725 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:37:27,730 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 11:37:28,537 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 11:37:28,541 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 11:37:28,541 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india4
+2019-02-26 11:37:28,542 [DEBUG] root: params : {'part': None, 'upload': None}; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:37:28,544 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 11:37:30,846 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india4 HTTP/1.1" 400 None
+2019-02-26 11:37:30,849 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?partnum=1 HTTP/1.1" 500 4
+2019-02-26 11:37:41,648 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=1
+2019-02-26 11:37:41,702 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=1 HTTP/1.1" 500 105366
+2019-02-26 11:38:22,102 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=1
+2019-02-26 11:38:22,138 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 11:38:22,139 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 11:38:22,139 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:38:22,145 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 11:38:31,892 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 11:38:31,894 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 11:38:31,981 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india4
+2019-02-26 11:38:35,719 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 11:39:09,366 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india4?part=1 HTTP/1.1" 201 0
+2019-02-26 11:39:09,373 [INFO] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=1 HTTP/1.1" 200 26
+2019-02-26 11:39:16,132 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=2
+2019-02-26 11:39:16,185 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 11:39:16,189 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 11:39:16,192 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:39:16,215 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 11:39:17,173 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 11:39:17,176 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 11:39:17,278 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india4
+2019-02-26 11:39:21,754 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 11:39:43,704 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india4?part=2 HTTP/1.1" 201 0
+2019-02-26 11:39:43,712 [INFO] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=2 HTTP/1.1" 200 26
+2019-02-26 11:40:50,987 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=2
+2019-02-26 11:40:51,037 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=2 HTTP/1.1" 500 102137
+2019-02-26 11:40:54,307 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=2
+2019-02-26 11:40:54,354 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=2 HTTP/1.1" 500 102137
+2019-02-26 11:41:39,688 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=2
+2019-02-26 11:41:39,740 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=2 HTTP/1.1" 500 105519
+2019-02-26 11:43:39,252 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=2
+2019-02-26 11:43:39,304 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=2 HTTP/1.1" 500 105501
+2019-02-26 11:44:32,263 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=2
+2019-02-26 11:44:32,315 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 11:44:32,317 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 11:44:32,317 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:44:32,326 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 11:44:34,298 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 11:44:34,301 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 11:44:34,401 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india4
+2019-02-26 11:44:38,866 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 11:44:55,500 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=2
+2019-02-26 11:45:29,042 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=1
+2019-02-26 11:46:44,419 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=1
+2019-02-26 11:46:48,424 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india4?part_num=1
+2019-02-26 11:49:58,212 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 11:49:58,214 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 11:49:58,214 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:49:58,219 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 11:49:59,084 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 11:49:59,088 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 11:49:59,193 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india4
+2019-02-26 11:50:03,986 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 11:51:50,562 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india?part_num=1
+2019-02-26 11:51:50,600 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 11:51:50,601 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 11:51:50,601 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:51:50,608 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 11:51:58,683 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 11:51:59,008 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 11:51:59,100 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india
+2019-02-26 11:52:03,245 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 11:53:27,765 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india?part_num=1
+2019-02-26 11:53:27,804 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 11:53:27,806 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 11:53:27,806 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:53:27,815 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 11:53:28,724 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 11:53:28,728 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 11:53:28,830 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india
+2019-02-26 11:53:32,855 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 11:53:48,300 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india?part_num=1
+2019-02-26 11:55:35,774 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india?part_num=1
+2019-02-26 11:56:39,160 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india?part_num=1
+2019-02-26 11:56:39,219 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india?part_num=1 HTTP/1.1" 500 105496
+2019-02-26 11:56:58,865 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india?part_num=1
+2019-02-26 11:58:08,962 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india?part_num=1
+2019-02-26 11:58:08,998 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 11:58:08,999 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 11:58:09,000 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 11:58:09,007 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 11:58:12,761 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 11:58:12,772 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 11:58:12,864 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india
+2019-02-26 11:58:16,600 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 11:59:57,614 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india?part=1 HTTP/1.1" 409 0
+2019-02-26 11:59:57,624 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india?part_num=1 HTTP/1.1" 500 113
+2019-02-26 12:55:20,477 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-26 12:55:36,449 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india11?upload=start
+2019-02-26 12:55:36,451 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 12:55:36,452 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 12:55:36,452 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:55:36,459 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 12:55:38,357 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 12:55:38,361 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 12:55:38,361 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india11
+2019-02-26 12:55:38,362 [DEBUG] root: params : {'part': None, 'upload': 'start'}; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:55:38,364 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 12:55:39,373 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india11?upload=start HTTP/1.1" 201 0
+2019-02-26 12:55:39,423 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india11?upload=start HTTP/1.1" 500 98003
+2019-02-26 12:56:22,348 [INFO] django.server: "GET / HTTP/1.1" 200 2055
+2019-02-26 12:56:32,684 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india11?upload=start
+2019-02-26 12:56:32,684 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 12:56:32,685 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 12:56:32,686 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:56:32,693 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 12:56:46,342 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 12:56:46,345 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 12:56:46,346 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india11
+2019-02-26 12:56:46,346 [DEBUG] root: params : {'part': None, 'upload': 'start'}; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:56:46,349 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 12:56:47,174 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india11?upload=start HTTP/1.1" 400 None
+2019-02-26 12:56:47,177 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india11?upload=start HTTP/1.1" 500 4
+2019-02-26 12:57:00,618 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india12?upload=start
+2019-02-26 12:57:00,619 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 12:57:00,620 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 12:57:00,621 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:57:00,625 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 12:57:01,497 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 12:57:01,507 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 12:57:01,511 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india12
+2019-02-26 12:57:01,534 [DEBUG] root: params : {'part': None, 'upload': 'start'}; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:57:01,540 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 12:57:04,025 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india12?upload=start HTTP/1.1" 201 0
+2019-02-26 12:57:04,077 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india12?upload=start HTTP/1.1" 500 98007
+2019-02-26 12:59:11,014 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india12?upload=start
+2019-02-26 12:59:11,015 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 12:59:11,016 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 12:59:11,016 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:59:11,021 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 12:59:12,774 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 12:59:12,778 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 12:59:12,779 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india12
+2019-02-26 12:59:12,779 [DEBUG] root: params : {'part': None, 'upload': 'start'}; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:59:12,781 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 12:59:13,696 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india12?upload=start HTTP/1.1" 400 None
+2019-02-26 12:59:13,700 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india12?upload=start HTTP/1.1" 500 4
+2019-02-26 12:59:17,468 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india13?upload=start
+2019-02-26 12:59:17,468 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 12:59:17,469 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 12:59:17,470 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:59:17,472 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 12:59:19,388 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 12:59:19,391 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 12:59:19,392 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india13
+2019-02-26 12:59:19,392 [DEBUG] root: params : {'part': None, 'upload': 'start'}; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:59:19,395 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 12:59:20,168 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india13?upload=start HTTP/1.1" 201 0
+2019-02-26 12:59:20,216 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india13?upload=start HTTP/1.1" 500 98009
+2019-02-26 12:59:43,856 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india13?upload=start
+2019-02-26 12:59:43,857 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 12:59:43,858 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 12:59:43,858 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:59:43,863 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 12:59:44,619 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 12:59:44,629 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 12:59:44,630 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india13
+2019-02-26 12:59:44,630 [DEBUG] root: params : {'part': None, 'upload': 'start'}; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:59:44,636 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 12:59:48,996 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india13?upload=start HTTP/1.1" 400 None
+2019-02-26 12:59:48,998 [ERROR] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india13?upload=start HTTP/1.1" 500 4
+2019-02-26 12:59:52,494 [INFO] root: Using USER Token for /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india14?upload=start
+2019-02-26 12:59:52,494 [INFO] root: FileServiceClient.create_multi_part_file() invoked.
+2019-02-26 12:59:52,495 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 12:59:52,496 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:59:52,498 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 12:59:53,375 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 12:59:53,379 [INFO] root: FileServiceClient.create_multi_part_file()  --> Proceeding for API Invoker.
+2019-02-26 12:59:53,382 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/india14
+2019-02-26 12:59:53,382 [DEBUG] root: params : {'part': None, 'upload': 'start'}; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 12:59:53,389 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 12:59:54,202 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/india14?upload=start HTTP/1.1" 201 0
+2019-02-26 12:59:54,207 [INFO] django.server: "GET /fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india14?upload=start HTTP/1.1" 200 44
+2019-02-26 17:32:43,472 [INFO] root: Using USER Token for /eventanalytics/patternmaching
+2019-02-26 17:32:43,473 [INFO] root: PatternOperationsClient.match_patterns_over_events() invoked.
+2019-02-26 17:32:43,476 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 17:32:43,476 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 17:32:43,486 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 17:32:44,372 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 17:32:44,376 [INFO] root: PatternOperationsClient.match_patterns_over_events()  --> Proceeding for API Invoker.
+2019-02-26 17:32:44,376 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/eventanalytics/v3/matchEventPatterns
+2019-02-26 17:32:44,377 [DEBUG] root: params : {}; body : {"maxPatternInterval": 20000, "patternsList": [{"pattern": [{"eventText": "INTRODUCING FUEL", "minRepetitions": 1, "maxRepetitions": 2}, {"eventText": "Status@Flame On", "minRepetitions": 0, "maxRepetitions": 1}, {"eventText": "Module STOP due to parameter assignment", "minRepetitions": 1, "maxRepetitions": 1}]}, {"pattern": [{"eventText": "Downloading the module database causes module .. restart", "minRepetitions": 1, "maxRepetitions": 1}, {"eventText": "The SIMATIC mode was selected for time-of-day synchronization of the module with Id: ..", "minRepetitions": 1, "maxRepetitions": 1}]}], "nonEvents": ["Error 2.. occurred", "STOPPING ENGINE"], "eventsInput": {"eventsMetadata": {"eventTextPropertyName": "text"}, "events": [{"_time": "2017-10-01T12:00:00.001Z", "text": "Downloading the module database causes module 11 restart", "text_qc": 0}, {"_time": "2017-10-01T12:00:01.001Z", "text": "The direction for forwarding the time of day is recognized automatically by the module", "text_qc": 0}, {"_time": "2017-10-01T12:00:02.001Z", "text": "Status@Flame On", "text_qc": 0}, {"_time": "2017-10-01T12:00:03.001Z", "text": "The SIMATIC mode was selected for time-of-day synchronization of the module with Id: 33", "text_qc": 0}, {"_time": "2017-10-01T12:00:06.001Z", "text": "INTRODUCING FUEL", "text_qc": 0}, {"_time": "2017-10-01T12:00:09.001Z", "text": "Module STOP due to parameter assignment", "text_qc": 0}]}}; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 17:32:44,380 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 17:32:45,413 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "POST /api/eventanalytics/v3/matchEventPatterns HTTP/1.1" 200 None
+2019-02-26 17:32:45,427 [INFO] django.server: "GET /eventanalytics/patternmaching HTTP/1.1" 200 1450
+2019-02-26 17:33:33,510 [INFO] root: Using USER Token for /eventanalytics/topevents
+2019-02-26 17:33:33,511 [INFO] root: EventOperationsClient.top_events() invoked.
+2019-02-26 17:33:33,512 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 17:33:33,513 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 17:33:33,516 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 17:33:34,402 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 17:33:34,406 [INFO] root: EventOperationsClient.top_events()  --> Proceeding for API Invoker.
+2019-02-26 17:33:34,407 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/eventanalytics/v3/findTopEvents
+2019-02-26 17:33:34,408 [DEBUG] root: params : {}; body : {"eventsMetadata": {"eventTextPropertyName": "text"}, "events": [{"_time": "2017-10-01T12:00:00.001Z", "text": "Downloading the module database causes module 11 restart", "text_qc": 0}, {"_time": "2017-10-01T12:00:01.001Z", "text": "The direction for forwarding the time of day is recognized automatically by the module", "text_qc": 0}, {"_time": "2017-10-01T12:00:02.001Z", "text": "Status@Flame On", "text_qc": 0}, {"_time": "2017-10-01T12:00:00.001Z", "text": "Downloading the module database causes module 11 restart", "text_qc": 0}, {"_time": "2017-10-01T12:00:01.001Z", "text": "The direction for forwarding the time of day is recognized automatically by the module", "text_qc": 0}, {"_time": "2017-10-01T12:00:02.001Z", "text": "Status@Flame On", "text_qc": 0}], "numberOfTopPositionsRequired": 12}; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 17:33:34,414 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 17:33:35,463 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "POST /api/eventanalytics/v3/findTopEvents HTTP/1.1" 200 242
+2019-02-26 17:33:35,466 [INFO] django.server: "GET /eventanalytics/topevents HTTP/1.1" 200 247
+2019-02-26 17:51:35,255 [INFO] django.server: "GET / HTTP/1.1" 200 4958
+2019-02-26 17:51:39,493 [INFO] django.server: "GET / HTTP/1.1" 200 4958
+2019-02-26 17:52:30,005 [INFO] django.server: "GET / HTTP/1.1" 200 4958
+2019-02-26 17:57:05,151 [ERROR] django.server: "GET / HTTP/1.1" 500 107227
+2019-02-26 17:58:01,304 [INFO] django.server: "GET / HTTP/1.1" 200 4958
+2019-02-26 18:17:35,959 [INFO] django.server: "GET / HTTP/1.1" 200 2438
+2019-02-26 18:17:52,659 [INFO] root: Using USER Token for /eventanalytics/patternmaching
+2019-02-26 18:17:52,660 [INFO] root: PatternOperationsClient.match_patterns_over_events() invoked.
+2019-02-26 18:17:52,663 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 18:17:52,664 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 18:17:52,676 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 18:17:53,671 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 18:17:53,681 [INFO] root: PatternOperationsClient.match_patterns_over_events()  --> Proceeding for API Invoker.
+2019-02-26 18:17:53,682 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/eventanalytics/v3/matchEventPatterns
+2019-02-26 18:17:53,683 [DEBUG] root: params : {}; body : {"maxPatternInterval": 20000, "patternsList": [{"pattern": [{"eventText": "INTRODUCING FUEL", "minRepetitions": 1, "maxRepetitions": 2}, {"eventText": "Status@Flame On", "minRepetitions": 0, "maxRepetitions": 1}, {"eventText": "Module STOP due to parameter assignment", "minRepetitions": 1, "maxRepetitions": 1}]}, {"pattern": [{"eventText": "Downloading the module database causes module .. restart", "minRepetitions": 1, "maxRepetitions": 1}, {"eventText": "The SIMATIC mode was selected for time-of-day synchronization of the module with Id: ..", "minRepetitions": 1, "maxRepetitions": 1}]}], "nonEvents": ["Error 2.. occurred", "STOPPING ENGINE"], "eventsInput": {"eventsMetadata": {"eventTextPropertyName": "text"}, "events": [{"_time": "2017-10-01T12:00:00.001Z", "text": "Downloading the module database causes module 11 restart", "text_qc": 0}, {"_time": "2017-10-01T12:00:01.001Z", "text": "The direction for forwarding the time of day is recognized automatically by the module", "text_qc": 0}, {"_time": "2017-10-01T12:00:02.001Z", "text": "Status@Flame On", "text_qc": 0}, {"_time": "2017-10-01T12:00:03.001Z", "text": "The SIMATIC mode was selected for time-of-day synchronization of the module with Id: 33", "text_qc": 0}, {"_time": "2017-10-01T12:00:06.001Z", "text": "INTRODUCING FUEL", "text_qc": 0}, {"_time": "2017-10-01T12:00:09.001Z", "text": "Module STOP due to parameter assignment", "text_qc": 0}]}}; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 18:17:53,690 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 18:17:54,834 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "POST /api/eventanalytics/v3/matchEventPatterns HTTP/1.1" 200 None
+2019-02-26 18:17:54,844 [INFO] django.server: "GET /eventanalytics/patternmaching HTTP/1.1" 200 1450
+2019-02-26 18:18:33,985 [INFO] root: Using USER Token for /fileservicelistmultipartfile/078b1908bc9347678168760934465587/india?part_num=2
+2019-02-26 18:18:33,985 [INFO] root: FileServiceClient.get_file_list() invoked.
+2019-02-26 18:18:33,987 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 18:18:33,987 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 18:18:33,991 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 18:18:35,385 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 18:18:35,388 [INFO] root: FileServiceClient.get_file_list()  --> Proceeding for API Invoker.
+2019-02-26 18:18:35,388 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/fileslist/078b1908bc9347678168760934465587/india
+2019-02-26 18:18:35,389 [DEBUG] root: params : {}; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 18:18:35,391 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 18:18:36,406 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "GET /api/iotfile/v3/fileslist/078b1908bc9347678168760934465587/india HTTP/1.1" 404 None
+2019-02-26 18:18:36,410 [ERROR] django.server: "GET /fileservicelistmultipartfile/078b1908bc9347678168760934465587/india?part_num=2 HTTP/1.1" 500 4
+2019-02-26 18:18:40,708 [INFO] root: Using USER Token for /fileservicecreate/078b1908bc9347678168760934465587
+2019-02-26 18:18:40,714 [INFO] root: FileServiceClient.put_file() invoked.
+2019-02-26 18:18:40,715 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-26 18:18:40,715 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 18:18:40,718 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-26 18:18:42,138 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-26 18:18:42,144 [INFO] root: FileServiceClient.put_file()  --> Proceeding for API Invoker.
+2019-02-26 18:18:42,145 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/integ_167442
+2019-02-26 18:18:42,146 [DEBUG] root: params : {'part': None, 'upload': None}; body : ["****TOKEN URLS****:", "", "1-Switch token type from User token to Technical token and vice versa.", "This end point will display after switching what is the current token type.", "All the subsequent api calls will use this new changed token type.", "If You want to make api call with other token type, then hit this end point again.", "http://127.0.0.1:8000/tokentype/", "", "2-Current token.", "You need to login to acess the token", "You can use this to view the current token.", "http://127.0.0.1:8000/token", "", "3-Check the logs", "You need to login to acess the token", "http://127.0.0.1:8000/logs", "http://127.0.0.1:8000/logs/?lines=100", "", "4-Clear the logs", "You need to have super user access", "http://127.0.0.1:8000/cls", "", "****ASSET MANAGEMENT URLS****", "", "1. Create aspect type", "input-Ur tenant name", "http://127.0.0.1:8000/aspects/{Your_tenant}/", "save \"id\" and \"name\" from the response", "", "2.Create asset type", "input:Ur tenant name, name From step1 response, id From step1 response", "http://127.0.0.1:8000/assettype/{Your_tenant}?aspectname={nameFromstep1response}&aspectid={idFromstep1response}", "save \"id\" from response", "", "3.Create asset", "input:\"id\" from step 2 response", "http://127.0.0.1:8000/assets/{idFromStep2}/", "save \"etag\" and \"asset_id\" from response", "", "", "4.Create a file", "input: Not reqd", "http://127.0.0.1:8000/assetfiles", "save \"id\" from response", "", "5.Associate the file with created asset", "input:asset id from step3,etag from step3, any value for key,fileid from step 4", "http://127.0.0.1:8000/assetfiles/{asset_id}?ifmatch={etag}&key={any_string}&fileid={fileid}", "save \"etag\" from response", "", "6.Add location to asset", "input-asset id from step 3, asset etag from step 5", "http://127.0.0.1:8000/assetlocation/{asset_id}/{asset_etag}", "", "7.Get asset by ID", "input-asset id from step 3 response", "http://127.0.0.1:8000/assets/{idFromStep3}/", "save \"etag\"", "Ensure the response has \"file_assignments\" and \"location\" populated", "", "8.Delete asset by id", "input-asset id from step 3 response, asset etag from step 7", "http://127.0.0.1:8000/assetsdelete/{idFromStep3}??ifmatch={etag}", "", "9.List all assets", "input-not required", "http://127.0.0.1:8000/assets", "", "", "****File Service URLS****", "", "1. create file", "input : path param (entity)", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreate/078b1908bc9347678168760934465587", "save path", "", "2. get file", "input : file path", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicegetfile/078b1908bc9347678168760934465587/india", "", "3. search file", "input :  entity id required", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicesearch/078b1908bc9347678168760934465587", "", "4. multipart file : intitlising the file (For testing perspective we are uploading 2 part for multpart upload and each part contains 5MB of data  )", "input : query param (upload = start) ,  path param (entity and file path) and path should be unique like ex : (india121)", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india121?upload=start", "output : Intitated file upload for the path : filepath", "", "4.1 multipart file : uploading the file part 1", "input :   query param (part_num = 1) and path param (entity and file path)", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india121?part_num=1", "output : Uploaded file for the part1", "", "4.2 multipart file : uploading the file part 2", "input :   query param (part_num = 2) and path param (entity and file path)", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india121?part_num=2", "output : Uploaded file for the part2", "", "4.3 mulipart file : listing number of part uploaded properly", "input : entity and path", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicelistmultipartfile/078b1908bc9347678168760934465587/india121", "output : view list of part uploaded", "", "4.4 mulipart file : complete the file", "input : query param (upload = complete) and path param (entity and file path)", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india121?upload=complete", "output : Successfully uploaded file for the path : file part", "repeat step 2 to see content of the file", "", "", "****Event analytics Urls****", "", "1. top events", "input : not required", "urls : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/topevents", "", "2. count events", "input : not required", "urls : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/countevents", "", "3. filter events", "input : not required", "urls : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/filterevents", "", "4. remove duplicates", "input : not required", "urls : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/removeduplicateevent", "", "5. pattern matching", "input : not required", "urls : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/patternmaching"]; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-26 18:18:42,152 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-26 18:18:43,304 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/integ_167442 HTTP/1.1" 201 0
+2019-02-26 18:18:43,306 [INFO] django.server: "GET /fileservicecreate/078b1908bc9347678168760934465587 HTTP/1.1" 200 58
+2019-02-27 09:31:38,498 [INFO] django.server: "GET / HTTP/1.1" 200 2438
+2019-02-27 09:31:38,581 [WARNING] django.server: "GET /favicon.ico HTTP/1.1" 404 6154
+2019-02-27 09:35:22,204 [INFO] django.server: "GET / HTTP/1.1" 200 2438
+2019-02-27 09:35:29,741 [INFO] root: Using USER Token for /fileservicecreate/078b1908bc9347678168760934465587
+2019-02-27 09:35:29,742 [INFO] root: FileServiceClient.put_file() invoked.
+2019-02-27 09:35:29,744 [DEBUG] root: Requesting for URL : https://mdspsdk.piam.eu1-int.mindsphere.io/oauth/token?grant_type=client_credentials
+2019-02-27 09:35:29,744 [DEBUG] root: params : None; body : None; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-27 09:35:29,753 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): mdspsdk.piam.eu1-int.mindsphere.io:443
+2019-02-27 09:35:31,835 [DEBUG] urllib3.connectionpool: https://mdspsdk.piam.eu1-int.mindsphere.io:443 "POST /oauth/token?grant_type=client_credentials HTTP/1.1" 200 None
+2019-02-27 09:35:31,844 [INFO] root: FileServiceClient.put_file()  --> Proceeding for API Invoker.
+2019-02-27 09:35:31,846 [DEBUG] root: Requesting for URL : https://gateway.eu1-int.mindsphere.io/api/iotfile/v3/files/078b1908bc9347678168760934465587/integ_198746
+2019-02-27 09:35:31,849 [DEBUG] root: params : {'part': None, 'upload': None}; body : ["****TOKEN URLS****:", "", "1-Switch token type from User token to Technical token and vice versa.", "This end point will display after switching what is the current token type.", "All the subsequent api calls will use this new changed token type.", "If You want to make api call with other token type, then hit this end point again.", "http://127.0.0.1:8000/tokentype/", "", "2-Current token.", "You need to login to acess the token", "You can use this to view the current token.", "http://127.0.0.1:8000/token", "", "3-Check the logs", "You need to login to acess the token", "http://127.0.0.1:8000/logs", "http://127.0.0.1:8000/logs/?lines=100", "", "4-Clear the logs", "You need to have super user access", "http://127.0.0.1:8000/cls", "", "****ASSET MANAGEMENT URLS****", "", "1. Create aspect type", "input-Ur tenant name", "http://127.0.0.1:8000/aspects/{Your_tenant}/", "save \"id\" and \"name\" from the response", "", "2.Create asset type", "input:Ur tenant name, name From step1 response, id From step1 response", "http://127.0.0.1:8000/assettype/{Your_tenant}?aspectname={nameFromstep1response}&aspectid={idFromstep1response}", "save \"id\" from response", "", "3.Create asset", "input:\"id\" from step 2 response", "http://127.0.0.1:8000/assets/{idFromStep2}/", "save \"etag\" and \"asset_id\" from response", "", "", "4.Create a file", "input: Not reqd", "http://127.0.0.1:8000/assetfiles", "save \"id\" from response", "", "5.Associate the file with created asset", "input:asset id from step3,etag from step3, any value for key,fileid from step 4", "http://127.0.0.1:8000/assetfiles/{asset_id}?ifmatch={etag}&key={any_string}&fileid={fileid}", "save \"etag\" from response", "", "6.Add location to asset", "input-asset id from step 3, asset etag from step 5", "http://127.0.0.1:8000/assetlocation/{asset_id}/{asset_etag}", "", "7.Get asset by ID", "input-asset id from step 3 response", "http://127.0.0.1:8000/assets/{idFromStep3}/", "save \"etag\"", "Ensure the response has \"file_assignments\" and \"location\" populated", "", "8.Delete asset by id", "input-asset id from step 3 response, asset etag from step 7", "http://127.0.0.1:8000/assetsdelete/{idFromStep3}??ifmatch={etag}", "", "9.List all assets", "input-not required", "http://127.0.0.1:8000/assets", "", "", "****File Service URLS****", "", "1. create file", "input : path param (entity)", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreate/078b1908bc9347678168760934465587", "save path", "", "2. get file", "input : file path", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicegetfile/078b1908bc9347678168760934465587/india", "", "3. search file", "input :  entity id required", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicesearch/078b1908bc9347678168760934465587", "", "4. multipart file : intitlising the file (For testing perspective we are uploading 2 part for multpart upload and each part contains 5MB of data  )", "input : query param (upload = start) ,  path param (entity and file path) and path should be unique like ex : (india121)", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india121?upload=start", "output : Intitated file upload for the path : filepath", "", "4.1 multipart file : uploading the file part 1", "input :   query param (part_num = 1) and path param (entity and file path)", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india121?part_num=1", "output : Uploaded file for the part1", "", "4.2 multipart file : uploading the file part 2", "input :   query param (part_num = 2) and path param (entity and file path)", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india121?part_num=2", "output : Uploaded file for the part2", "", "4.3 mulipart file : listing number of part uploaded properly", "input : entity and path", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicelistmultipartfile/078b1908bc9347678168760934465587/india121", "output : view list of part uploaded", "", "4.4 mulipart file : complete the file", "input : query param (upload = complete) and path param (entity and file path)", "url : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipartfile/078b1908bc9347678168760934465587/india121?upload=complete", "output : Successfully uploaded file for the path : file part", "repeat step 2 to see content of the file", "", "", "****Event analytics Urls****", "", "1. top events", "input : not required", "urls : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/topevents", "", "2. count events", "input : not required", "urls : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/countevents", "", "3. filter events", "input : not required", "urls : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/filterevents", "", "4. remove duplicates", "input : not required", "urls : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/removeduplicateevent", "", "5. pattern matching", "input : not required", "urls : https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/patternmaching"]; proxies : {'https': 'http://194.138.0.25:9400'}
+2019-02-27 09:35:31,858 [DEBUG] urllib3.connectionpool: Starting new HTTPS connection (1): gateway.eu1-int.mindsphere.io:443
+2019-02-27 09:35:34,668 [DEBUG] urllib3.connectionpool: https://gateway.eu1-int.mindsphere.io:443 "PUT /api/iotfile/v3/files/078b1908bc9347678168760934465587/integ_198746 HTTP/1.1" 201 0
+2019-02-27 09:35:34,670 [INFO] django.server: "GET /fileservicecreate/078b1908bc9347678168760934465587 HTTP/1.1" 200 58
