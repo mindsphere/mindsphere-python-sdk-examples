@@ -1,0 +1,14 @@
+---
+applications:
+- name: pythone2eapp
+  instances: 1
+  randon-route : true
+  path: .
+  memory: 1GB
+  env:
+    HOST_ENVIRONMENT: eu1-int
+    MINDSPHERE_CLIENT_ID: technical-user-mdspsdk
+    MINDSPHERE_CLIENT_SECRET:
+    MINDSPHERE_TENANT: mdspsdk
+
+    
