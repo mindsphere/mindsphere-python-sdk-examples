@@ -7,18 +7,14 @@ The full documentation can be found at [https://developer.mindsphere.io/resource
 
 ## Preparation
 ### Prerequisites to use the MindSphere SDK for Python ###
-- Python version 3.0 or higher
-- User authorization token or service credentials with required scopes for Mindsphere Service APIs
-- Environment variables added to your local to run application in local. When hosting an application in Cloud Foundry, the variable must be added to the manifest file.
-#### Environment Variables ####
-| Environment Variable | Description |
-|--------------|--------------|
-| HOST_ENVIRONMENT | Store the region in environment variable named `HOST_ENVIRONMENT`. If not specified, HOST_ENVIRONMENT defaults to `eu1` in region Europe 1 SDK and to `cn1` in region China 1 SDK.
-| MDSP_USER_TENANT | Store the user tenant name in environment variable named `MDSP_USER_TENANT` |.
-| MDSP_OS_VM_APP_VERSIO| Store App Version in environment variable named `MDSP_OS_VM_APP_VERSION`. | 
-| MINDSPHERE_CLIENT_ID | Store the mindsphere client id in environment variable named `MINDSPHERE_CLIENT_ID`. |
-| MINDSPHERE_CLIENT_SECRET | Store the mindsphere client secret in environment variable named `MINDSPHERE_CLIENT_SECRET`. |
-| MINDSPHERE_SUB_TENANT | Store the mindsphere subtenant name in environment variable named `MINDSPHERE_SUB_TENANT`. |
+Python version 8 or higher
+User authorization token or service credentials with required scopes for Mindsphere Service APIs
+Environment variable HOST_ENVIRONMENT is set to current region. When hosting an application in Cloud Foundry, the variable must be added to the manifest file:
+
+
+##### env:
+  HOST_ENVIRONMENT: eu1
+If not specified, HOST_ENVIRONMENT defaults to eu1 in region Europe 1 SDK and to cn1 in region China 1 SDK.
 
 ### Download
 ##### Downloading the MindSphere SDK for Python
@@ -47,7 +43,7 @@ repo/{service_name}-z.y.z-py3-none-any.whl
 > {x.y.z} is the version number of the MindSphere Core or Service SDK for Python (e.g. 1.0.0).
 
 ### Step 2: Upload app to CloudFoundry and fetch app URL
-1. Build your application for deploying on cloud foundry.
+1. Zip your application for deploying on cloud foundry.
 2. Login into cf using this cmd  : `cf login -a [cloudfoundry_login_url] -sso - AWS INT`
 3. Select the `org` and `create space` based on the appname you've created with version and target it
 4. Once it is targeted, push the app into cf using `cf push` cmd
