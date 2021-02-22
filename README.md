@@ -50,8 +50,24 @@ repo/{service_name}-z.y.z-py3-none-any.whl
 5. Get the app url by using the cmd `cf apps` and store it for use in further steps
 
 ### Step 3: Login to Mindsphere Application
-Login to your Tenant in Mindsphere Application
 > Your tenant application url will be in the format : https://[tenantName].[region].mindsphere.io
+##### Login using your tenant Credentials #####
+Login to your tenant on this sign in page for mindsphere.
+<p>
+<img src="https://github.com/mindsphere/mindsphere-node-sdk-examples/blob/master/images/LoginPage.PNG" width="400">
+</p>
+
+##### Mindsphere Dashboard #####
+After successful login mindsphere dashboard will appear.
+<p>
+<img src="https://github.com/mindsphere/mindsphere-node-sdk-examples/blob/master/images/MindsphereDashboard.PNG" width="600">
+</p>
+
+##### Open Developer Cockpit #####
+Open Developer Cockpit Application in the Dashboard
+<p>
+<img src="https://github.com/mindsphere/mindsphere-node-sdk-examples/blob/master/images/DeveloperCockpit.PNG" width="200">
+</p>
 
 ### Step 4: Create a subtenant, an aspect type and asset types
 
