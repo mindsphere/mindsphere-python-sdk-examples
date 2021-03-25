@@ -267,9 +267,9 @@ python manage.py runserver
 ```
 ##### 4. Access the app.
 1. Navigate to 'http://127.0.0.1:8000' (You can use any browswer of your choice).
-2. Domain URL in this case will be 'localhost:3000'.
+2. Domain URL in this case will be 'http://127.0.0.1:8000'.
 <p>
-<img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/master/images/AccessAPP.PNG" width="400">
+<img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/master/images/AccessAP.PNG" width="400">
 </p>
 
 
