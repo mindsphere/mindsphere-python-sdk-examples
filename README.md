@@ -258,7 +258,7 @@ cd mindsphere-python-sdk-examples
 pip install -r requirements.txt
 ```
 ###### Note 
-> If you face errors while `pip install -r requirements.txt` mentioning particular '<file-name>.tgz file not found' then kindly verify dependency file name in repo folder and that mentioned in package.json file. This could be also due to incorrect relative path mentioned in package.json file. If so then modify path in package.json wherever required.
+> If you face errors while `pip install -r requirements.txt` mentioning particular '<file-name>.whl file not found' then kindly verify dependency file name in repo folder and that mentioned in package.json file. This could be also due to incorrect relative path mentioned in package.json file. If so then modify path in package.json wherever required.
 
 ##### 3. Run the app.
 ####
