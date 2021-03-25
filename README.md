@@ -167,7 +167,7 @@ git clone https://github.com/mindsphere/mindsphere-python-sdk-examples.git
 5. Click on **Submit** button.
 6. You will be presented with client ID and client secret for application.
     <p>
-    <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/master/images/cidcsecretpython.png" width="400">
+    <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/master/images/cidcsecretpython.PNG" width="400">
     </p>
 7. Store these values at secure location as they are displayed only once.
 
@@ -225,13 +225,13 @@ Now concerned developer should be able to access the application via launchpad.
     <p>
     <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/master/images/appurl.PNG" width="400">
     </p>
-5. You can test endpoint by replacing 'your-domain-url-here' with appropriate values. For example topevents endpoint from EventAnalytics API is tested like this. :
+5. You can test endpoint by replacing 'http//127.0.0.1:8000' with appropriate values. For example topevents endpoint from EventAnalytics API is tested like this. :
 <p>
 <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/master/images/eventeg.PNG" width="400">
 </p>
 
 
-### 3B - Set up Node Sample Project For Local Machine
+### 3B - Set up Python Sample Project For Local Machine
 
 The following steps describe the way to set up a sample project to test on local machine.
 This is to facilitate any bug resolution on local developer setup.
@@ -240,7 +240,7 @@ Please follow prerequisite section for environment variables, how to get them an
 ##### 1. Clone this repository.
 ####
 ```
-git clone https://github.com/mindsphere/mindsphere-node-sdk-examples.git
+git clone https://github.com/mindsphere/mindsphere-python-sdk-examples.git
 ```
 ##### 2. Install required dependencies.
 - Create a folder named 'repo' in root directory of project.
@@ -251,14 +251,14 @@ git clone https://github.com/mindsphere/mindsphere-node-sdk-examples.git
 - For convinience, requirements.txt is populated with relative path to copied dependencies.
 - Navigate inside the root directory of project if you are not in there.
 ```
-cd mindsphere-node-sdk-examples
+cd mindsphere-python-sdk-examples
 ```
 - Run below command to install required dependecies mentioned in package.json file.
 ```
 pip install -r requirements.txt
 ```
 ###### Note 
-> If you face errors while `npm install` mentioning particular '<file-name>.tgz file not found' then kindly verify dependency file name in repo folder and that mentioned in package.json file. This could be also due to incorrect relative path mentioned in package.json file. If so then modify path in package.json wherever required.
+> If you face errors while `pip install -r requirements.txt` mentioning particular '<file-name>.tgz file not found' then kindly verify dependency file name in repo folder and that mentioned in package.json file. This could be also due to incorrect relative path mentioned in package.json file. If so then modify path in package.json wherever required.
 
 ##### 3. Run the app.
 ####
@@ -269,7 +269,7 @@ python manage.py runserver
 1. Navigate to 'http://127.0.0.1:8000' (You can use any browswer of your choice).
 2. Domain URL in this case will be 'localhost:3000'.
 <p>
-<img src="https://github.com/mindsphere/mindsphere-node-sdk-examples/blob/master/images/AccessAPP.PNG" width="400">
+<img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/master/images/AccessAPP.PNG" width="400">
 </p>
 
 
