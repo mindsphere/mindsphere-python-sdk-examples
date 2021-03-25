@@ -253,12 +253,12 @@ git clone https://github.com/mindsphere/mindsphere-python-sdk-examples.git
 ```
 cd mindsphere-python-sdk-examples
 ```
-- Run below command to install required dependecies mentioned in package.json file.
+- Run below command to install required dependecies mentioned in requirements.txt file.
 ```
 pip install -r requirements.txt
 ```
 ###### Note 
-> If you face errors while `pip install -r requirements.txt` mentioning particular '<file-name>.whl file not found' then kindly verify dependency file name in repo folder and that mentioned in package.json file. This could be also due to incorrect relative path mentioned in package.json file. If so then modify path in package.json wherever required.
+> If you face errors while `pip install -r requirements.txt` mentioning particular '<file-name>.whl file not found' then kindly verify dependency file name in repo folder and that mentioned in requirements.txt file. This could be also due to incorrect relative path mentioned in requirements.txt file. If so then modify path in requirements.txt wherever required.
 
 ##### 3. Run the app.
 ####
