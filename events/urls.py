@@ -2,9 +2,9 @@ from django.urls import path
 from events import views
 
 urlpatterns = [
-    path("eventanalytics/topevents", views.EventOperationsClientViewTopEvent.as_view()),
-    path("eventanalytics/filterevents", views.EventOperationsClientViewFilterEvent.as_view()),
-    path("eventanalytics/countevents", views.EventOperationsClientViewCountEvent.as_view()),
-    path("eventanalytics/removeduplicateevent", views.EventOperationsClientViewRemoveDuplicateEvent.as_view()),
-    path("eventanalytics/patternmatching", views.PatternOperationsClientViewMatchPatternsOverEvents.as_view()),
+    path("eventAnalytics/topevents", views.EventOperationsClientViewTopEvent.as_view()),
+    path("eventAnalytics/filterEvents", views.EventOperationsClientViewFilterEvent.as_view()),
+    path("eventAnalytics/countEvents", views.EventOperationsClientViewCountEvent.as_view()),
+    path("eventAnalytics/removeDuplicateEvents", views.EventOperationsClientViewRemoveDuplicateEvent.as_view()),
+    path("eventAnalytics/matchEventPattern", views.PatternOperationsClientViewMatchPatternsOverEvents.as_view()),
 ]

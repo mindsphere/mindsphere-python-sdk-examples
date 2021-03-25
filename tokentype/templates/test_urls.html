@@ -1,109 +1,134 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><title>test_urls.html</title><style></style></head><body id="preview">
-<h2><a id="TOKEN_URLS_0"></a>TOKEN URLS</h2>
-<h4><a id="1Switch_token_type_from_User_token_to_Technical_token_and_vice_versa_2"></a>1-Switch token type from User token to Technical token and vice versa.</h4>
-<p>This end point will display after switching what is the current token type. All the subsequent api calls will use this new changed token type. If You want to make api call with other token type, then hit this end point again. <a href="http://127.0.0.1:8000/tokentype/">http://127.0.0.1:8000/tokentype/</a></p>
-<h4><a id="2Current_token_5"></a>2-Current token.</h4>
-<p>You need to login to access the token. You can use this to view the current token.<br>
-<a href="http://127.0.0.1:8000/token">http://127.0.0.1:8000/token</a></p>
-<h4><a id="3Check_the_logs_You_need_to_login_to_access_the_token_9"></a>3-Check the logs You need to login to access the token.</h4>
-<p><a href="http://127.0.0.1:8000/logs">http://127.0.0.1:8000/logs</a><br>
-<a href="http://127.0.0.1:8000/logs/?lines=100">http://127.0.0.1:8000/logs/?lines=100</a></p>
-<h4><a id="4Clear_the_logs_13"></a>4-Clear the logs</h4>
-<p>You need to have super user access</p>
-<p><a href="http://127.0.0.1:8000/cls">http://127.0.0.1:8000/cls</a></p>
-<h2><a id="ASSET_MANAGEMENT_URLS_18"></a>ASSET MANAGEMENT URLS</h2>
-<h4><a id="1_Create_aspect_type_20"></a>1. Create aspect type</h4>
-<p>input-Your tenant name <a href="http://127.0.0.1:8000/aspects/%7BYour_tenant%7D">http://127.0.0.1:8000/aspects/{Your_tenant}</a><br>
-save “id” and “name” from the response</p>
-<h4><a id="2Create_asset_type_24"></a>2.Create asset type</h4>
-<p>input:Your tenant name, name From step1 response, id From step1 response<br>
-<a href="http://127.0.0.1:8000/assettype/%7BYour_tenant%7D?aspectname=%7BnameFromstep1response%7D&amp;aspectid=%7BidFromstep1response%7D">http://127.0.0.1:8000/assettype/{Your_tenant}?aspectname={nameFromstep1response}&amp;aspectid={idFromstep1response}</a><br>
-save “id” from response</p>
-<h4><a id="3Create_asset_29"></a>3.Create asset</h4>
-<p>input:“id” from step 2 response<br>
-<a href="http://127.0.0.1:8000/assets/%7BidFromStep2%7D/">http://127.0.0.1:8000/assets/{idFromStep2}/</a><br>
-save “etag” and “asset_id” from response</p>
-<h4><a id="4Create_a_file_34"></a>4.Create a file</h4>
-<p>input: Not reqd <a href="http://127.0.0.1:8000/assetfiles">http://127.0.0.1:8000/assetfiles</a><br>
-save “id” from response</p>
-<h4><a id="5Associate_the_file_with_created_asset_38"></a>5.Associate the file with created asset</h4>
-<p>input:asset id from step3,etag from step3, any value for key,fileid from step 4<br>
-<a href="http://127.0.0.1:8000/assetfiles/%7Basset_id%7D?ifmatch=%7Betag%7D&amp;key=%7Bany_string%7D&amp;fileid=%7Bfileid%7D">http://127.0.0.1:8000/assetfiles/{asset_id}?ifmatch={etag}&amp;key={any_string}&amp;fileid={fileid}</a><br>
-save “etag” from response</p>
-<h4><a id="6Add_location_to_asset_43"></a>6.Add location to asset</h4>
-<p>input-asset id from step 3, asset etag from step 5<br>
-<a href="http://127.0.0.1:8000/assetlocation/%7Basset_id%7D/%7Basset_etag%7D">http://127.0.0.1:8000/assetlocation/{asset_id}/{asset_etag}</a></p>
-<h4><a id="7Get_asset_by_ID_47"></a>7.Get asset by ID</h4>
-<p>input-asset id from step 3 response<br>
-<a href="http://127.0.0.1:8000/assetsget/%7BidFromStep3%7D/">http://127.0.0.1:8000/assetsget/{idFromStep3}/</a><br>
-save “etag” Ensure the response has “file_assignments” and “location” populated</p>
-<h4><a id="8Delete_asset_by_id_52"></a>8.Delete asset by id</h4>
-<p>input-asset id from step 3 response, asset etag from step 7<br>
-<a href="http://127.0.0.1:8000/assetsdelete/%7BidFromStep3%7D?ifmatch=%7Betag%7D">http://127.0.0.1:8000/assetsdelete/{idFromStep3}?ifmatch={etag}</a></p>
-<h4><a id="9List_all_assets_56"></a>9.List all assets</h4>
-<p>input-not required<br>
-<a href="http://127.0.0.1:8000/assets">http://127.0.0.1:8000/assets</a></p>
-<h2><a id="IOT_FILESERVICE_URLS_60"></a>IOT FILESERVICE URLS</h2>
-<h4><a id="1_create_file_62"></a>1. create file</h4>
-<p>input        :  path param (entity)<br>
-description  :  Create file<br>
-urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreate/%7Bentity_id%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreate/{entity_id}</a><br>
-save         : “file_path”</p>
-<h4><a id="2_get_file_68"></a>2. get file</h4>
-<p>input        : path param (entity_id and file_path) and take path value from step1<br>
-description  : Get content of the file<br>
-urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicegetfile/%7Bentity_id%7D/%7Bfile_path%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicegetfile/{entity_id}/{file_path}</a><br>
-output       : get content of file_path</p>
-<h4><a id="3_search_file_74"></a>3. search file</h4>
-<p>input        :  entity id required<br>
-description  : Under specified entity, list the number of files<br>
-urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicesearch/%7Bentity_id%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicesearch/{entity_id}</a></p>
-<h4><a id="4_multipart_file__initialising_the_file_79"></a>4. multipart file : initialising the file</h4>
-<p>input        : query param (upload = start) ,  path param (entity and file path) and path should be unique like ex : (india121)<br>
-description  : For initialising the file, required to pass upload=start<br>
-urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/%7Bentity_id%7D/%7Bfile_path%7D?upload=start">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/{entity_id}/{file_path}?upload=start</a><br>
-output       : Intitated file upload for the path : filepath</p>
-<h4><a id="41_multipart_file__uploading_the_file_part_1_85"></a>4.1 multipart file : uploading the file part 1</h4>
-<p>input        : query param (part_num = 1) and path param (entity and file path)<br>
-description  : For uploading part requires minuium 5MB file and specify the part_num<br>
-urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/%7Bentity_id%7D/%7Bfile_path%7D?part_num=1">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/{entity_id}/{file_path}?part_num=1</a><br>
-output       : Uploaded file for the part1</p>
-<h4><a id="42_multipart_file__uploading_the_file_part_2_91"></a>4.2 multipart file : uploading the file part 2</h4>
-<p>input        : query param (part_num = 2) and path param (entity and file path)<br>
-description  : For uploading part requires minuium 5MB file and specify the part_num<br>
-urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/%7Bentity_id%7D/%7Bfile_path%7D?part_num=2">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/{entity_id}/{file_path}?part_num=2</a><br>
-output       : Uploaded file for the part2</p>
-<h4><a id="43_multipart_file__listing_number_of_part_uploaded_properly_97"></a>4.3 multipart file : listing number of part uploaded properly</h4>
-<p>input       : entity and path<br>
-description : Listed out number of parts uploaded sucessfully<br>
-urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicelistmultipart/%7Bentity_id%7D/%7Bfile_path%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicelistmultipart/{entity_id}/{file_path}</a><br>
-output      : view number of the file part are uploaded sucessfully</p>
-<h4><a id="44_multipart_file__complete_the_file_103"></a>4.4 multipart file : complete the file</h4>
-<p>input       : query param (upload = complete) and path param (entity and file path)<br>
-description : After uploading the parts , pass query param (upload = complete)<br>
-urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/%7Bentity_id%7D/%7Bfile_path%7D?upload=complete">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/fileservicecreatemultipart/{entity_id}/{file_path}?upload=complete</a><br>
-output      : Successfully uploaded file for the path : file path<br>
-save file path and provide file path in step 2 to see content of the file</p>
-<h2><a id="EVENT_ANALYTICS_URLS_110"></a>EVENT ANALYTICS URLS</h2>
-<h4><a id="1_top_events_112"></a>1. top events</h4>
-<p>input       : not required<br>
-description :  listing the topest events<br>
-urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/topevents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/topevents</a></p>
-<h4><a id="2_count_events_117"></a>2. count events</h4>
-<p>input       : not required<br>
-description : list the count of events<br>
-urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/countevents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/countevents</a></p>
-<h4><a id="3_filter_events_122"></a>3. filter events</h4>
-<p>input       : not required<br>
-description : filtering the events<br>
-urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/filterevents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/filterevents</a></p>
-<h4><a id="4_remove_duplicates_127"></a>4. remove duplicates</h4>
-<p>input       : not required<br>
-description : removeing duplicates from events<br>
-urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/removeduplicateevent">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/removeduplicateevent</a></p>
-<h4><a id="5_pattern_matching_132"></a>5. pattern matching</h4>
-<p>input       : not required<br>
-description : matching the event in pattern<br>
-urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/patternmatching">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventanalytics/patternmatching</a></p>
+<h2 class="code-line" data-line-start=0 data-line-end=1 ><a id="TOKEN_URLS_0"></a>TOKEN URLS</h2>
+<h4 class="code-line" data-line-start=2 data-line-end=3 ><a id="1Switch_token_type_from_User_token_to_Technical_token_and_vice_versa_2"></a>1-Switch token type from User token to Technical token and vice versa.</h4>
+<p class="has-line-data" data-line-start="4" data-line-end="5">This end point will display after switching what is the current token type. All the subsequent api calls will use this new changed token type. If You want to make api call with other token type, then hit this end point again. <a href="http://127.0.0.1:8000/tokenType/toggle">http://127.0.0.1:8000/tokenType/toggle</a></p>
+<h4 class="code-line" data-line-start=6 data-line-end=7 ><a id="2Current_token_6"></a>2-Current token.</h4>
+<p class="has-line-data" data-line-start="8" data-line-end="9">You need to login to access the token. You can use this to view the current token.&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="10" data-line-end="11"><a href="http://127.0.0.1:8000/token">http://127.0.0.1:8000/token</a></p>
+<h4 class="code-line" data-line-start=12 data-line-end=13 ><a id="3Check_the_logs_You_need_to_login_to_access_the_token_12"></a>3-Check the logs You need to login to access the token.</h4>
+<p class="has-line-data" data-line-start="14" data-line-end="15"><a href="http://127.0.0.1:8000/logs">http://127.0.0.1:8000/logs</a>&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="16" data-line-end="17"><a href="http://127.0.0.1:8000/logs/?lines=100">http://127.0.0.1:8000/logs/?lines=100</a></p>
+<h4 class="code-line" data-line-start=18 data-line-end=19 ><a id="4Clear_the_logs_18"></a>4-Clear the logs</h4>
+<p class="has-line-data" data-line-start="20" data-line-end="21">You need to have super user access</p>
+<p class="has-line-data" data-line-start="22" data-line-end="23"><a href="http://127.0.0.1:8000/cls">http://127.0.0.1:8000/cls</a></p>
+<h2 class="code-line" data-line-start=24 data-line-end=25 ><a id="ASSET_MANAGEMENT_URLS_24"></a>ASSET MANAGEMENT URLS</h2>
+<h4 class="code-line" data-line-start=26 data-line-end=27 ><a id="1_Create_aspect_type_26"></a>1. Create aspect type</h4>
+<p class="has-line-data" data-line-start="28" data-line-end="29">input-Your tenant name <a href="http://127.0.0.1:8000/aspects?tenantName=%7Btenant">http://127.0.0.1:8000/aspects?tenantName={tenant}</a>&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="30" data-line-end="31">save “id” and “name” from the response</p>
+<h4 class="code-line" data-line-start=32 data-line-end=33 ><a id="2Create_asset_type_32"></a>2.Create asset type</h4>
+<p class="has-line-data" data-line-start="34" data-line-end="35">input:Your tenant name, name From step1 response, id From step1 response&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="36" data-line-end="37"><a href="http://127.0.0.1:8000/assets/assettype/%7BYour_tenant%7D?aspectname=%7BnameFromstep1response%7D&amp;aspectid=%7BidFromstep1response%7D">http://127.0.0.1:8000/assets/assettype/{Your_tenant}?aspectname={nameFromstep1response}&amp;aspectid={idFromstep1response}</a>&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="38" data-line-end="39">save “id” from response</p>
+<h4 class="code-line" data-line-start=40 data-line-end=41 ><a id="3Create_asset_40"></a>3.Create asset</h4>
+<p class="has-line-data" data-line-start="42" data-line-end="43">input:“id” from step 2 response&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="44" data-line-end="45"><a href="http://127.0.0.1:8000/assets/assets/%7BidFromStep2%7D?parentid=%7Bparentid%7D">http://127.0.0.1:8000/assets/assets/{idFromStep2}?parentid={parentid}</a>&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="46" data-line-end="47">save “etag” and “asset_id” from response</p>
+<h4 class="code-line" data-line-start=48 data-line-end=49 ><a id="4Create_a_file_48"></a>4.Create a file</h4>
+<p class="has-line-data" data-line-start="50" data-line-end="51">input: Not reqd <a href="http://127.0.0.1:8000/assets/assetfiles">http://127.0.0.1:8000/assets/assetfiles</a>&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="52" data-line-end="53">save “id” from response</p>
+<h4 class="code-line" data-line-start=54 data-line-end=55 ><a id="5Associate_the_file_with_created_asset_54"></a>5.Associate the file with created asset</h4>
+<p class="has-line-data" data-line-start="56" data-line-end="57">input:asset id from step3,etag from step3, any value for key,fileid from step 4&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="58" data-line-end="59"><a href="http://127.0.0.1:8000/assets/assetfiles/%7Basset_id%7D?ifmatch=%7Betag%7D&amp;key=%7Bany_string%7D&amp;fileid=%7Bfileid%7D">http://127.0.0.1:8000/assets/assetfiles/{asset_id}?ifmatch={etag}&amp;key={any_string}&amp;fileid={fileid}</a>&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="60" data-line-end="61">save “etag” from response</p>
+<h4 class="code-line" data-line-start=62 data-line-end=63 ><a id="6Add_location_to_asset_62"></a>6.Add location to asset</h4>
+<p class="has-line-data" data-line-start="64" data-line-end="65">input-asset id from step 3, asset etag from step 5&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="66" data-line-end="67"><a href="http://127.0.0.1:8000/assets/assetlocation/%7Basset_id%7D/%7Basset_etag%7D">http://127.0.0.1:8000/assets/assetlocation/{asset_id}/{asset_etag}</a></p>
+<h4 class="code-line" data-line-start=68 data-line-end=69 ><a id="7Get_asset_by_ID_68"></a>7.Get asset by ID</h4>
+<p class="has-line-data" data-line-start="70" data-line-end="71">input-asset id from step 3 response&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="72" data-line-end="73"><a href="http://127.0.0.1:8000/assets/assetsget/%7BidFromStep3%7D">http://127.0.0.1:8000/assets/assetsget/{idFromStep3}</a>&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="74" data-line-end="75">save “etag” Ensure the response has “file_assignments” and “location” populated</p>
+<h4 class="code-line" data-line-start=76 data-line-end=77 ><a id="8Delete_asset_by_id_76"></a>8.Delete asset by id</h4>
+<p class="has-line-data" data-line-start="78" data-line-end="79">input-asset id from step 3 response, asset etag from step 7&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="80" data-line-end="81"><a href="http://127.0.0.1:8000/assets/assetsdelete/%7BidFromStep3%7D?ifmatch=%7Betag%7D">http://127.0.0.1:8000/assets/assetsdelete/{idFromStep3}?ifmatch={etag}</a></p>
+<h4 class="code-line" data-line-start=82 data-line-end=83 ><a id="9List_all_assets_82"></a>9.List all assets</h4>
+<p class="has-line-data" data-line-start="84" data-line-end="85">input-not required&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="86" data-line-end="87"><a href="http://127.0.0.1:8000/assets/assets">http://127.0.0.1:8000/assets/assets</a></p>
+<h4 class="code-line" data-line-start=88 data-line-end=89 ><a id="10_delete_asset_with_confirmation_88"></a>10. delete asset with confirmation</h4>
+<p class="has-line-data" data-line-start="90" data-line-end="91">input        : id and ifmatch</p>
+<p class="has-line-data" data-line-start="92" data-line-end="93">description  :  checking of asset deleted with confirmation.</p>
+<p class="has-line-data" data-line-start="94" data-line-end="95">urls :       : <a href="http://127.0.0.1:8000/assetsdeletewithconfirmation/%7Bassetid%7D/%7Bifmatch%7D">http://127.0.0.1:8000/assetsdeletewithconfirmation/{assetid}/{ifmatch}</a></p>
+<h4 class="code-line" data-line-start=96 data-line-end=97 ><a id="11_Aspect_type_filter_name_96"></a>11. Aspect type filter name</h4>
+<p class="has-line-data" data-line-start="98" data-line-end="99">input       : filterValue</p>
+<p class="has-line-data" data-line-start="100" data-line-end="101">description : Value based on which aspect types need to be filtered.</p>
+<p class="has-line-data" data-line-start="102" data-line-end="103">urls :       : <a href="http://127.0.0.1:8000/filteraspecttypename?filterValue=%7BfilterValue%7D">http://127.0.0.1:8000/filteraspecttypename?filterValue={filterValue}</a></p>
+<h4 class="code-line" data-line-start=104 data-line-end=105 ><a id="12_Aspect_type_filter_like_104"></a>12. Aspect type filter like</h4>
+<p class="has-line-data" data-line-start="106" data-line-end="107">input       : filterValue</p>
+<p class="has-line-data" data-line-start="108" data-line-end="109">description : Value based on which aspect types need to be filtered.</p>
+<p class="has-line-data" data-line-start="110" data-line-end="111">urls :       : <a href="http://127.0.0.1:8000/filteraspecttypelike?filterValue=engine&amp;filterValue=%7BfilterValue%7D">http://127.0.0.1:8000/filteraspecttypelike?filterValue=engine&amp;filterValue={filterValue}</a></p>
+<h4 class="code-line" data-line-start=112 data-line-end=113 ><a id="12_Assets_filter_starts_with_112"></a>12. Assets filter starts with</h4>
+<p class="has-line-data" data-line-start="114" data-line-end="115">input       : filterValue</p>
+<p class="has-line-data" data-line-start="116" data-line-end="117">description : Value based on which aspect types need to be filtered.</p>
+<p class="has-line-data" data-line-start="118" data-line-end="119">urls :       : <a href="http://127.0.0.1:8000/filterassetsstartwith?filterValue=%7BfilterValue%7D">http://127.0.0.1:8000/filterassetsstartwith?filterValue={filterValue}</a></p>
+<h4 class="code-line" data-line-start=120 data-line-end=121 ><a id="13_Assets_filter_of_type_120"></a>13. Assets filter of type</h4>
+<p class="has-line-data" data-line-start="122" data-line-end="123">input       : filterValue</p>
+<p class="has-line-data" data-line-start="124" data-line-end="125">description : filter assets of a particular asset type.</p>
+<p class="has-line-data" data-line-start="126" data-line-end="127">urls :       : <a href="http://127.0.0.1:8000/filterassetsoftype?filterValue=%7BfilterValue%7D">http://127.0.0.1:8000/filterassetsoftype?filterValue={filterValue}</a></p>
+<h4 class="code-line" data-line-start=128 data-line-end=129 ><a id="14_Asset_types_filter_ends_with_128"></a>14. Asset types filter ends with</h4>
+<p class="has-line-data" data-line-start="130" data-line-end="131">input       : filterValue</p>
+<p class="has-line-data" data-line-start="132" data-line-end="133">description : filter assets of a particular asset type.</p>
+<p class="has-line-data" data-line-start="134" data-line-end="135">urls :       : <a href="http://127.0.0.1:8000/filterassettypeendwith?filterValue=%7BfilterValue%7D">http://127.0.0.1:8000/filterassettypeendwith?filterValue={filterValue}</a></p>
+<h4 class="code-line" data-line-start=136 data-line-end=137 ><a id="15_Asset_types_filter_contains_with_136"></a>15. Asset types filter contains with</h4>
+<p class="has-line-data" data-line-start="138" data-line-end="139">input       : filterValue</p>
+<p class="has-line-data" data-line-start="140" data-line-end="141">description : Value based on which asset types need to be filtered.</p>
+<p class="has-line-data" data-line-start="142" data-line-end="143">urls :       : <a href="http://127.0.0.1:8000/filterassettypecontains?filterValue=%7BfilterValue%7D">http://127.0.0.1:8000/filterassettypecontains?filterValue={filterValue}}</a></p>
+<h2 class="code-line" data-line-start=144 data-line-end=145 ><a id="IOT_FILESERVICE_URLS_144"></a>IOT FILESERVICE URLS</h2>
+<h4 class="code-line" data-line-start=146 data-line-end=147 ><a id="1_create_file_146"></a>1. create file</h4>
+<p class="has-line-data" data-line-start="148" data-line-end="149">input        :  path param (entity)&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="150" data-line-end="151">description  :  Create file&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="152" data-line-end="153">urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicecreate/%3Cstr:entity_id%3E">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicecreate/&lt;str:entity_id&gt;</a>&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="154" data-line-end="155">save         : “file_path”</p>
+<h4 class="code-line" data-line-start=156 data-line-end=157 ><a id="1_update_file_156"></a>1. update file</h4>
+<p class="has-line-data" data-line-start="158" data-line-end="159">input        :  path param (entity) , (file_path) and (if_match)&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="160" data-line-end="161">description  :  update file&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="162" data-line-end="163">urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileserviceupdate/%7Bentity_id%7D/%7Bfile_path%7D?if_match=%7Bif_match_value%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileserviceupdate/{entity_id}/{file_path}?if_match={if_match_value}</a>&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="164" data-line-end="165">save         : “file_path”</p>
+<h4 class="code-line" data-line-start=166 data-line-end=167 ><a id="2_search_file_166"></a>2. search file</h4>
+<p class="has-line-data" data-line-start="168" data-line-end="169">input        :  path param (entity)&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="170" data-line-end="171">description  :  search file&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="172" data-line-end="173">urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicesearch/%3Cstr:entity_id%3E">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicesearch/&lt;str:entity_id&gt;</a>&lt;br&gt;</p>
+<h4 class="code-line" data-line-start=174 data-line-end=175 ><a id="3_get_file_174"></a>3. get file</h4>
+<p class="has-line-data" data-line-start="176" data-line-end="177">input        :  entity id , path param (entity)&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="178" data-line-end="179">description  :  get file&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="180" data-line-end="181">urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicegetfile/%3Cstr:entity_id%3E/%3Cstr:path%3E">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicegetfile/&lt;str:entity_id&gt;/&lt;str:path&gt;</a>&lt;br&gt;</p>
+<h4 class="code-line" data-line-start=182 data-line-end=183 ><a id="4_create_multi_part_file_182"></a>4. create multi part file</h4>
+<p class="has-line-data" data-line-start="184" data-line-end="185">input        :  path param (entity)&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="186" data-line-end="187">description  :  Create a multi part file&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="188" data-line-end="189">urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicecreatemultipart/%3Cstr:entity_id%3E/%3Cstr:path%3E">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicecreatemultipart/&lt;str:entity_id&gt;/&lt;str:path&gt;</a>&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="190" data-line-end="191">save         : “file_path”</p>
+<h2 class="code-line" data-line-start=192 data-line-end=193 ><a id="EVENT_ANALYTICS_URLS_192"></a>EVENT ANALYTICS URLS</h2>
+<h4 class="code-line" data-line-start=194 data-line-end=195 ><a id="1_top_events_194"></a>1. top events</h4>
+<p class="has-line-data" data-line-start="196" data-line-end="197">input       : not required&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="198" data-line-end="199">description :  listing the topest events&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="200" data-line-end="201">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/topevents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/topevents</a></p>
+<h4 class="code-line" data-line-start=202 data-line-end=203 ><a id="2_count_events_202"></a>2. count events</h4>
+<p class="has-line-data" data-line-start="204" data-line-end="205">input       : not required&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="206" data-line-end="207">description : list the count of events&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="208" data-line-end="209">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/countEvents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/countEvents</a></p>
+<h4 class="code-line" data-line-start=210 data-line-end=211 ><a id="3_filter_events_210"></a>3. filter events</h4>
+<p class="has-line-data" data-line-start="212" data-line-end="213">input       : not required&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="214" data-line-end="215">description : filtering the events&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="216" data-line-end="217">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/filterEvents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/filterEvents</a></p>
+<h4 class="code-line" data-line-start=218 data-line-end=219 ><a id="4_remove_duplicates_218"></a>4. remove duplicates</h4>
+<p class="has-line-data" data-line-start="220" data-line-end="221">input       : not required&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="222" data-line-end="223">description : removeing duplicates from events&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="224" data-line-end="225">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/removeDuplicateEvents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/removeDuplicateEvents</a></p>
+<h4 class="code-line" data-line-start=226 data-line-end=227 ><a id="5_pattern_matching_226"></a>5. pattern matching</h4>
+<p class="has-line-data" data-line-start="228" data-line-end="229">input       : not required&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="230" data-line-end="231">description : matching the event in pattern&lt;br&gt;</p>
+<p class="has-line-data" data-line-start="232" data-line-end="233">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/matchEventPattern">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/matchEventPattern</a></p>
+<h2 class="code-line" data-line-start=234 data-line-end=235 ><a id="Timeseries_234"></a>Timeseries</h2>
+<h4 class="code-line" data-line-start=236 data-line-end=237 ><a id="1_create_timeseries_236"></a>1. create timeseries:</h4>
+<p class="has-line-data" data-line-start="238" data-line-end="239">input       : not required</p>
+<p class="has-line-data" data-line-start="240" data-line-end="241">description : create timeseries with interval of 1 mintue</p>
+<p class="has-line-data" data-line-start="242" data-line-end="243">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/timeSeries/create/%7Bentityid%7D/%7Bpropertyname%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/timeSeries/create/{entityid}/{propertyname}</a></p>
+<p class="has-line-data" data-line-start="244" data-line-end="245">save        : timeseries</p>
+<h4 class="code-line" data-line-start=246 data-line-end=247 ><a id="2_delete_timeseries_246"></a>2. delete timeseries:</h4>
+<p class="has-line-data" data-line-start="248" data-line-end="249">input       : from and to required parameter</p>
+<p class="has-line-data" data-line-start="250" data-line-end="251">description : delete timeseries</p>
+<p class="has-line-data" data-line-start="252" data-line-end="253">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/timeSeries/delete/%7Bentityid%7D/%7Bpropertyname%7D?from=%7Bfrom%7D/to=%7Bto%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/timeSeries/delete/{entityid}/{propertyname}?from={from}/to={to}</a></p>
+<h2 class="code-line" data-line-start=254 data-line-end=255 ><a id="Aggregates_254"></a>Aggregates</h2>
+<p class="has-line-data" data-line-start="256" data-line-end="257">input       : entity id , propertyname , from{2018-01-24T05:03:41Z}, to {2018-01-24T05:10:41Z}, interval value {60}, intervel unit {second} and select{RRWheel}</p>
+<p class="has-line-data" data-line-start="258" data-line-end="259">description : which aggregates the timeseries data and give the response</p>
+<p class="has-line-data" data-line-start="260" data-line-end="261">urls        : <a href="http://127.0.0.1:8000/timeseriesaggregate/get/%7Bentityid%7D/%7Bpropertyset%7D/?from=%7Bfrom%7D&amp;to=%7Bto%7D&amp;intervalValue=%7BintervalValue%7D&amp;intervalUnit=%7Bintervalunit%7D&amp;select=%7Bselect%7D">http://127.0.0.1:8000/timeseriesaggregate/get/{entityid}/{propertyset}/?from={from}&amp;to={to}&amp;intervalValue={intervalValue}&amp;intervalUnit={intervalunit}&amp;select={select}</a></p>
 
 </body></html>

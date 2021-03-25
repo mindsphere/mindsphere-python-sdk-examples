@@ -55,7 +55,8 @@ def get_top_events_data():
     metadata = EventsInputModelEventsMetadata('text')
     events_list = get_events_list()
     data = TopEventsInputDataModel(metadata, events_list, 12)
-    return data
+    request_object = TopEventsRequest(data=data)
+    return request_object
 
 
 def get_filter_events_data():
@@ -63,28 +64,32 @@ def get_filter_events_data():
     events_list = get_events_list()
     filter_list = ['Introduction fuel']
     data = EventSearchInputDataModel(metadata, events_list, filter_list)
-    return data
+    request_object = FilterEventsRequest(data=data)
+    return request_object
 
 
 def get_count_events_data():
     metadata = EventInputEventsMetadata('text', 5000)
     events_list = get_events_list()
     data = EventInput(metadata, events_list)
-    return data
+    request_object = CountEventsRequest(data=data)
+    return request_object
 
 
 def remove_duplicates_data():
     metadata = EventInputEventsMetadata('text', 5000)
     events_list = get_events_list()
     data = EventInput(metadata, events_list)
-    return data
+    request_object = RemoveDuplicateEventsRequest(data=data)
+    return request_object
 
 
-def get_pattern_mattching_data():
+def get_pattern_matching_data():
     patterns_list = get_patterns_list()
     metadata = EventsInputModelEventsMetadata('text')
     non_events = ['Error 2.. occurred', 'STOPPING ENGINE']
     events_list = get_events_input()
     events_input = EventInput(metadata, events_list)
     data = PatternMatchingInputDataModel(20000, patterns_list, non_events, events_input)
-    return data
+    request_object = MatchPatternsOverEventsRequest(data=data)
+    return request_object

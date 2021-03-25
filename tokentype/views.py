@@ -2,8 +2,8 @@
 from rest_framework.views import APIView
 from rest_framework import status
 from django.http import HttpResponse
-from mindsphere_core import RestClientConfig, MindsphereCredentials, exceptions
-from mindsphere_core import mindsphere_core
+from mindsphere_core import RestClientConfig, exceptions
+from mindsphere_core import RestClientConfig, exceptions, UserToken, TenantCredentials, AppCredentials, mindsphere_core, token_service, commonutil
 import os
 from sdk_util import PROXY_HOST,PROXY_PORT
 import sdk_util
@@ -18,30 +18,30 @@ class TokenTypeView(APIView):
         """
         List all assets.
         """
-        sdk_util.TECHNICAL_TOKEN = not sdk_util.TECHNICAL_TOKEN
-        if sdk_util.TECHNICAL_TOKEN:
-            token_type = "Technical Token"
-        else:
-            token_type = "User Token"
-        return HttpResponse('Token type is switched to :'+token_type,
+        sdk_util.TOKEN_SELECTOR = (sdk_util.TOKEN_SELECTOR + 1) % len(sdk_util.TOKEN_CIRCULAR_GROUP)
+        return HttpResponse('Token type is switched to :'+sdk_util.TOKEN_CIRCULAR_GROUP[sdk_util.TOKEN_SELECTOR]+' Credentials',
                             content_type='application/json', status=status.HTTP_200_OK)
 
 
 class TokenView(APIView):
-    #authentication_classes = (SessionAuthentication, BasicAuthentication)
-    #permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         """
         List all assets.
         """
-        if sdk_util.TECHNICAL_TOKEN and request.META.get('HTTP_AUTHORIZATION') is not None:
+        if sdk_util.TOKEN_CIRCULAR_GROUP[sdk_util.TOKEN_SELECTOR] == sdk_util.TOKEN_CIRCULAR_GROUP[0]:
             # To be tested on developer cockpit
-            credentials = MindsphereCredentials(authorization=request.META.get('HTTP_AUTHORIZATION'))
+            if 'MINDSPHERE_CLIENT_ID' in os.environ:
+                var_value = os.environ['MINDSPHERE_CLIENT_ID']
+            credentials = TenantCredentials(var_value)
             token_type = "Technical Token"
-        elif not sdk_util.TECHNICAL_TOKEN:
+        elif sdk_util.TOKEN_CIRCULAR_GROUP[sdk_util.TOKEN_SELECTOR] == sdk_util.TOKEN_CIRCULAR_GROUP[1] \
+                and request.META.get('HTTP_AUTHORIZATION') is not None:
             token_type = "User Token"
-            credentials = MindsphereCredentials()
+            credentials = UserToken(authorization=request.META.get('HTTP_AUTHORIZATION'))
+        elif sdk_util.TOKEN_CIRCULAR_GROUP[sdk_util.TOKEN_SELECTOR] == sdk_util.TOKEN_CIRCULAR_GROUP[2]:
+            token_type = "App Creds"
+            credentials = AppCredentials()
         else:
             logger.error('To work with technical token,'
                   ' application should receieve authorization header.')
@@ -52,8 +52,9 @@ class TokenView(APIView):
         else:
             config = RestClientConfig()
         try:
-            token = mindsphere_core.fetch_token(config, credentials)
-            payload = jwt.decode(token, "secret", verify=False, algorithms=["RS256"])
+            token = token_service.fetch_token(config, credentials)
+            payload =  commonutil._decode_jwt(token)
+            # payload = jwt.decode(token, "secret", verify=False, algorithms=["RS256"])
         except Exception as e:
             return HttpResponse(token_type+"::"+str(e),
                                 content_type='application/json', status=status.HTTP_500_INTERNAL_SERVER_ERROR)

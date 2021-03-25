@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from mindsphere_core import exceptions
 from rest_framework import status
 from . import data_generator
-
+import json
 
 class EventOperationsClientViewTopEvent(APIView):
     def get(self, request):
@@ -22,7 +22,7 @@ class EventOperationsClientViewTopEvent(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -42,7 +42,7 @@ class EventOperationsClientViewFilterEvent(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict()), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -62,7 +62,7 @@ class EventOperationsClientViewCountEvent(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict()), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -82,7 +82,7 @@ class EventOperationsClientViewRemoveDuplicateEvent(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict()), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -94,7 +94,7 @@ class PatternOperationsClientViewMatchPatternsOverEvents(APIView):
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
-                response = client.match_patterns_over_events(data_generator.get_pattern_mattching_data())
+                response = client.match_patterns_over_events(data_generator.get_pattern_matching_data())
             except exceptions.MindsphereError as err:
                 return HttpResponse(
                     err,
@@ -102,6 +102,6 @@ class PatternOperationsClientViewMatchPatternsOverEvents(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict()), content_type="application/json", status=status.HTTP_200_OK
             )
 

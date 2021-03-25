@@ -29,5 +29,9 @@ urlpatterns = [
     path('', include('tokentype.urls')),
     path('', include('events.urls')),
     path('', include('fileservice.urls')),
-    #path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('', include('iotbulk.urls')),
+    path('', include('iottimeseries.urls')),
+    path('', include('iottsaggregate.urls')),
+    path('', include('mindconnectapi.urls')),
+    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
