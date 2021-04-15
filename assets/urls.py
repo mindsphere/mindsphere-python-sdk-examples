@@ -19,4 +19,5 @@ urlpatterns = [
     path("assets/assetsdelete/<str:id>/<str:ifmatch>", views.AssetsClientViewDelete.as_view()),
     path("assetsdeletewithconfirmation/<str:id>/<str:ifmatch>", views.AssetsClientViewDeleteWithConfirmation.as_view()),
     path("assets/assets", views.AssetsClientViewGetAll.as_view()),
+    path("<str:id>/aspects", views.StructureClientViewAspectsOfAsset.as_view())
 ]

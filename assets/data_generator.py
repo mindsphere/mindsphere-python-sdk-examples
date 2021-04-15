@@ -136,3 +136,8 @@ def get_aspect_variable_list():
     )
     aspect_variable_list = [aspect_variable1, aspect_variable2]
     return aspect_variable_list
+
+
+def generate_aspects_of_asset_request(id):
+    request_object = ListAssetAspectsRequest(id=id)
+    return request_object

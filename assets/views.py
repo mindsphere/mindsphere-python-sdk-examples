@@ -353,4 +353,20 @@ class LocationsClientViewUpdate(APIView):
             )
 
 
+class StructureClientViewAspectsOfAsset(APIView):
+    def get(self, request, **kwargs):
 
+        client = sdk_util.build_sdk_client(self.__class__.__name__, request)
+        if request.method == "GET":
+            try:
+                request_object = data_generator.generate_aspects_of_asset_request(id=kwargs.get("id", ""))
+                aspects_of_asset = client.list_asset_aspects(request_object)
+            except exceptions.MindsphereError as err:
+                return HttpResponse(
+                    err,
+                    content_type="application/json",
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                )
+            return HttpResponse(
+                json.dumps(aspects_of_asset.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+            )
