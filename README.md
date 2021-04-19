@@ -67,11 +67,12 @@ If you want to host your own application instead of sample project then skip to 
 git clone https://github.com/mindsphere/mindsphere-python-sdk-examples.git
 ```
 #### 2. Install required dependencies.
-- Create a folder named 'repo' in root directory of project.
+
 - Download Python SDK from  [Download](#2---download).
 - Unzip the downloaded file.
 - Navigate to <some path where unzipped folder is located>/mindsphere-python-sdk_1.0.3/modules/
-- Copy .whl files of required dependent service/services in 'repo' folder. (For this project(mindsphere-sdk-python-examples) we will need all the .whl files but you can choose to use only required subset of all avaiable SDKs for your project.)
+- Copy .whl files of required dependent service/services in 'requirements' folder. (For this project(mindsphere-sdk-python-examples) we will need all the .whl files but you can choose to use only required subset of all avaiable SDKs for your project.)
+- `requirements` folder is already created for your convinience.
 - For convinience, requirements.txt is populated with relative path to copied dependencies.
 
 ###### Note 
@@ -243,11 +244,12 @@ Please follow prerequisite section for environment variables, how to get them an
 git clone https://github.com/mindsphere/mindsphere-python-sdk-examples.git
 ```
 ##### 2. Install required dependencies.
-- Create a folder named 'repo' in root directory of project.
+
 - Download Python SDK from  [Download](#2---download).
 - Unzip the downloaded file.
 - Navigate to <some path where unzipped folder is located>/mindsphere-python-sdk_1.0.3/modules/
-- Copy .whl files of required dependent service/services in 'repo' folder. (For this project(mindsphere-sdk-python-examples) we will need all the .whl files but you can choose to use only required subset of all avaiable SDKs for your project.)
+- Copy .whl files of required dependent service/services in 'requirements' folder. (For this project(mindsphere-sdk-python-examples) we will need all the .whl files but you can choose to use only required subset of all avaiable SDKs for your project.)
+- `requirements` folder is already created for your convinience.
 - For convinience, requirements.txt is populated with relative path to copied dependencies.
 - Navigate inside the root directory of project if you are not in there.
 ```
@@ -258,7 +260,7 @@ cd mindsphere-python-sdk-examples
 pip install -r requirements.txt
 ```
 ###### Note 
-> If you face errors while `pip install -r requirements.txt` mentioning particular '<file-name>.whl file not found' then kindly verify dependency file name in repo folder and that mentioned in requirements.txt file. This could be also due to incorrect relative path mentioned in requirements.txt file. If so then modify path in requirements.txt wherever required.
+> If you face errors while `pip install -r requirements.txt` mentioning particular '<file-name>.whl file not found' then kindly verify dependency file name in requirements folder and that mentioned in requirements.txt file. This could be also due to incorrect relative path mentioned in requirements.txt file. If so then modify path in requirements.txt wherever required.
 
 ##### 3. Run the app.
 ####
