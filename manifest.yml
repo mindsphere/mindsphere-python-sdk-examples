@@ -1,0 +1,23 @@
+#This is a sample manifest file containing minimal configurations for Cloud Foundry application.
+#Please go through Cloud Foundry documentation for other supporting key-value pairs in manifest file.
+#Please replace the placeholders with real values for successful deployment and working of application.
+#Comments can be removed for a clean manifest file.
+
+---
+applications:
+- name: routi
+  instances: 1 #instances of application you want to spin
+  path: mindsphere-python-sdk-examples/.  #directory path where application is present
+  memory: 500MB #memory requirement for application
+  random-route: true
+  env:
+    HOST_ENVIRONMENT: <YOUR-HOST-ENVIRONMENT-HERE> #If not specified, HOST_ENVIRONMENT defaults to eu1 in region Europe 1 SDK and to cn1 in region China 1 SDK.
+    MDSP_HOST_TENANT: <YOUR-HOST-TENANT-HERE> #tenant name on which application is hosted    
+    MDSP_USER_TENANT: <YOUR-HOST-TENANT-HERE>  #tenant name which is using the application hosted on MDSP_HOST_TENANT
+    MDSP_OS_VM_APP_NAME: <YOUR-APPLICATION-NAME--HERE> #internal name of application provided in Developer Cockpit
+    MDSP_OS_VM_APP_VERSION: <YOUR-APPLICATION-VERSION--HERE> #application version provided in Developer Cockpit at a time of application creation.
+    MDSP_KEY_STORE_CLIENT_ID: <YOUR-CLIENT-ID-HERE> #CLIENT_ID of application received from `App Credentials` in Developer Cockpit
+    MDSP_KEY_STORE_CLIENT_SECRET: <YOUR-HOST-TENANT-HERE> #CLIENT_SECRET of application received from `App Credentials` in Developer Cockpit
+    #For mindsphere-java-sdk-examples above environment variables are sufficient.
+    #You can append your own environment variables here.
+    
