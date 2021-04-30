@@ -12,6 +12,26 @@ class TimeSeriesOperationsClientViewGetTimeSeries(APIView):
     def get(self, request, **kwargs):
         """
         get time series
+
+         route timeSeries/get/<str:entityid>/<str:propertyname>/<str:from>/<str:to>
+         param entityId - unique identifier of the asset (entity)
+         param propertyname - Name of the aspect (property set).
+         param from - Beginning of the time range to be retrieved (exclusive).
+         param to - End of the time range to be retrieved (inclusive).
+         return Timeseries data on successful execution.
+
+         description This method internally calls method retrieve_timeseries of
+                       TimeSeriesOperationsClient class. This class is available as dependency
+                       in timeseries-<version-here>-py3-none-any.whl.
+                       entityId, propertySetName, from and to are passed in request object as given by user(path variables)
+                       and hence incorrect/non-existent values for entiyId and/or propertyname  will result in MindsphereError.
+
+         apiEndpoint : GET /api/iottimeseries/v3/timeseries/{entityId}/{propertySetName} of timeseries service.
+                      service. service.
+         apiNote Retrieve time series data for one combination of an asset (entity) and an(a) aspect (property set).
+         throws MindsphereError if an error occurs while attempting to invoke the
+                                      sdk call.
+
         """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
@@ -85,6 +105,23 @@ class TimeSeriesOperationsClientViewCreateTimeSeries(APIView):
     def get(self, request, **kwargs):
         """
         put time series
+
+         route timeSeries/create/<str:entityid>/<str:propertyname>
+         param entityId - unique identifier of the asset (entity)
+         param propertyname - Name of the aspect (property set).
+
+         return "successfully uploaded timeseriesdata" on successful execution.
+
+         description This method internally calls method create_or_update_timeseries_data of
+                     TimeSeriesOperationsClient class. This class is available as dependency
+                     in timeseries-<version-here>-py3-none-any.whl. Creation of timeseries requires `timeseries`
+                     data structure to be passed in request body.
+         apiEndpoint : PUT /api/iottimeseries/v3/timeseries of timeseries service.
+                         service.
+         apiNote Create or update time series data for mutiple unique asset-aspect (entity-property set) combinations.
+         throws MindsphereError if an error occurs while attempting to invoke the
+                sdk call.
+
         """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
@@ -118,7 +155,28 @@ class TimeSeriesOperationsClientViewCreateTimeSeries(APIView):
 class TimeSeriesOperationsClientViewDeleteTimeSeries(APIView):
     def get(self, request, **kwargs):
         """
-        get time series
+        delete time series
+
+         route timeSeries/delete/<str:entityid>/<str:propertyname>/<str:from>/<str:to>
+         param entityId - unique identifier of the asset (entity), (required)
+         param propertyname - Name of the aspect (property set), (required)
+         param from - beginning of the timerange to delete (exclusive), (required)
+         param to - end of the timerange to delete (inclusive),   (required)
+
+         return "successfully deleted timeseriesdata" on successful execution.
+
+         description This method internally calls method delete_timeseries of
+                       TimeSeriesOperationsClient class. This class is available as dependency
+                       in timeseries-<version-here>-py3-none-any.whl.
+                       entityId, propertyname, from and to  are passed as given by user and
+                       hence incorrect/non-existent values of entityId and/or propertyname  will result in MindsphereError.
+         apiEndpoint : DELETE /api/iottimeseries/v3/timeseries/{entityId}/{propertySetName} of timeseries service.
+
+         apiNote Delete time series data for one combination of an asset (entity) and an(a) aspect (property set).
+                    All property values within the given time range are deleted.
+         throws MindsphereError if an error occurs while attempting to invoke the
+                sdk call.
+
         """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
@@ -145,8 +203,3 @@ class TimeSeriesOperationsClientViewDeleteTimeSeries(APIView):
                 status=status.HTTP_200_OK
             )
 
-
-
-from django.shortcuts import render
-
-# Create your views here.

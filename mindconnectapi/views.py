@@ -11,7 +11,20 @@ from mindconnect.models import *
 class DiagnosticActivationsClientViewdiagnostic_activations_get(APIView):
     def get(self, request):
         """
-        get Diagnostic Activation
+        get Diagnostic Activations.
+
+         route mindconnect/diagnosticActivationsGet
+
+         return Diagnostic activations data in String format.
+
+         description This method internally calls method diagnostic_activations_get of DiagnosticActivationsClient class.
+                        This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : GET /api/mindconnect/v3/diagnosticActivations of mindconnect service.
+
+         apiNote Gets diagnostic activations.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
         """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
@@ -36,7 +49,21 @@ class DiagnosticActivationsClientViewdiagnostic_activations_get(APIView):
 class DiagnosticActivationsClientViewdiagnosticactivationscreate(APIView):
     def get(self, request, **kwargs):
         """
-        create Diagnostic Activation
+         create Diagnostic Activation.
+
+         route mindconnect/diagnosticActivationsCreate/<str:agentid>/<str:status>
+         param : agentid ---> Unique identifier of the agent.
+         param : status --->  Status of the activation.
+         return Created diagnostic activation data.
+
+         description This method internally calls method diagnostic_activations_post of DiagnosticActivationsClient class.
+                     This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : POST /api/mindconnect/v3/diagnosticActivations of mindconnect service.
+
+         apiNote Creates a new diagnostic activation.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
         """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
@@ -69,6 +96,22 @@ class DiagnosticActivationsClientViewdiagnosticactivationscreate(APIView):
 
 class DiagnosticActivationsClientViewImportjobdelete(APIView):
     def get(self, request, **kwargs):
+        """
+         delete diagnostic activation.
+
+         route mindconnect/diagnosticActivationsDelete/<str:id>
+         param id - Unique identifier of diagnostic activation resource. (required)
+
+         return successfully deleted activation on suceesful execution.
+         description This method internally calls method diagnostic_activations_id_delete of DiagnosticActivationsClient class.
+                     This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : DELETE /api/mindconnect/v3/diagnosticActivations/{id} of mindconnect service.
+                       service.
+         apiNote Delete a diagnostic activation.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -84,7 +127,7 @@ class DiagnosticActivationsClientViewImportjobdelete(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                "successfully uploaded timeseries",
+                "successfully deleted activation",
                 content_type="application/json",
                 status=status.HTTP_200_OK
             )
@@ -92,6 +135,23 @@ class DiagnosticActivationsClientViewImportjobdelete(APIView):
 
 class DiagnosticActivationsClientViewdiagnosticactivationsgetbyID(APIView):
     def get(self, request, **kwargs):
+        """
+        get diagnostic activation by Id.
+
+         route mindconnect/diagnosticActivationsGet/<str:id>
+         param id - Unique identifier of diagnostic activation resource. (required)
+         return Diagnostic activation data for given id.
+
+         description This method - diagnosticActivationsIdGetTest internally calls method diagnosticActivationsIdGet of
+                     DiagnosticActivationsClient class.
+                     This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : GET /api/mindconnect/v3/diagnosticActivations/{id} of mindconnect service.
+
+         apiNote Gets a diagnostic activation.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -117,6 +177,22 @@ class DiagnosticActivationsClientViewdiagnosticactivationsgetbyID(APIView):
 
 class DiagnosticActivationsClientViewdiagnosticactivationsgetbyIDMessage(APIView):
     def get(self, request, **kwargs):
+        """
+
+         route mindconnect/diagnosticActivationsGetbyidmessage/<str:id>
+         param id - Unique identifier of diagnostic activation resource. (required)
+
+         return Paged diagnostic information messages.
+
+         description This method - diagnosticActivationsIdGetTest internally calls method diagnosticActivationsIdMessagesGet of
+                     DiagnosticActivationsClient class. This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : GET /api/mindconnect/v3/diagnosticActivations/{id}/messages of mindconnect service.
+
+         apiNote Get a diagnostic messages of specific activation resource.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -142,6 +218,23 @@ class DiagnosticActivationsClientViewdiagnosticactivationsgetbyIDMessage(APIView
 
 class DiagnosticActivationsClientViewdiagnosticactivationsputbyid(APIView):
     def get(self, request, **kwargs):
+        """
+
+         route mindconnect/diagnosticActivationsputbyid/<str:id>/<str:status>
+         param : id ---> Unique identifier of diagnostic activation resource. (required)
+         param : status ---> Status of the activation.
+
+         return Updated diagnostic  activation information on successful execution.
+
+         description This method internally calls method diagnostic_activations_id_put of DiagnosticActivationsClient class.
+                     This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : PUT /api/mindconnect/v3/diagnosticActivations/{id} of mindconnect service.
+                      service.
+         apiNote Update status of Diagnostic Activation.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -194,6 +287,21 @@ class DiagnosticInformationClientViewdiagnosticinfoget(APIView):
 
 class MappingsClientViewdatapointMappingGet(APIView):
     def get(self, request, **kwargs):
+        """
+
+         route mindconnect/datapointMappingGet
+
+         return Data point mapping data.
+
+         description This method internally calls method data_point_mappings_get of MappingsClient class.
+                     This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : GET /api/mindconnect/v3/dataPointMappings of mindconnect service.
+                      service.
+         apiNote Get mappings.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -216,6 +324,23 @@ class MappingsClientViewdatapointMappingGet(APIView):
 
 class MappingsClientViewdatapointMappingGetbyId(APIView):
     def get(self, request, **kwargs):
+        """
+
+         route mindconnect/datapointMappingGet/<str:id>
+         param id - Unique identifier of the mapping resource.
+
+         return Data point mapping data for Id in String format.
+
+         description This method - dataPointMappingsIdGetTest internally calls method dataPointMappingsIdGet of MappingsClient
+                     class.
+                     This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : GET /api/mindconnect/v3/dataPointMappings/{id} of mindconnect service.
+                       service.
+         apiNote Get a mapping by id.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -241,6 +366,21 @@ class MappingsClientViewdatapointMappingGetbyId(APIView):
 
 class MappingsClientViewdatapointMappingCreate(APIView):
     def get(self, request, **kwargs):
+        """
+
+         route mindconnect/datapointMappingCreate
+
+         return Created data point mapping.
+
+         description This method internally calls method data_point_mappings_post of MappingsClient class.
+                        This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : POST /api/mindconnect/v3/dataPointMappings of mindconnect service.
+
+         apiNote Create single mapping.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -273,6 +413,22 @@ class MappingsClientViewdatapointMappingCreate(APIView):
 
 class MappingsClientViewdatapointMappingDelete(APIView):
     def get(self, request, **kwargs):
+        """
+
+         route mindconnect/datapointMappingdelete/<str:id>
+         param id - Unique identifier of the mapping resource.
+
+         return "Deleted successfully" on successful execution.
+
+         description This method internally calls method data_point_mappings_id_delete of MappingsClient class.
+                     This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : DELETE /api/mindconnect/v3/dataPointMappings/{id} of mindconnect service.
+                       service.
+         apiNote Delete a mapping.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -296,6 +452,22 @@ class MappingsClientViewdatapointMappingDelete(APIView):
 
 class RecordRecoveryClientViewidPost(APIView):
     def get(self, request, **kwargs):
+        """
+
+         route mindconnect/recoverableRecordIDPost/<str:id>
+         param id - Unique identifier of the recoverable record.
+
+         return "created successfully" on successful execution.
+
+         description This method internally calls method recoverable_records_id_replay_post of RecordRecoveryClient class.
+                        This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : POST /api/mindconnect/v3/recoverableRecords/{id}/replay of mindconnect service.
+                       service.
+         apiNote Re-play a recoverable record.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -319,6 +491,21 @@ class RecordRecoveryClientViewidPost(APIView):
 
 class RecordRecoveryClientViewGet(APIView):
     def get(self, request, **kwargs):
+        """
+
+                 route mindconnect/recoverableRecordGet
+
+                 return Recoverable record data on successful execution.
+
+                 description This method internally calls method recoverable_records_get of RecordRecoveryClient class.
+                                This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+                 apiEndpoint : GET /api/mindconnect/v3/recoverableRecords of mindconnect service.
+
+                 apiNote Get all recoverable records.
+                 throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+                """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -341,6 +528,22 @@ class RecordRecoveryClientViewGet(APIView):
 
 class RecordRecoveryClientViewIdDownloadLinkGet(APIView):
     def get(self, request, **kwargs):
+        """
+
+         route mindconnect/recoverableRecordIdDownloadLinkGet/<str:id>
+         param id - Unique identifier of the recoverable record.
+
+         return Response of download link in String format.
+
+         description This method internally calls method recoverable_records_id_download_link_get of RecordRecoveryClient class.
+                     This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : GET /api/mindconnect/v3/recoverableRecords/{id}/downloadLink of mindconnect service.
+                       service.
+         apiNote Get download link of record payload.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -366,6 +569,22 @@ class RecordRecoveryClientViewIdDownloadLinkGet(APIView):
 
 class RecordRecoveryClientViewIdDelete(APIView):
     def get(self, request, **kwargs):
+        """
+
+         route mindconnect/recoverableRecordIdDelete/<str:id>
+         param id - Unique identifier of the recoverable record.
+
+         return "Deleted Successfully" upon successful execution.
+
+         description This method internally calls method recoverable_records_id_delete of RecordRecoveryClient class.
+                        This class is available as dependency in mindconnect-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : DELETE /api/mindconnect/v3/recoverableRecords/{id} of mindconnect service.
+
+         apiNote Delete a recoverable record.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:

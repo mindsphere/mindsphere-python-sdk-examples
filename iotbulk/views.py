@@ -11,6 +11,25 @@ from app.settings import logger
 
 class BulkImportOperationsClientViewImportjobget(APIView):
     def get(self, request,**kwargs):
+        """
+        get import job details by id
+
+         route iotbulk/importjobget/<str:id>
+         param id - Bulk import job id as obtained on job creation. (This ID is part of response after creating import job).
+
+         note - incorrect/non-existent id will result in MindsphereError.
+
+         return JobStatus corresponding to provided id in String format.
+
+         description This method internally calls method retrieve_import_job of BulkImportOperationsClient class.
+                        This class is available as dependency in iottsbulk-<version-here>-py3-none-any.whl.
+
+         apiEndpoint : GET /api/iottsbulk/v3/importJobs/{id} of iot bulk service.
+                       service.
+         apiNote Retrieve status of bulk import job.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -31,6 +50,28 @@ class BulkImportOperationsClientViewImportjobget(APIView):
 
 class ReadOperationsClientViewImportjob(APIView):
     def get(self, request, **kwargs):
+        """
+
+         route iotbulk/retrievetimeseries/<str:entityid>/<str:propertyname>/<str:from>/<str:to>
+         param entityId - Unique identifier of the asset (entity).
+         param propertyname - Unique name of the aspect (property set name).
+         param from - Beginning of the time range to read (exclusive). ‘from’ time must be less than ‘to’ time.
+                      Range between ‘from’ and ‘to’ time must be less than 90 days.
+         param to -   End of the time range to retrieve (inclusive).
+
+         return Retrieve time series data for a single asset (entity) and aspect (property set).
+                Returns data for the specified time range.
+
+         description :  This method internally calls method retrieve_timeseries of ReadOperationsClient class.
+                            This class is available as dependency in iottsbulk-<version-here>-py3-none-any.whl.
+
+          apiEndpoint : GET /api/iottsbulk/v3/timeseries/{entity}/{propertySetName} of iot bulk service.
+                      service.
+         apiNote Retrieve time series data.
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -59,6 +100,21 @@ class ReadOperationsClientViewImportjob(APIView):
 
 class BulkImportOperationsClientViewImportjobpost(APIView):
     def get(self, request):
+        """
+
+        route iotbulk/importjobpost
+
+        return Created import job object(JobStatus) information.
+
+        description This method internally calls method create_import_job of BulkImportOperationsClient class.
+                    This class is available as dependency in iottsbulk-<version-here>-py3-none-any.whl.
+
+        apiEndpoint : POST /api/iottsbulk/v3/importJobs of iot bulk service.
+                       service.
+        apiNote Create bulk import job for importing time series data.
+        throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
