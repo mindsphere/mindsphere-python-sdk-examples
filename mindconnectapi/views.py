@@ -2,10 +2,12 @@ import sdk_util
 from rest_framework.views import APIView
 import sdk_util
 from django.http import HttpResponse
-from mindsphere_core import exceptions, serialization_filter
+from mindsphere_core import exceptions, serialization_filter, log_config
 from rest_framework import status
 import json
 from mindconnect.models import *
+
+logger = log_config.default_logging()
 
 
 class DiagnosticActivationsClientViewdiagnostic_activations_get(APIView):
@@ -26,6 +28,7 @@ class DiagnosticActivationsClientViewdiagnostic_activations_get(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("mindconnect/diagnosticActivationsGet invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -33,7 +36,9 @@ class DiagnosticActivationsClientViewdiagnostic_activations_get(APIView):
                 response = client.diagnostic_activations_get(requestObject)
                 respose_json = serialization_filter.sanitize_for_serialization(response)
                 respose_json = json.dumps(respose_json)
+                logger.info("Getting response successfully for diagnosticActivationsGet" + respose_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for diagnosticActivationsGet" + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -65,11 +70,14 @@ class DiagnosticActivationsClientViewdiagnosticactivationscreate(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("mindconnect/diagnosticActivationsCreate/<str:agentid>/<str:status> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 agent_id = kwargs.get("agentid", "")
                 status = kwargs.get("status", "")
+                logger.info("Request params are- agentid:" + agent_id + " status: " + status)
+
                 diagnosticActivation = DiagnosticActivation(
                     agent_id=agent_id,
                     status=status
@@ -81,7 +89,9 @@ class DiagnosticActivationsClientViewdiagnosticactivationscreate(APIView):
                 response = client.diagnostic_activations_post(request_object)
                 respose_json = serialization_filter.sanitize_for_serialization(response)
                 respose_json = json.dumps(respose_json)
+                logger.info("Getting response successfully for diagnosticActivationsCreate" + respose_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for diagnosticActivationsCreate" + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -112,15 +122,19 @@ class DiagnosticActivationsClientViewImportjobdelete(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("mindconnect/diagnosticActivationsDelete/<str:id> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 did = kwargs.get("id", "")
+                logger.info("Request param is - Id:"+did)
                 request_object = DiagnosticActivationsIdDeleteRequest(
                     id=did
                 )
                 client.diagnostic_activations_id_delete(request_object)
+                logger.info("successfully deleted activation")
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for diagnosticActivationsDelete" + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -152,17 +166,21 @@ class DiagnosticActivationsClientViewdiagnosticactivationsgetbyID(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("mindconnect/diagnosticActivationsGet/<str:id> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 did = kwargs.get("id", "")
+                logger.info("Request param is - Id:" + did)
                 request_object = DiagnosticActivationsIdGetRequest(
                     id=did
                 )
                 response = client.diagnostic_activations_id_get(request_object)
                 respose_json = serialization_filter.sanitize_for_serialization(response)
                 respose_json = json.dumps(respose_json)
+                logger.info("Getting response successfully for diagnosticActivationsGet by id "+respose_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for diagnosticActivationsGet by id" + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -193,17 +211,21 @@ class DiagnosticActivationsClientViewdiagnosticactivationsgetbyIDMessage(APIView
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("mindconnect/diagnosticActivationsGetbyidmessage/<str:id> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 did = kwargs.get("id", "")
+                logger.info("Request param is - Id:" + did)
                 request_object = DiagnosticActivationsIdMessagesGetRequest(
                     id=did
                 )
                 response = client.diagnostic_activations_id_messages_get(request_object)
                 respose_json = serialization_filter.sanitize_for_serialization(response)
                 respose_json = json.dumps(respose_json)
+                logger.info("Getting response successfully for diagnosticActivationsGetbyidmessage " + respose_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for diagnosticActivationsGetbyidmessage " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -235,11 +257,13 @@ class DiagnosticActivationsClientViewdiagnosticactivationsputbyid(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("mindconnect/diagnosticActivationsputbyid/<str:id>/<str:status> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 id = kwargs.get("id", "")
                 status = kwargs.get("status", "")
+                logger.info("Request params are- Id:" + id + " status: " + status)
                 diagnosticActivationStatus = DiagnosticActivationStatus(
                     status=status
                 )
@@ -250,7 +274,9 @@ class DiagnosticActivationsClientViewdiagnosticactivationsputbyid(APIView):
                 response = client.diagnostic_activations_id_put(request_object)
                 respose_json = serialization_filter.sanitize_for_serialization(response)
                 respose_json = json.dumps(respose_json)
+                logger.info("Getting response successfully for diagnosticActivationsputbyid " + respose_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for diagnosticActivationsputbyid " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -265,6 +291,7 @@ class DiagnosticActivationsClientViewdiagnosticactivationsputbyid(APIView):
 
 class DiagnosticInformationClientViewdiagnosticinfoget(APIView):
     def get(self, request, **kwargs):
+        logger.info("mindconnect/diagnosticinfoget invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -272,7 +299,9 @@ class DiagnosticInformationClientViewdiagnosticinfoget(APIView):
                 response = client.diagnostic_information_get(requestObject)
                 respose_json = serialization_filter.sanitize_for_serialization(response)
                 respose_json = json.dumps(respose_json)
+                logger.info("Getting response successfully for diagnosticinfoget " + respose_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for diagnosticinfoget " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -302,6 +331,7 @@ class MappingsClientViewdatapointMappingGet(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("mindconnect/datapointMappingGet invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -309,7 +339,9 @@ class MappingsClientViewdatapointMappingGet(APIView):
                 response = client.data_point_mappings_get(request_object)
                 respose_json = serialization_filter.sanitize_for_serialization(response)
                 respose_json = json.dumps(respose_json)
+                logger.info("Getting response successfully for datapointMappingGet " + respose_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for datapointMappingGet " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -341,17 +373,21 @@ class MappingsClientViewdatapointMappingGetbyId(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("mindconnect/datapointMappingGet/<str:id> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 id = kwargs.get("id", "")
+                logger.info("Request param is- Id:"+id)
                 request_object = DataPointMappingsIdGetRequest(
                     id=id
                 )
                 response = client.data_point_mappings_id_get(request_object)
                 respose_json = serialization_filter.sanitize_for_serialization(response)
                 respose_json = json.dumps(respose_json)
+                logger.info("Getting response successfully for datapointMappingGet by id " + respose_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for datapointMappingGet by id" + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -381,6 +417,7 @@ class MappingsClientViewdatapointMappingCreate(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("mindconnect/datapointMappingCreate invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -398,7 +435,9 @@ class MappingsClientViewdatapointMappingCreate(APIView):
                 response = client.data_point_mappings_post(request_object)
                 respose_json = serialization_filter.sanitize_for_serialization(response)
                 respose_json = json.dumps(respose_json)
+                logger.info("Getting response successfully for datapointMappingCreate " + respose_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for datapointMappingCreate " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -429,15 +468,19 @@ class MappingsClientViewdatapointMappingDelete(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("mindconnect/datapointMappingdelete/<str:id> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 id = kwargs.get("id", "")
+                logger.info("Request param i s- Id:"+id)
                 request_object = DataPointMappingsIdDeleteRequest(
                     id=id
                 )
                 client.data_point_mappings_id_delete(request_object)
+                logger.info("datapointmapping deleted successfully.")
             except exceptions.MindsphereError as err:
+                logger.error("getting error while deleting datapointmapping "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -468,15 +511,19 @@ class RecordRecoveryClientViewidPost(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("mindconnect/recoverableRecordIDPost/<str:id> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 id = kwargs.get("id", "")
+                logger.info("Request param i s- Id:" + id)
                 request_object = RecoverableRecordsIdReplayPostRequest(
                     id=id
                 )
                 client.recoverable_records_id_replay_post(request_object)
+                logger.info("recoverable record created successfully")
             except exceptions.MindsphereError as err:
+                logger.error("getting error while creating recoverable record "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -506,6 +553,7 @@ class RecordRecoveryClientViewGet(APIView):
                  throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
                 """
+        logger.info("mindconnect/recoverableRecordGet invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -513,7 +561,9 @@ class RecordRecoveryClientViewGet(APIView):
                 response = client.recoverable_records_get(request_object)
                 respose_json = serialization_filter.sanitize_for_serialization(response)
                 respose_json = json.dumps(respose_json)
+                logger.info("Getting response successfully for recoverableRecordGet "+respose_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for recoverableRecordGet "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -544,17 +594,21 @@ class RecordRecoveryClientViewIdDownloadLinkGet(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("mindconnect/recoverableRecordIdDownloadLinkGet/<str:id> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 id = kwargs.get("id", "")
+                logger.info("Request param is- Id:"+id)
                 request_object = RecoverableRecordsIdDownloadLinkGetRequest(
                     id=id
                 )
                 response = client.recoverable_records_id_download_link_get(request_object)
                 respose_json = serialization_filter.sanitize_for_serialization(response)
                 respose_json = json.dumps(respose_json)
+                logger.info("Getting response successfully for recoverableRecordIdDownloadLinkGet " + respose_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for recoverableRecordIdDownloadLinkGet " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -585,15 +639,19 @@ class RecordRecoveryClientViewIdDelete(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("mindconnect/recoverableRecordIdDelete/<str:id> invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 id = kwargs.get("id", "")
+                logger.info("Request param is- Id:" + id)
                 request_object = RecoverableRecordsIdDeleteRequest(
                     id=id
                 )
                 client.recoverable_records_id_delete(request_object)
+                logger.info("Recoverable record deleted successfully.")
             except exceptions.MindsphereError as err:
+                logger.error("Getting error while deleting Revoverable record "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",

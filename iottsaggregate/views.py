@@ -1,10 +1,13 @@
 from iottsaggregates import RetrieveAggregatesRequest
 from rest_framework.views import APIView
 import sdk_util
+
 from django.http import HttpResponse
-from mindsphere_core import exceptions, serialization_filter
+from mindsphere_core import exceptions, serialization_filter, log_config
 from rest_framework import status
 import json
+
+logger = log_config.default_logging()
 
 
 class AggregatesClientViewGetAggregates(APIView):
@@ -38,18 +41,22 @@ class AggregatesClientViewGetAggregates(APIView):
                 throws MindsphereError : if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("timeseriesaggregate/get/<str:entityid>/<str:propertyname> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 entity_id = kwargs.get("entityid", "")
                 property_name = kwargs.get("propertyname", "")
+                logger.info("Request params are- enitityID:" + entity_id + " propertyName: " + property_name)
                 request_object = RetrieveAggregatesRequest()
                 request_object.asset_id = entity_id
                 request_object.aspect_name = property_name
                 aggregateList = client.retrieve_aggregates(request_object)
                 aggregate_json = serialization_filter.sanitize_for_serialization(aggregateList)
                 aggregate_json = json.dumps(aggregate_json)
+                logger.info("Getting response successfully for timeseriesaggregate" + aggregate_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for timeseriesaggregate" + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -97,6 +104,7 @@ class AggregatesClientViewGetAggregatesFromTo(APIView):
                 throws MindsphereError : if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("timeseriesaggregate/get/<str:entityid>/<str:propertyname>/<str:from>/<str:to>")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -104,6 +112,8 @@ class AggregatesClientViewGetAggregatesFromTo(APIView):
                 property_name = kwargs.get("propertyname", "")
                 _from = kwargs.get("from", "")
                 to = kwargs.get("to", "")
+                logger.info(
+                    "Request params are- enitityID:" + entity_id + " propertyName: " + property_name + " from:" + _from + " to:" + to)
                 request_object = RetrieveAggregatesRequest()
                 request_object.asset_id = entity_id
                 request_object.aspect_name = property_name
@@ -112,7 +122,9 @@ class AggregatesClientViewGetAggregatesFromTo(APIView):
                 aggregateList = client.retrieve_aggregates(request_object)
                 aggregate_json = serialization_filter.sanitize_for_serialization(aggregateList)
                 aggregate_json = json.dumps(aggregate_json)
+                logger.info("Getting response successfully for timeseriesaggregate" + aggregate_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for timeseriesaggregate" + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -123,5 +135,3 @@ class AggregatesClientViewGetAggregatesFromTo(APIView):
                 content_type="application/json",
                 status=status.HTTP_200_OK
             )
-
-

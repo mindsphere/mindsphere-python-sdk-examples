@@ -1,11 +1,13 @@
 from rest_framework.views import APIView
 import sdk_util
 from django.http import HttpResponse
-from mindsphere_core import exceptions,serialization_filter
+from mindsphere_core import exceptions, serialization_filter, log_config
 from rest_framework import status
 from timeseries import RetrieveTimeseriesRequest, UpdatedTimeSeries, TimeSeriesItem, TimeSeriesDataItem, \
-    CreateOrUpdateTimeseriesRequest, CreateOrUpdateTimeseriesDataRequest ,DeleteUpdatedTimeseriesRequest
+    CreateOrUpdateTimeseriesRequest, CreateOrUpdateTimeseriesDataRequest, DeleteUpdatedTimeseriesRequest
 import json
+
+logger = log_config.default_logging()
 
 
 class TimeSeriesOperationsClientViewGetTimeSeries(APIView):
@@ -33,6 +35,7 @@ class TimeSeriesOperationsClientViewGetTimeSeries(APIView):
                                       sdk call.
 
         """
+        logger.info('timeSeries/get/<str:entityid>/<str:propertyname>/<str:from>/<str:to> invoked')
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -40,6 +43,8 @@ class TimeSeriesOperationsClientViewGetTimeSeries(APIView):
                 property_name = kwargs.get("propertyname", "")
                 _from = kwargs.get("from", "")
                 to = kwargs.get("to", "")
+                logger.info(
+                    "Request params are- enitityID:" + entity_id + " propertyName: " + property_name + " from:" + _from + " to:" + to)
                 request_object = RetrieveTimeseriesRequest()
                 request_object.entity_id = entity_id
                 request_object.property_set_name = property_name
@@ -48,7 +53,9 @@ class TimeSeriesOperationsClientViewGetTimeSeries(APIView):
                 timseriesList = client.retrieve_timeseries(request_object)
                 timeseries_json = serialization_filter.sanitize_for_serialization(timseriesList)
                 timeseries_json = json.dumps(timeseries_json)
+                logger.info("Getting response successfully for gettimeSeries" + timeseries_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for gettimeSries" + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -66,6 +73,7 @@ class TimeSeriesOperationsClientViewPutTimeSeries(APIView):
         """
         put time series
         """
+        logger.info('timeSeries/put invoked')
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -88,7 +96,9 @@ class TimeSeriesOperationsClientViewPutTimeSeries(APIView):
                 response = client.create_or_update_timeseries(createOrUpdateTimeseriesRequest)
                 timeseries_json = serialization_filter.sanitize_for_serialization(response)
                 timeseries_json = json.dumps(timeseries_json)
+                logger.info("timeseries updated Successfully " + timeseries_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for puttimeSeries " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -123,11 +133,13 @@ class TimeSeriesOperationsClientViewCreateTimeSeries(APIView):
                 sdk call.
 
         """
+        logger.info("timeSeries/create/<str:entityid>/<str:propertyname> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 entity_id = kwargs.get("entityid", "")
                 property_name = kwargs.get("propertyname", "")
+                logger.info("Request params are- entityID: " + entity_id + "propertyname" + property_name)
                 requestObject = CreateOrUpdateTimeseriesDataRequest();
                 requestObject.entity_id = entity_id
                 requestObject.property_set_name = property_name
@@ -139,7 +151,9 @@ class TimeSeriesOperationsClientViewCreateTimeSeries(APIView):
                 timeSeriesDataItems = [timeSeriesDataItem]
                 requestObject.timeseries = timeSeriesDataItems
                 client.create_or_update_timeseries_data(requestObject)
+                logger.info("timeseries uploaded Successfully ")
             except exceptions.MindsphereError as err:
+                logger.info("Getting error while creating timeseries "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -178,6 +192,7 @@ class TimeSeriesOperationsClientViewDeleteTimeSeries(APIView):
                 sdk call.
 
         """
+        logger.info("timeSeries/delete/<str:entityid>/<str:propertyname>/<str:from>/<str:to> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -185,13 +200,17 @@ class TimeSeriesOperationsClientViewDeleteTimeSeries(APIView):
                 property_name = kwargs.get("propertyname", "")
                 _from = kwargs.get("from", "")
                 to = kwargs.get("to", "")
+                logger.info(
+                    "Request params are- enitityID:" + entity_id + " propertyName: " + property_name + " from:" + _from + " to:" + to)
                 request_object = DeleteUpdatedTimeseriesRequest()
                 request_object.entity_id = entity_id
                 request_object.property_set_name = property_name
                 request_object._from = _from
                 request_object.to = to
                 client.delete_timeseries(request_object)
+                logger.info("successfully deleted timeseriesdata")
             except exceptions.MindsphereError as err:
+                logger.info("Getting error while deleting timeseries " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -202,4 +221,3 @@ class TimeSeriesOperationsClientViewDeleteTimeSeries(APIView):
                 content_type="application/json",
                 status=status.HTTP_200_OK
             )
-
