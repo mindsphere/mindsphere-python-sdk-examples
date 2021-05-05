@@ -12,13 +12,13 @@ import os
 
 PROXY_HOST = "194.138.0.25"
 PROXY_PORT = "9400"
-TOKEN_CIRCULAR_GROUP = ['TENANT', 'USER', 'APP']
+TOKEN_CIRCULAR_GROUP = ['USER', 'APP']
 TOKEN_SELECTOR = 0
 
 
 def build_sdk_client(class_name, request):
 
-    if TOKEN_CIRCULAR_GROUP[TOKEN_SELECTOR] == TOKEN_CIRCULAR_GROUP[1]:
+    if TOKEN_CIRCULAR_GROUP[TOKEN_SELECTOR] == TOKEN_CIRCULAR_GROUP[0]:
         if request.META.get('HTTP_AUTHORIZATION') is None:
             logger.error('To work with technical token,'
                          ' application should receieve authorization header.', request.get_full_path())
@@ -28,12 +28,7 @@ def build_sdk_client(class_name, request):
         else:
             credentials = UserToken(authorization=str(request.META.get('HTTP_AUTHORIZATION'))[7::])
             logger.info('Using User Token for ' + request.get_full_path())
-    elif TOKEN_CIRCULAR_GROUP[TOKEN_SELECTOR] == TOKEN_CIRCULAR_GROUP[0]:
-        logger.info('Using Technical Token for ' + request.get_full_path())
-        if 'MINDSPHERE_CLIENT_ID' in os.environ:
-            var_value = os.environ['MINDSPHERE_CLIENT_ID']
-            credentials = TenantCredentials(client_id=var_value)
-    elif TOKEN_CIRCULAR_GROUP[TOKEN_SELECTOR] == TOKEN_CIRCULAR_GROUP[2]:
+    elif TOKEN_CIRCULAR_GROUP[TOKEN_SELECTOR] == TOKEN_CIRCULAR_GROUP[1]:
         credentials = AppCredentials()
     else:
         logger.error('Unpredicted use case, used token type not available', request.get_full_path())

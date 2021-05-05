@@ -29,17 +29,11 @@ class TokenView(APIView):
         """
         List all assets.
         """
-        if sdk_util.TOKEN_CIRCULAR_GROUP[sdk_util.TOKEN_SELECTOR] == sdk_util.TOKEN_CIRCULAR_GROUP[0]:
-            # To be tested on developer cockpit
-            if 'MINDSPHERE_CLIENT_ID' in os.environ:
-                var_value = os.environ['MINDSPHERE_CLIENT_ID']
-            credentials = TenantCredentials(var_value)
-            token_type = "Technical Token"
-        elif sdk_util.TOKEN_CIRCULAR_GROUP[sdk_util.TOKEN_SELECTOR] == sdk_util.TOKEN_CIRCULAR_GROUP[1] \
+        if sdk_util.TOKEN_CIRCULAR_GROUP[sdk_util.TOKEN_SELECTOR] == sdk_util.TOKEN_CIRCULAR_GROUP[0] \
                 and request.META.get('HTTP_AUTHORIZATION') is not None:
             token_type = "User Token"
             credentials = UserToken(authorization=request.META.get('HTTP_AUTHORIZATION'))
-        elif sdk_util.TOKEN_CIRCULAR_GROUP[sdk_util.TOKEN_SELECTOR] == sdk_util.TOKEN_CIRCULAR_GROUP[2]:
+        elif sdk_util.TOKEN_CIRCULAR_GROUP[sdk_util.TOKEN_SELECTOR] == sdk_util.TOKEN_CIRCULAR_GROUP[1]:
             token_type = "App Creds"
             credentials = AppCredentials()
         else:
