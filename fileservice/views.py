@@ -1,10 +1,12 @@
 from rest_framework.views import APIView
 import sdk_util
 from django.http import HttpResponse
-from mindsphere_core import exceptions, serialization_filter
+from mindsphere_core import exceptions, serialization_filter, log_config
 from rest_framework import status
 from . import data_generator
 import json
+
+logger = log_config.default_logging()
 
 
 class FileServiceClientViewCreateFile(APIView):
@@ -33,13 +35,18 @@ class FileServiceClientViewCreateFile(APIView):
 
 
         """
+
+        logger.info("files/fileservicecreate/<str:entity_id> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 entity_id = kwargs.get("entity_id", "")
+                logger.info("Request param is- entityID: " + entity_id)
                 request_object = data_generator.generate_put_file_input(entity_id)
                 client.put_file(request_object)
+                logger.info("Successfully uploaded the file and file path :" + request_object.filepath)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for fileservicecreate " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -71,15 +78,19 @@ class FileServiceClientViewUpdateFile(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the
                                      sdk call.
         """
+        logger.info("files/fileserviceupdate/<str:entity_id>/<str:path> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 entity_id = kwargs.get("entity_id", "")
                 path = kwargs.get("path", "")
+                logger.info("Request param are- entityID: " + entity_id + " and Path: " + path)
                 if_match = request.GET.get("if_match", "")
                 request_object = data_generator.generate_update_file_input(entity_id, path, if_match)
                 client.put_file(request_object)
+                logger.info("Successfully updated the file and file path :" + request_object.filepath)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for fileserviceupdate " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -113,16 +124,20 @@ class FileServiceClientViewSearchFile(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the
                                      sdk call.
     """
+        logger.info("files/fileservicesearch/<str:entity_id> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 entity_id = kwargs.get("entity_id", "")
+                logger.info("Request param is- entityID: " + entity_id)
                 request_object = data_generator.generate_search_files_input(entity_id)
                 # search Api call
                 response = client.search_files(request_object)
                 payload = serialization_filter.sanitize_for_serialization(response)
                 payload = json.dumps(payload)
+                logger.info("getting response successfully for fileservicesearch "+payload)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for fileservicesearch " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -157,6 +172,7 @@ class FileServiceClientViewMultiPart(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the
                                      sdk call.
         """
+        logger.info("files/fileservicecreatemultipartfile/<str:entity_id>/<str:path> invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
 
         if request.method == "GET":
@@ -167,20 +183,25 @@ class FileServiceClientViewMultiPart(APIView):
                 upload = request.GET.get("upload", None)
                 part_num = request.GET.get("partNum", None)
                 status_info = ""
+                logger.info("Request params are- path:"+path +" entityId:"+entity_id)
 
                 if upload == 'start':
                     request_object = data_generator.get_initiate_multi_part_input(entity_id, path)
                     client.initiate_multi_part_upload(request_object)
                     status_info = "Intitated file upload for the path : " + path
+                    logger.info(status_info)
                 elif upload == 'complete':
                     request_object = data_generator.get_initiate_multi_part_input(entity_id, path)
                     client.complete_multi_part_upload(request_object)
                     status_info = "Successfully uploaded file for the path : " + path
+                    logger.info(status_info)
                 else:
                     request_object = data_generator.get_resources(entity_id, path, part_num)
                     client.create_multi_part_file(request_object)
                     status_info = "Uploaded file for the part : " + part_num + " in the path : " + path;
+                    logger.info(status_info)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for fileservicecreatemultipartfile "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -213,14 +234,18 @@ class FileServiceClientViewDeleteFile(APIView):
                                       sdk call.
 
         """
+        logger.info("files/fileservicedelete/<str:entity_id>/<str:path> invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 entity_id = kwargs.get("entity_id", "")
                 path = kwargs.get("path", "")
+                logger.info("Request params are- path:" + path + " entityId:" + entity_id)
                 request_object = data_generator.generate_delete_file_input(entity_id, path)
                 client.delete_file(request_object)
+                logger.info("Successfully deleted the file.")
             except exceptions.MindsphereError as err:
+                logger.error("Error while deleting file "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -257,15 +282,19 @@ class FileServiceClientViewListMultiPart(APIView):
                                       sdk call.
 
         """
+        logger.info("files/fileservicelistmultipartfile/<str:entity_id>/<str:path> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 path = kwargs.get("path", "")
                 entity_id = kwargs.get("entity_id", "")
+                logger.info("Request params are- path:" + path + " entityId:" + entity_id)
                 response = data_generator.generate_file_list_input(entity_id, path)
                 payload = serialization_filter.sanitize_for_serialization(response)
                 payload = json.dumps(payload)
+                logger.info("Getting response for fileservicelistmultipartfile "+payload)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for fileservicelistmultipartfile "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -299,14 +328,18 @@ class FileServiceClientViewGetFile(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the
                                       sdk call.
         """
+        logger.info("files/fileservicegetfile/<str:entity_id>/<str:path> invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 entity_id = kwargs.get("entity_id", "")
                 path = kwargs.get("path", "")
+                logger.info("Request params are- path:" + path + " entityId:" + entity_id)
                 request_object = data_generator.generate_file_input(entity_id, path)
                 response = client.get_file(request_object)
+                logger.info("Getting response for fileservicegetfile " + response)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for fileservicegetfile " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",

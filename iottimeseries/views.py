@@ -35,7 +35,7 @@ class TimeSeriesOperationsClientViewGetTimeSeries(APIView):
                                       sdk call.
 
         """
-        logger.info('timeSeries/get/<str:entityid>/<str:propertyname>/<str:from>/<str:to> invoked')
+        logger.info("timeSeries/get/<str:entityid>/<str:propertyname>/<str:from>/<str:to> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:

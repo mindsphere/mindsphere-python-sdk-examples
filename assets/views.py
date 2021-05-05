@@ -4,11 +4,14 @@ from rest_framework.views import APIView
 
 from rest_framework import status
 from django.http import HttpResponse
-from mindsphere_core import exceptions, serialization_filter
+from mindsphere_core import exceptions, serialization_filter, log_config
 import sdk_util
 from . import data_generator
 from app.settings import logger
 import json
+
+logger = log_config.default_logging()
+
 
 class AspecttypeClientViewCreate(APIView):
     def get(self, request, **kwargs):
@@ -27,6 +30,7 @@ class AspecttypeClientViewCreate(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("assets/aspects invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -34,14 +38,17 @@ class AspecttypeClientViewCreate(APIView):
                     tenant=request.GET.get("tenantName", None)
                 )
                 aspect = client.save_aspect_type(request_object)
+                response_json = json.dumps(aspect.to_dict)
+                logger.info("Getting response successfully for create aspects " + response_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for create aspects " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(aspect.to_dict()) , content_type="application/json", status=status.HTTP_200_OK
+                response_json, content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -64,19 +71,23 @@ class AspecttypeClientViewEqualTo(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("assets/filteraspecttypename invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 response = client.get_aspect_types_equals_to(field_type=data_generator.FieldTypeEnum.NAME,
                                                              filter_value=request.GET.get("filterValue", None))
+                response_json = json.dumps(response.to_dict)
+                logger.info("Getting response successfully for filteraspecttypename " + response_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for filteraspecttypename "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(response.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                response_json, content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -101,18 +112,23 @@ class AspecttypeClientViewLike(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("assets/filteraspecttypelike invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
-                response = client.get_aspect_types_like(data_generator.FieldTypeEnum.NAME, request.GET.getlist("filterValue", None))
+                response = client.get_aspect_types_like(data_generator.FieldTypeEnum.NAME,
+                                                        request.GET.getlist("filterValue", None))
+                response_json = json.dumps(response.to_dict)
+                logger.info("Getting response successfully for filteraspecttypelike " + response_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for filteraspecttypelike " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(response.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                response_json, content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -139,23 +155,28 @@ class AssettypeClientViewCreate(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("assets/assettype/<str:tenant> invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
+                logger.info("Request param is- Tenant: "+kwargs.get("tenant", ""))
                 request_object = data_generator.generate_asset_type_input(
                     tenant=kwargs.get("tenant", ""),
                     aspect_id=request.GET.get("aspectid", None),
                     aspect_name=request.GET.get("aspectname", None),
                 )
                 aspect = client.save_asset_type(request_object)
+                response_json = json.dumps(aspect.to_dict)
+                logger.info("Getting response successfully for create assettype " + response_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for create assettype "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(aspect.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                response_json, content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -177,12 +198,16 @@ class AssettypeClientViewEndsWith(APIView):
          apiNote List all asset types.
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
         """
+        logger.info("assets/filterassettypeendwith invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 response = client.get_asset_types_ends_with(field_type=data_generator.FieldTypeEnum.NAME,
-                                                             filter_value=request.GET.get("filterValue", None))
+                                                            filter_value=request.GET.get("filterValue", None))
+                response_json = json.dumps(response.to_dict)
+                logger.info("Getting response successfully for create filterassettypeendwith " + response_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for create filterassettypeendwith " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -210,19 +235,23 @@ class AssettypeClientViewContains(APIView):
         apiNote List all asset types.
         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
         """
+        logger.info("assets/filterassettypecontains invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 response = client.get_asset_types_contains(field_type=data_generator.FieldTypeEnum.NAME,
-                                                        filter_value=request.GET.get("filterValue", None))
+                                                           filter_value=request.GET.get("filterValue", None))
+                response_json = json.dumps(response.to_dict)
+                logger.info("Getting response successfully for create filterassettypecontains " + response_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for create filterassettypecontains " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(response.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                response_json, content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -252,23 +281,28 @@ class AssetsClientViewPost(APIView):
                sdk call.
 
         """
+        logger.info("assets/assets/<str:typeid> invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
+                logger.info("Request param is - typeID:"+kwargs.get("typeid", ""))
                 root = client.get_root_asset(data_generator.generate_root_asset_input())
                 request_object = data_generator.generate_asset_input(
                     type_id=kwargs.get("typeid", ""),
                     parent_id=request.GET.get("parentid", None),
                 )
                 asset = client.add_asset(request_object)
+                response_json = json.dumps(asset.to_dict)
+                logger.info("Getting response successfully " + response_json)
             except exceptions.MindsphereError as err:
+                logger.error("Error occured "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(asset.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                response_json, content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -291,19 +325,23 @@ class AssetsClientViewStartWith(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("assets/filterassetsstartwith invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 response = client.get_assets_starts_with(field_type=data_generator.FieldTypeEnum.NAME,
-                                                               filter_value=request.GET.get("filterValue", None))
+                                                         filter_value=request.GET.get("filterValue", None))
+                response_json = json.dumps(response.to_dict)
+                logger.info("Getting response successfully for filterassetsstartwith" + response_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for filterassetsstartwith "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(response.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                response_json, content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -325,18 +363,22 @@ class AssetsClientViewOfAspectType(APIView):
          apiNote List all assets available for the authenticated user.
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
         """
+        logger.info("assets/filterassetsoftype invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 response = client.get_assets_of_type(request.GET.get("filterValue", None))
+                response_json = json.dumps(response.to_dict)
+                logger.info("Getting response successfully for filterassetsoftype" + response_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for filterassetsoftype " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(response.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                response_json, content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -357,20 +399,26 @@ class AssetsClientViewGetById(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("assets/assetsget/<str:id> invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
+            logger.info("AssetId : "+kwargs.get("id", ""))
             try:
                 request_object = data_generator.generate_get_asset_input(id=kwargs.get("id", ""),
-                                                                         if_none_match=request.GET.get("ifnonematch", None))
+                                                                         if_none_match=request.GET.get("ifnonematch",
+                                                                                                       None))
                 asset = client.get_asset(request_object)
+                response_json = json.dumps(asset.to_dict)
+                logger.info("Getting response successfully for assetsget by id" + response_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for assetsget by id " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(asset.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                response_json, content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -393,13 +441,17 @@ class AssetsClientViewDelete(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("assets/assetsdelete/<str:id>/<str:ifmatch> invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
+                logger.info("RequestParam are - assetID: "+kwargs.get("id", "") + " ifmatch:"+kwargs.get("ifmatch", ""))
                 request_object = data_generator.generate_delete_asset_input(id=kwargs.get("id", ""),
                                                                             if_match=kwargs.get("ifmatch", ""))
                 client.delete_asset(request_object)
+                logger.info("Asset deleted successfully ")
             except exceptions.MindsphereError as err:
+                logger.error("Getting error while deleting asset "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -430,15 +482,20 @@ class AssetsClientViewDeleteWithConfirmation(APIView):
          apiNote Deletes an asset.
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
         """
+        logger.info("assets/assetsdeletewithconfirmation/<str:id>/<str:ifmatch> invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
+                logger.info(
+                    "RequestParam are - assetID: " + kwargs.get("id", "") + " ifmatch:" + kwargs.get("ifmatch", ""))
                 request_object = data_generator.generate_delete_asset_with_confirmation_input(id=kwargs.get("id", ""),
                                                                                               if_match=
                                                                                               kwargs.get
                                                                                               ("ifmatch", ""))
                 client.delete_asset_with_confirmation(request_object)
+                logger.info("Asset deleted successfully with confirmation")
             except exceptions.MindsphereError as err:
+                logger.error("Getting error while deleting asset with confirmation "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -465,19 +522,23 @@ class AssetsClientViewGetAll(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("assets/assets invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 request_object = data_generator.generate_list_assets_input()
                 asset = client.list_assets(request_object)
+                response_json = json.dumps(asset.to_dict)
+                logger.info("Getting response successfully for  getallasset" + response_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting eeror for getallasset "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(asset.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                response_json, content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -500,18 +561,24 @@ class AssetsClientViewUpdateFile(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("assets/assetfiles/<str:id> invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
+                logger.info("Request param is Id:"+kwargs.get("id", ""))
                 assignment = data_generator.generate_file_assignment(
                     fileid=request.GET.get("fileid", None)
                 )
                 request_object = data_generator.generate_save_asset_file_assignment_input(kwargs.get("id", ""),
-                                                                                          request.GET.get("ifmatch", None),
+                                                                                          request.GET.get("ifmatch",
+                                                                                                          None),
                                                                                           request.GET.get("key", None),
                                                                                           assignment)
                 asset = client.save_asset_file_assignment(request_object)
+                response_json = json.dumps(asset.to_dict)
+                logger.info("Getting response successfully for  assetfiles with id" + response_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for assetfiles with id"+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -539,6 +606,7 @@ class FilesClientViewPost(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("assets/assetfiles invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -547,7 +615,9 @@ class FilesClientViewPost(APIView):
                 resource = client.upload_file(request_object)
                 payload = serialization_filter.sanitize_for_serialization(resource)
                 payload = json.dumps(payload)
+                logger.info("Getting response successfully for  assetfiles" + payload)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for assetfiles " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -581,13 +651,20 @@ class LocationsClientViewUpdate(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("assets/assetlocation/<str:id>/<str:ifmatch> invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
+
             try:
-                request_object = data_generator.generate_location_update_input(if_match=kwargs.get("ifmatch", ""),
-                                                                               id=kwargs.get("id", ""))
+                ifmatch = kwargs.get("ifmatch", "")
+                did = kwargs.get("id", "")
+                logger.info("Request params are - Id: " + did + " and ifmatch:" + ifmatch)
+                request_object = data_generator.generate_location_update_input(if_match=ifmatch,
+                                                                               id=did)
                 client.save_asset_location(request_object)
+                logger.info("Location updated successfully")
             except exceptions.MindsphereError as err:
+                logger.error("Getting eroor for assetlocation "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -614,17 +691,23 @@ class StructureClientViewAspectsOfAsset(APIView):
          throws Error if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("assets/<str:id>/aspects invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
-                request_object = data_generator.generate_aspects_of_asset_request(id=kwargs.get("id", ""))
+                did = kwargs.get("id", "")
+                logger.info("AssetId is "+did)
+                request_object = data_generator.generate_aspects_of_asset_request(id=did)
                 aspects_of_asset = client.list_asset_aspects(request_object)
+                response_json = json.dumps(aspects_of_asset.to_dict)
+                logger.info("Getting response successfully for  list of aspects with id" + response_json)
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for listofaspect with assetId "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(aspects_of_asset.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                response_json, content_type="application/json", status=status.HTTP_200_OK
             )
