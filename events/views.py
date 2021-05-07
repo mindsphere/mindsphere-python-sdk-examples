@@ -30,8 +30,7 @@ class EventOperationsClientViewTopEvent(APIView):
         if request.method == "GET":
             try:
                 response = client.top_events(data_generator.get_top_events_data())
-                response_json = json.dumps(response)
-                logger.info("Getting response successfully for topevents "+response_json)
+                logger.info("Getting response successfully for topevents "+ json.dumps(response))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for topevents "+err)
                 return HttpResponse(
@@ -40,7 +39,7 @@ class EventOperationsClientViewTopEvent(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -76,8 +75,7 @@ class EventOperationsClientViewFilterEvent(APIView):
         if request.method == "GET":
             try:
                 response = client.filter_events(data_generator.get_filter_events_data())
-                response_json = json.dumps(response.to_dict)
-                logger.info("Getting response successfully for filterEvents " + response_json)
+                logger.info("Getting response successfully for filterEvents " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for filterEvents " + err)
                 return HttpResponse(
@@ -86,7 +84,7 @@ class EventOperationsClientViewFilterEvent(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -118,8 +116,7 @@ class EventOperationsClientViewCountEvent(APIView):
         if request.method == "GET":
             try:
                 response = client.count_events(data_generator.get_count_events_data())
-                response_json = json.dumps(response.to_dict)
-                logger.info("Getting response successfully for countEvents " + response_json)
+                logger.info("Getting response successfully for countEvents " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for countEvents " + err)
                 return HttpResponse(
@@ -128,7 +125,7 @@ class EventOperationsClientViewCountEvent(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -161,8 +158,7 @@ class EventOperationsClientViewRemoveDuplicateEvent(APIView):
         if request.method == "GET":
             try:
                 response = client.remove_duplicate_events(data_generator.remove_duplicates_data())
-                response_json = json.dumps(response.to_dict)
-                logger.info("Getting response successfully for removeDuplicateEvents " + response_json)
+                logger.info("Getting response successfully for removeDuplicateEvents " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for removeDuplicateEvents " + err)
                 return HttpResponse(
@@ -171,7 +167,7 @@ class EventOperationsClientViewRemoveDuplicateEvent(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -217,8 +213,7 @@ class PatternOperationsClientViewMatchPatternsOverEvents(APIView):
         if request.method == "GET":
             try:
                 response = client.match_patterns_over_events(data_generator.get_pattern_matching_data())
-                response_json = json.dumps(response.to_dict)
-                logger.info("Getting response successfully for matchEventPattern " + response_json)
+                logger.info("Getting response successfully for matchEventPattern " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for matchEventPattern " + err)
                 return HttpResponse(
@@ -227,5 +222,5 @@ class PatternOperationsClientViewMatchPatternsOverEvents(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )

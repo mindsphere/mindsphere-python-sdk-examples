@@ -38,8 +38,7 @@ class AspecttypeClientViewCreate(APIView):
                     tenant=request.GET.get("tenantName", None)
                 )
                 aspect = client.save_aspect_type(request_object)
-                response_json = json.dumps(aspect.to_dict)
-                logger.info("Getting response successfully for create aspects " + response_json)
+                logger.info("Getting response successfully for create aspects " + json.dumps(aspect.to_dict))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for create aspects " + err)
                 return HttpResponse(
@@ -48,7 +47,7 @@ class AspecttypeClientViewCreate(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(aspect.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -77,17 +76,16 @@ class AspecttypeClientViewEqualTo(APIView):
             try:
                 response = client.get_aspect_types_equals_to(field_type=data_generator.FieldTypeEnum.NAME,
                                                              filter_value=request.GET.get("filterValue", None))
-                response_json = json.dumps(response.to_dict)
-                logger.info("Getting response successfully for filteraspecttypename " + response_json)
+                logger.info("Getting response successfully for filteraspecttypename " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
-                logger.error("Getting error for filteraspecttypename "+err)
+                logger.error("Getting error for filteraspecttypename " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -118,8 +116,7 @@ class AspecttypeClientViewLike(APIView):
             try:
                 response = client.get_aspect_types_like(data_generator.FieldTypeEnum.NAME,
                                                         request.GET.getlist("filterValue", None))
-                response_json = json.dumps(response.to_dict)
-                logger.info("Getting response successfully for filteraspecttypelike " + response_json)
+                logger.info("Getting response successfully for filteraspecttypelike " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for filteraspecttypelike " + err)
                 return HttpResponse(
@@ -128,7 +125,7 @@ class AspecttypeClientViewLike(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -159,24 +156,23 @@ class AssettypeClientViewCreate(APIView):
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
-                logger.info("Request param is- Tenant: "+kwargs.get("tenant", ""))
+                logger.info("Request param is- Tenant: " + kwargs.get("tenant", ""))
                 request_object = data_generator.generate_asset_type_input(
                     tenant=kwargs.get("tenant", ""),
                     aspect_id=request.GET.get("aspectid", None),
                     aspect_name=request.GET.get("aspectname", None),
                 )
                 aspect = client.save_asset_type(request_object)
-                response_json = json.dumps(aspect.to_dict)
-                logger.info("Getting response successfully for create assettype " + response_json)
+                logger.info("Getting response successfully for create assettype " + json.dumps(aspect.to_dict))
             except exceptions.MindsphereError as err:
-                logger.error("Getting error for create assettype "+err)
+                logger.error("Getting error for create assettype " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(aspect.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -204,8 +200,7 @@ class AssettypeClientViewEndsWith(APIView):
             try:
                 response = client.get_asset_types_ends_with(field_type=data_generator.FieldTypeEnum.NAME,
                                                             filter_value=request.GET.get("filterValue", None))
-                response_json = json.dumps(response.to_dict)
-                logger.info("Getting response successfully for create filterassettypeendwith " + response_json)
+                logger.info("Getting response successfully for create filterassettypeendwith " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for create filterassettypeendwith " + err)
                 return HttpResponse(
@@ -241,8 +236,7 @@ class AssettypeClientViewContains(APIView):
             try:
                 response = client.get_asset_types_contains(field_type=data_generator.FieldTypeEnum.NAME,
                                                            filter_value=request.GET.get("filterValue", None))
-                response_json = json.dumps(response.to_dict)
-                logger.info("Getting response successfully for create filterassettypecontains " + response_json)
+                logger.info("Getting response successfully for create filterassettypecontains " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for create filterassettypecontains " + err)
                 return HttpResponse(
@@ -251,7 +245,7 @@ class AssettypeClientViewContains(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -285,24 +279,23 @@ class AssetsClientViewPost(APIView):
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
-                logger.info("Request param is - typeID:"+kwargs.get("typeid", ""))
+                logger.info("Request param is - typeID:" + kwargs.get("typeid", ""))
                 root = client.get_root_asset(data_generator.generate_root_asset_input())
                 request_object = data_generator.generate_asset_input(
                     type_id=kwargs.get("typeid", ""),
                     parent_id=request.GET.get("parentid", None),
                 )
                 asset = client.add_asset(request_object)
-                response_json = json.dumps(asset.to_dict)
-                logger.info("Getting response successfully " + response_json)
+                logger.info("Getting response successfully " + json.dumps(asset.to_dict))
             except exceptions.MindsphereError as err:
-                logger.error("Error occured "+err)
+                logger.error("Error occured " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(asset.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -331,17 +324,16 @@ class AssetsClientViewStartWith(APIView):
             try:
                 response = client.get_assets_starts_with(field_type=data_generator.FieldTypeEnum.NAME,
                                                          filter_value=request.GET.get("filterValue", None))
-                response_json = json.dumps(response.to_dict)
-                logger.info("Getting response successfully for filterassetsstartwith" + response_json)
+                logger.info("Getting response successfully for filterassetsstartwith" + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
-                logger.error("Getting error for filterassetsstartwith "+err)
+                logger.error("Getting error for filterassetsstartwith " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -368,8 +360,7 @@ class AssetsClientViewOfAspectType(APIView):
         if request.method == "GET":
             try:
                 response = client.get_assets_of_type(request.GET.get("filterValue", None))
-                response_json = json.dumps(response.to_dict)
-                logger.info("Getting response successfully for filterassetsoftype" + response_json)
+                logger.info("Getting response successfully for filterassetsoftype" + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for filterassetsoftype " + err)
                 return HttpResponse(
@@ -378,7 +369,7 @@ class AssetsClientViewOfAspectType(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -402,14 +393,13 @@ class AssetsClientViewGetById(APIView):
         logger.info("assets/assetsget/<str:id> invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
-            logger.info("AssetId : "+kwargs.get("id", ""))
+            logger.info("AssetId : " + kwargs.get("id", ""))
             try:
                 request_object = data_generator.generate_get_asset_input(id=kwargs.get("id", ""),
                                                                          if_none_match=request.GET.get("ifnonematch",
                                                                                                        None))
                 asset = client.get_asset(request_object)
-                response_json = json.dumps(asset.to_dict)
-                logger.info("Getting response successfully for assetsget by id" + response_json)
+                logger.info("Getting response successfully for assetsget by id" + json.dumps(asset.to_dict))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for assetsget by id " + err)
                 return HttpResponse(
@@ -418,7 +408,7 @@ class AssetsClientViewGetById(APIView):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(asset.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -445,13 +435,14 @@ class AssetsClientViewDelete(APIView):
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
-                logger.info("RequestParam are - assetID: "+kwargs.get("id", "") + " ifmatch:"+kwargs.get("ifmatch", ""))
+                logger.info(
+                    "RequestParam are - assetID: " + kwargs.get("id", "") + " ifmatch:" + kwargs.get("ifmatch", ""))
                 request_object = data_generator.generate_delete_asset_input(id=kwargs.get("id", ""),
                                                                             if_match=kwargs.get("ifmatch", ""))
                 client.delete_asset(request_object)
                 logger.info("Asset deleted successfully ")
             except exceptions.MindsphereError as err:
-                logger.error("Getting error while deleting asset "+err)
+                logger.error("Getting error while deleting asset " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -495,7 +486,7 @@ class AssetsClientViewDeleteWithConfirmation(APIView):
                 client.delete_asset_with_confirmation(request_object)
                 logger.info("Asset deleted successfully with confirmation")
             except exceptions.MindsphereError as err:
-                logger.error("Getting error while deleting asset with confirmation "+err)
+                logger.error("Getting error while deleting asset with confirmation " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -528,17 +519,16 @@ class AssetsClientViewGetAll(APIView):
             try:
                 request_object = data_generator.generate_list_assets_input()
                 asset = client.list_assets(request_object)
-                response_json = json.dumps(asset.to_dict)
-                logger.info("Getting response successfully for  getallasset" + response_json)
+                logger.info("Getting response successfully for  getallasset" + json.dumps(asset.to_dict()))
             except exceptions.MindsphereError as err:
-                logger.error("Getting eeror for getallasset "+err)
+                logger.error("Getting eeror for getallasset " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(asset.to_dict()), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -565,7 +555,7 @@ class AssetsClientViewUpdateFile(APIView):
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
-                logger.info("Request param is Id:"+kwargs.get("id", ""))
+                logger.info("Request param is Id:" + kwargs.get("id", ""))
                 assignment = data_generator.generate_file_assignment(
                     fileid=request.GET.get("fileid", None)
                 )
@@ -575,10 +565,9 @@ class AssetsClientViewUpdateFile(APIView):
                                                                                           request.GET.get("key", None),
                                                                                           assignment)
                 asset = client.save_asset_file_assignment(request_object)
-                response_json = json.dumps(asset.to_dict)
-                logger.info("Getting response successfully for  assetfiles with id" + response_json)
+                logger.info("Getting response successfully for  assetfiles with id" + json.dumps(asset.to_dict))
             except exceptions.MindsphereError as err:
-                logger.error("Getting error for assetfiles with id"+err)
+                logger.error("Getting error for assetfiles with id" + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -664,7 +653,7 @@ class LocationsClientViewUpdate(APIView):
                 client.save_asset_location(request_object)
                 logger.info("Location updated successfully")
             except exceptions.MindsphereError as err:
-                logger.error("Getting eroor for assetlocation "+err)
+                logger.error("Getting eroor for assetlocation " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -696,18 +685,17 @@ class StructureClientViewAspectsOfAsset(APIView):
         if request.method == "GET":
             try:
                 did = kwargs.get("id", "")
-                logger.info("AssetId is "+did)
+                logger.info("AssetId is " + did)
                 request_object = data_generator.generate_aspects_of_asset_request(id=did)
                 aspects_of_asset = client.list_asset_aspects(request_object)
-                response_json = json.dumps(aspects_of_asset.to_dict)
-                logger.info("Getting response successfully for  list of aspects with id" + response_json)
+                logger.info("Getting response successfully for  list of aspects with id" +  json.dumps(aspects_of_asset.to_dict))
             except exceptions.MindsphereError as err:
-                logger.error("Getting error for listofaspect with assetId "+err)
+                logger.error("Getting error for listofaspect with assetId " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                response_json, content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(aspects_of_asset.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
