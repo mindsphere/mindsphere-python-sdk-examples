@@ -96,7 +96,7 @@ git clone https://github.com/mindsphere/mindsphere-python-sdk-examples.git
 - `path` specifies where to look for application. Here in this case, our app is located inside `mindsphere-python-sdk-examples` folder.
 - Environment variables are listed under `env`. Since sample application demonstrates use of MindSphere SDKs, environemnt variables  are only specific for Token Generation. In case of other application, user can append the list with his/her own environment variables.
 - As mentioned in 1 - Prerequisites, either of Tenant Credentials/ Application Credentials would suffice for getting token.
-- In sample file variables for App redentials are mentioned but user can choose to either of two types available.
+- In sample file variables for App credentials are mentioned but user can choose to either of two types available.
 - As here opting for App Credentials, user will not have values of all environment variables at this point. In this scenario either put some dummy values or do not add variables at all. CF provides command to set environment variables hence they can be set later on.
 - Now run the command `cf push`.
 - Once application is successfully deployed check for app status using command `cf app routi`.
