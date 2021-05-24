@@ -1,3 +1,4 @@
+from assetmanagement import Asset, AddAssetRequest, SaveAspectTypeRequest, SaveAssetTypeRequest, GetRootAssetRequest
 from django.shortcuts import render
 
 from rest_framework.views import APIView
@@ -11,6 +12,130 @@ from app.settings import logger
 import json
 
 logger = log_config.default_logging()
+
+
+class AssetsClientViewPostAsset(APIView):
+    def post(self, request, **kwargs):
+        """
+         Create aspect type.
+
+         route assets/aspects
+         param tenantName - Name of the tenant for which you want to create aspect type. Passed in request.
+         return Created aspect type information object.
+         description This method internally calls method save_aspect_type of AspecttypeClient class.
+                        This class is available as dependency in assetmanagement-<version-here>-py3-none-any.whl
+
+         apiEndpoint : PUT /api/assetmanagement/v3/aspecttypes/{id} of asset management service.
+
+         apiNote Create or Update an aspect type
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
+        logger.info("post asset invoked.")
+        client = sdk_util.build_sdk_client(self.__class__.__name__, request)
+        if request.method == "POST":
+            try:
+                requestObj = json.dumps(request.data)
+                asset = json.loads(requestObj)
+                request_object = AddAssetRequest(asset=asset)
+                response = client.add_asset(request_object)
+                response = serialization_filter.sanitize_for_serialization(response)
+                response = json.dumps(response)
+                logger.info("Getting response successfully " + json.dumps(response))
+            except exceptions.MindsphereError as err:
+                logger.error("Getting error for create Asset " + err.message)
+                return HttpResponse(
+                    err.message,
+                    content_type="application/json",
+                    status=err.http_status,
+                )
+            return HttpResponse(
+                json.dumps(response), content_type="application/json", status=status.HTTP_200_OK
+            )
+
+
+class AssettypeClientViewput(APIView):
+    def put(self, request, **kwargs):
+        """
+         Create aspect type.
+
+         route assets/aspects
+         param tenantName - Name of the tenant for which you want to create aspect type. Passed in request.
+         return Created aspect type information object.
+         description This method internally calls method save_aspect_type of AspecttypeClient class.
+                        This class is available as dependency in assetmanagement-<version-here>-py3-none-any.whl
+
+         apiEndpoint : PUT /api/assetmanagement/v3/aspecttypes/{id} of asset management service.
+
+         apiNote Create or Update an aspect type
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
+        logger.info("put assettype invoked.")
+        client = sdk_util.build_sdk_client(self.__class__.__name__, request)
+        if request.method == "PUT":
+            try:
+                ifmatch = kwargs.get("ifmatch", "")
+                asset_type_id = kwargs.get("id", "")
+                requestObj = json.dumps(request.data)
+                asset_type_input = json.loads(requestObj)
+                request_object = SaveAssetTypeRequest(if_match=None, id=asset_type_id, assettype=asset_type_input)
+                response = client.save_asset_type(request_object)
+                response = serialization_filter.sanitize_for_serialization(response)
+                response = json.dumps(response)
+                logger.info("Getting response successfully " + json.dumps(response))
+            except exceptions.MindsphereError as err:
+                logger.error("Getting error for create Assettype " + err.message)
+                return HttpResponse(
+                    err.message,
+                    content_type="application/json",
+                    status=err.http_status,
+                )
+            return HttpResponse(
+                json.dumps(response), content_type="application/json", status=status.HTTP_200_OK
+            )
+
+
+class AspecttypeClientViewput(APIView):
+    def put(self, request, **kwargs):
+        """
+         Create aspect type.
+
+         route assets/aspects
+         param tenantName - Name of the tenant for which you want to create aspect type. Passed in request.
+         return Created aspect type information object.
+         description This method internally calls method save_aspect_type of AspecttypeClient class.
+                        This class is available as dependency in assetmanagement-<version-here>-py3-none-any.whl
+
+         apiEndpoint : PUT /api/assetmanagement/v3/aspecttypes/{id} of asset management service.
+
+         apiNote Create or Update an aspect type
+         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
+
+        """
+        logger.info("put aspectt invoked.")
+        client = sdk_util.build_sdk_client(self.__class__.__name__, request)
+        if request.method == "PUT":
+            try:
+                ifmatch = kwargs.get("ifmatch", "")
+                aspect_id = kwargs.get("id", "")
+                requestObj = json.dumps(request.data)
+                aspect = json.loads(requestObj)
+                request_object = SaveAspectTypeRequest(id=aspect_id, aspecttype=aspect, if_match=ifmatch)
+                response = client.save_aspect_type(request_object)
+                response = serialization_filter.sanitize_for_serialization(response)
+                response = json.dumps(response)
+                logger.info("Getting response successfully " + json.dumps(response))
+            except exceptions.MindsphereError as err:
+                logger.info("Getting error for create Aspect " + err.message)
+                return HttpResponse(
+                    err,
+                    content_type="application/json",
+                    status=err.http_status,
+                )
+            return HttpResponse(
+                json.dumps(response), content_type="application/json", status=status.HTTP_200_OK
+            )
 
 
 class AspecttypeClientViewCreate(APIView):
@@ -200,7 +325,8 @@ class AssettypeClientViewEndsWith(APIView):
             try:
                 response = client.get_asset_types_ends_with(field_type=data_generator.FieldTypeEnum.NAME,
                                                             filter_value=request.GET.get("filterValue", None))
-                logger.info("Getting response successfully for create filterassettypeendwith " + json.dumps(response.to_dict))
+                logger.info(
+                    "Getting response successfully for create filterassettypeendwith " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for create filterassettypeendwith " + err)
                 return HttpResponse(
@@ -236,7 +362,8 @@ class AssettypeClientViewContains(APIView):
             try:
                 response = client.get_asset_types_contains(field_type=data_generator.FieldTypeEnum.NAME,
                                                            filter_value=request.GET.get("filterValue", None))
-                logger.info("Getting response successfully for create filterassettypecontains " + json.dumps(response.to_dict))
+                logger.info(
+                    "Getting response successfully for create filterassettypecontains " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for create filterassettypecontains " + err)
                 return HttpResponse(
@@ -663,7 +790,6 @@ class LocationsClientViewUpdate(APIView):
                 'Location updated successfully', content_type="application/json", status=status.HTTP_200_OK
             )
 
-
 class StructureClientViewAspectsOfAsset(APIView):
     def get(self, request, **kwargs):
         """
@@ -688,7 +814,8 @@ class StructureClientViewAspectsOfAsset(APIView):
                 logger.info("AssetId is " + did)
                 request_object = data_generator.generate_aspects_of_asset_request(id=did)
                 aspects_of_asset = client.list_asset_aspects(request_object)
-                logger.info("Getting response successfully for  list of aspects with id" +  json.dumps(aspects_of_asset.to_dict))
+                logger.info(
+                    "Getting response successfully for  list of aspects with id" + json.dumps(aspects_of_asset.to_dict))
             except exceptions.MindsphereError as err:
                 logger.error("Getting error for listofaspect with assetId " + err)
                 return HttpResponse(
@@ -698,4 +825,41 @@ class StructureClientViewAspectsOfAsset(APIView):
                 )
             return HttpResponse(
                 json.dumps(aspects_of_asset.to_dict), content_type="application/json", status=status.HTTP_200_OK
+            )
+
+
+
+class AssetsClientViewGetroot(APIView):
+    def get(self, request, **kwargs):
+        """
+
+         route <str:id>/aspects
+         return List of all aspects for provided asset id.
+         param id : Unique identifier of an asset. (passed in keyword arguments.)
+         description This method internally calls method list_asset_aspects of StructureClient class.
+                     This class is available as dependency in assetmanagement-<version-here>-py3-none-any.whl
+
+         apiEndpoint : GET /api/assetmanagement/v3/assets/{id}/aspects of asset management service.
+
+         apiNote Get all static and dynamic aspects of a given asset.
+         throws Error if an error occurs while attempting to invoke the sdk call.
+
+        """
+        logger.info("assets/<str:id>/aspects invoked.")
+        client = sdk_util.build_sdk_client(self.__class__.__name__, request)
+        if request.method == "GET":
+            try:
+                request_object = GetRootAssetRequest(if_none_match=None)
+                asset = client.get_root_asset(request_object)
+                logger.info(
+                    "Getting response successfully for  list of aspects with id" + json.dumps(asset.to_dict))
+            except exceptions.MindsphereError as err:
+                logger.error("Getting error for listofaspect with assetId " + err)
+                return HttpResponse(
+                    err,
+                    content_type="application/json",
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                )
+            return HttpResponse(
+                json.dumps(asset.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )

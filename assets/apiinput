@@ -1,0 +1,62 @@
+1.Endpoint -assets/putaspect/<str:id>/<str:ifmatch>
+id= cfbsppu.test2405
+ifmatch = 0
+{
+  "name": "test2405",
+  "category": "dynamic",
+  "scope": "private",
+  "description": "The engine of the Millenium Falcon",
+  "variables": [
+    {
+      "name": "temperature",
+      "unit": "C/F",
+      "length": 5,
+      "defaultValue": "25/77",
+      "dataType": "STRING",
+      "searchable": true,
+      "qualityCode": true
+    }
+  ]
+}
+
+2.assets/putassettype/<str:id>/<str:ifmatch>
+id= cfbsppu.test2405
+ifmatch = 0
+
+{
+  "name": "X-Wing2405",
+  "description": "Hyperspace jump capable space ship",
+  "parentTypeId": "core.basicasset",
+  "instantiable": true,
+  "scope": "private",
+  "aspects": [],
+  "variables": [],
+  "fileAssignments": []
+}
+
+
+3.Endpoint assets/root call and get parentid for creating asset
+
+4.Endpoint assets/postasset
+
+{
+  "name": "Millenium Falcon11",
+  "externalId": "SN 123456-123-123456",
+  "description": "The ship of Han Solo and Chewbacca",
+  "location": {
+
+  },
+  "variables": [
+
+  ],
+  "aspects": [
+
+  ],
+  "fileAssignments": [
+
+  ],
+  "typeId": "cfbsppu.test2405",
+  "parentId": "57284b35bc0444f3a0f44ab1f5e8edde",
+  "timezone": "Europe/Berlin",
+  "twinType": "performance"
+}

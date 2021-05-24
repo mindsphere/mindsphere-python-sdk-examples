@@ -111,6 +111,114 @@ class TimeSeriesOperationsClientViewPutTimeSeries(APIView):
             )
 
 
+class TimeSeriesOperationsClientViewPutTimeSeriescall(APIView):
+    def put(self, request, **kwargs):
+        """
+        put time series
+        """
+        logger.info('timeSeries/put invoked')
+        client = sdk_util.build_sdk_client(self.__class__.__name__, request)
+        if request.method == "PUT":
+            try:
+                # timeseries = UpdatedTimeSeries()
+                # timeSeriesItem = TimeSeriesItem()
+                # timeSeriesItem.entity_id = "535140e4980e413497d112015ddd47ff"
+                # timeSeriesItem.property_set_name = "testaspect2812"
+                #
+                # timeSeriesDataItem = TimeSeriesDataItem()
+                # timeSeriesDataItem.fields = {
+                #     "test": 15
+                # }
+                # timeSeriesDataItem.time = "2020-11-11T02:52:00Z"
+                # timeSeriesDataItems = [timeSeriesDataItem]
+                # timeSeriesItem.data = timeSeriesDataItems
+                # timeSeriesItems = [timeSeriesItem]
+                # timeseries.timeseries = tim = timeSeriesItems
+                # createOrUpdateTimeseriesRequest = CreateOrUpdateTimeseriesRequest()
+                # createOrUpdateTimeseriesRequest.timeseries = timeseries
+
+                requestObj = json.dumps(request.data)
+                timeseries = json.loads(requestObj)
+                createOrUpdateTimeseriesRequest = CreateOrUpdateTimeseriesRequest()
+                createOrUpdateTimeseriesRequest.timeseries = timeseries
+
+                response = client.create_or_update_timeseries(createOrUpdateTimeseriesRequest)
+                timeseries_json = serialization_filter.sanitize_for_serialization(response)
+                timeseries_json = json.dumps(timeseries_json)
+                logger.info("timeseries updated Successfully " + timeseries_json)
+            except exceptions.MindsphereError as err:
+                logger.error("Getting error for puttimeSeries " + err)
+                return HttpResponse(
+                    err,
+                    content_type="application/json",
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                )
+            return HttpResponse(
+                timeseries_json,
+                content_type="application/json",
+                status=status.HTTP_200_OK
+            )
+
+
+class TimeSeriesOperationsClientViewCreateTimeSeriescall(APIView):
+    def put(self, request, **kwargs):
+        """
+        put time series
+
+         route timeSeries/create/<str:entityid>/<str:propertyname>
+         param entityId - unique identifier of the asset (entity)
+         param propertyname - Name of the aspect (property set).
+
+         return "successfully uploaded timeseriesdata" on successful execution.
+
+         description This method internally calls method create_or_update_timeseries_data of
+                     TimeSeriesOperationsClient class. This class is available as dependency
+                     in timeseries-<version-here>-py3-none-any.whl. Creation of timeseries requires `timeseries`
+                     data structure to be passed in request body.
+         apiEndpoint : PUT /api/iottimeseries/v3/timeseries of timeseries service.
+                         service.
+         apiNote Create or update time series data for mutiple unique asset-aspect (entity-property set) combinations.
+         throws MindsphereError if an error occurs while attempting to invoke the
+                sdk call.
+
+        """
+        logger.info("timeSeries/create/<str:entityid>/<str:propertyname> invoked")
+        client = sdk_util.build_sdk_client(self.__class__.__name__, request)
+        if request.method == "PUT":
+            try:
+                entity_id = kwargs.get("entityid", "")
+                property_name = kwargs.get("propertyname", "")
+                logger.info("Request params are- entityID: " + entity_id + "propertyname" + property_name)
+                requestObject = CreateOrUpdateTimeseriesDataRequest();
+                requestObject.entity_id = entity_id
+                requestObject.property_set_name = property_name
+                timeSeriesData = json.dumps(request.data)
+                timeSeriesDataItems = json.loads(timeSeriesData)
+                # timeSeriesDataItem = TimeSeriesDataItem()
+                # timeSeriesDataItem.fields = {
+                #     "test": 15
+                # }
+                # timeSeriesDataItem.time = "2020-11-11T02:52:00Z"
+                # timeSeriesDataItems = [timeSeriesDataItem]
+                requestObject.timeseries = timeSeriesDataItems
+                client.create_or_update_timeseries_data(requestObject)
+                logger.info("timeseries uploaded Successfully ")
+            except exceptions.MindsphereError as err:
+                logger.info("Getting error while creating timeseries " + err)
+                return HttpResponse(
+                    err,
+                    content_type="application/json",
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                )
+            return HttpResponse(
+                "successfully uploaded timeseriesdata",
+                content_type="application/json",
+                status=status.HTTP_200_OK
+            )
+
+
+
+
 class TimeSeriesOperationsClientViewCreateTimeSeries(APIView):
     def get(self, request, **kwargs):
         """
@@ -153,7 +261,7 @@ class TimeSeriesOperationsClientViewCreateTimeSeries(APIView):
                 client.create_or_update_timeseries_data(requestObject)
                 logger.info("timeseries uploaded Successfully ")
             except exceptions.MindsphereError as err:
-                logger.info("Getting error while creating timeseries "+err)
+                logger.info("Getting error while creating timeseries " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
