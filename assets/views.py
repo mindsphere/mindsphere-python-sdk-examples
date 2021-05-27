@@ -43,11 +43,12 @@ class AssetsClientViewPostAsset(APIView):
                 response = json.dumps(response)
                 logger.info("Getting response successfully " + json.dumps(response))
             except exceptions.MindsphereError as err:
-                logger.error("Getting error for create Asset " + err.message)
+                logger.error(err.message)
+                status_code = err.message.status_code
                 return HttpResponse(
-                    err.message,
+                    json.dumps(err.message.message),
                     content_type="application/json",
-                    status=err.http_status,
+                    status=status_code,
                 )
             return HttpResponse(
                 json.dumps(response), content_type="application/json", status=status.HTTP_200_OK
@@ -85,11 +86,12 @@ class AssettypeClientViewput(APIView):
                 response = json.dumps(response)
                 logger.info("Getting response successfully " + json.dumps(response))
             except exceptions.MindsphereError as err:
-                logger.error("Getting error for create Assettype " + err.message)
+                logger.error(err.message)
+                status_code = err.message.status_code
                 return HttpResponse(
-                    err.message,
+                    json.dumps(err.message.message),
                     content_type="application/json",
-                    status=err.http_status,
+                    status=status_code,
                 )
             return HttpResponse(
                 json.dumps(response), content_type="application/json", status=status.HTTP_200_OK
@@ -127,11 +129,12 @@ class AspecttypeClientViewput(APIView):
                 response = json.dumps(response)
                 logger.info("Getting response successfully " + json.dumps(response))
             except exceptions.MindsphereError as err:
-                logger.info("Getting error for create Aspect " + err.message)
+                logger.error(err.message)
+                status_code = err.message.status_code
                 return HttpResponse(
-                    err,
+                    json.dumps(err.message.message),
                     content_type="application/json",
-                    status=err.http_status,
+                    status=status_code,
                 )
             return HttpResponse(
                 json.dumps(response), content_type="application/json", status=status.HTTP_200_OK
@@ -851,15 +854,16 @@ class AssetsClientViewGetroot(APIView):
             try:
                 request_object = GetRootAssetRequest(if_none_match=None)
                 asset = client.get_root_asset(request_object)
-                logger.info(
-                    "Getting response successfully for  list of aspects with id" + json.dumps(asset.to_dict))
+                asset = serialization_filter.sanitize_for_serialization(asset)
+                resonse = json.dumps(asset)
+                logger.info(resonse)
             except exceptions.MindsphereError as err:
-                logger.error("Getting error for listofaspect with assetId " + err)
+                logger.error(err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(asset.to_dict), content_type="application/json", status=status.HTTP_200_OK
+                resonse, content_type="application/json", status=status.HTTP_200_OK
             )
