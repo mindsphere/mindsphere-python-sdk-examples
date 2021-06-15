@@ -15,9 +15,10 @@ body:
 
 2 Endpoint timeseries/puttimeseriesdata/<str:entityid>/<str:propertyname>
 
-pathparam:
+Manadatory pathparam:
 entityId: "8f736d1b30c84e408df02db658ee36bf"
+Description - unique identifier of the asset (entity)
 propertySetName: "testaspect3095"
-
+Description - Name of the aspect (property set).
 body:
 [{"_time": "2020-11-11T02:52:00Z", "test": 15}]

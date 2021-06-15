@@ -1,4 +1,4 @@
-from mindsphere_core import RestClientConfig, exceptions, UserToken, TenantCredentials, AppCredentials
+from mindsphere_core import RestClientConfig, exceptions, UserToken, AppCredentials
 from assetmanagement.clients import AspecttypeClient,AssetsClient,AssettypeClient, LocationsClient,FilesClient
 from assetmanagement.clients import StructureClient
 from iotfileservices.clients import FileServiceClient

@@ -43,21 +43,22 @@ class TimeSeriesOperationsClientViewGetTimeSeries(APIView):
                 property_name = kwargs.get("propertyname", "")
                 _from = kwargs.get("from", "")
                 to = kwargs.get("to", "")
+                qryparam = request.query_params
                 logger.info(
                     "Request params are- enitityID:" + entity_id + " propertyName: " + property_name + " from:" + _from + " to:" + to)
                 request_object = RetrieveTimeseriesRequest()
                 request_object.entity_id = entity_id
                 request_object.property_set_name = property_name
-                request_object._from = _from
-                request_object.to = to
+                request_object._from = qryparam['from']
+                request_object.to = qryparam['to']
                 timseriesList = client.retrieve_timeseries(request_object)
                 timeseries_json = serialization_filter.sanitize_for_serialization(timseriesList)
                 timeseries_json = json.dumps(timeseries_json)
                 logger.info("Getting response successfully for gettimeSeries" + timeseries_json)
             except exceptions.MindsphereError as err:
-                logger.error("Getting error for gettimeSries" + err)
+                logger.error(err.message)
                 return HttpResponse(
-                    err,
+                    json.dumps(err.message.message),
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
@@ -98,9 +99,9 @@ class TimeSeriesOperationsClientViewPutTimeSeries(APIView):
                 timeseries_json = json.dumps(timeseries_json)
                 logger.info("timeseries updated Successfully " + timeseries_json)
             except exceptions.MindsphereError as err:
-                logger.error("Getting error for puttimeSeries " + err)
+                logger.error(err.message)
                 return HttpResponse(
-                    err,
+                    json.dumps(err.message.message),
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
@@ -147,9 +148,9 @@ class TimeSeriesOperationsClientViewPutTimeSeriescall(APIView):
                 timeseries_json = json.dumps(timeseries_json)
                 logger.info("timeseries updated Successfully " + timeseries_json)
             except exceptions.MindsphereError as err:
-                logger.error("Getting error for puttimeSeries " + err)
+                logger.error(err.message)
                 return HttpResponse(
-                    err,
+                    json.dumps(err.message.message),
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
@@ -204,15 +205,15 @@ class TimeSeriesOperationsClientViewCreateTimeSeriescall(APIView):
                 client.create_or_update_timeseries_data(requestObject)
                 logger.info("timeseries uploaded Successfully ")
             except exceptions.MindsphereError as err:
-                logger.info("Getting error while creating timeseries " + err)
+                logger.info(err.message)
                 return HttpResponse(
-                    err,
+                    json.dumps(err.message.message),
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
                 "successfully uploaded timeseriesdata",
-                content_type="application/json",
+                content_type="application/text",
                 status=status.HTTP_200_OK
             )
 
@@ -261,9 +262,9 @@ class TimeSeriesOperationsClientViewCreateTimeSeries(APIView):
                 client.create_or_update_timeseries_data(requestObject)
                 logger.info("timeseries uploaded Successfully ")
             except exceptions.MindsphereError as err:
-                logger.info("Getting error while creating timeseries " + err)
+                logger.info(err.message)
                 return HttpResponse(
-                    err,
+                    json.dumps(err.message.message),
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
@@ -318,9 +319,9 @@ class TimeSeriesOperationsClientViewDeleteTimeSeries(APIView):
                 client.delete_timeseries(request_object)
                 logger.info("successfully deleted timeseriesdata")
             except exceptions.MindsphereError as err:
-                logger.info("Getting error while deleting timeseries " + err)
+                logger.info(err.message)
                 return HttpResponse(
-                    err,
+                    json.dumps(err.message.message),
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )

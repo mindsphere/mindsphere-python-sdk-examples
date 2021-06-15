@@ -1,6 +1,10 @@
 1.Endpoint -assets/putaspect/<str:id>/<str:ifmatch>
+
+Mandatory params:
 id= cfbsppu.test2405
+Description - The type's id is a unique identifier. The id's length must be between 1 and 128 characters and matches the following symbols "A-Z", "a-z", "0-9", "_" and "." beginning with the tenant prefix what has a maximum of 8 characters. (e.g . ten_pref.type_id)
 ifmatch = 0
+Description - Last known version to facilitate optimistic locking
 {
   "name": "test2405",
   "category": "dynamic",
@@ -20,8 +24,11 @@ ifmatch = 0
 }
 
 2.assets/putassettype/<str:id>/<str:ifmatch>
+Mandatory params:
 id= cfbsppu.test2405
+Description - The type's id is a unique identifier. The id's length must be between 1 and 128 characters and matches the following symbols "A-Z", "a-z", "0-9", "_" and "." beginning with the tenant prefix what has a maximum of 8 characters. (e.g . ten_pref.type_id)
 ifmatch = 0
+Description - Last known version to facilitate optimistic locking
 
 {
   "name": "X-Wing2405",

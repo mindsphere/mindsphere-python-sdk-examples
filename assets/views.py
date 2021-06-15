@@ -1,5 +1,7 @@
 from assetmanagement import Asset, AddAssetRequest, SaveAspectTypeRequest, SaveAssetTypeRequest, GetRootAssetRequest
 from django.shortcuts import render
+from mindsphere_core.commonutil import extract_env_var
+from mindsphere_core import constants
 
 from rest_framework.views import APIView
 
@@ -41,7 +43,7 @@ class AssetsClientViewPostAsset(APIView):
                 response = client.add_asset(request_object)
                 response = serialization_filter.sanitize_for_serialization(response)
                 response = json.dumps(response)
-                logger.info("Getting response successfully " + json.dumps(response))
+                logger.info("Getting response successfully " + response)
             except exceptions.MindsphereError as err:
                 logger.error(err.message)
                 status_code = err.message.status_code
@@ -53,6 +55,18 @@ class AssetsClientViewPostAsset(APIView):
             return HttpResponse(
                 json.dumps(response), content_type="application/json", status=status.HTTP_200_OK
             )
+
+
+def getLink():
+    if extract_env_var(constants.DEFAULT_HOST_BASEDOMAIN):
+        domainName = extract_env_var(constants.DEFAULT_HOST_BASEDOMAIN)
+    else:
+        domainName = constants.DEFAULT_HOST_BASEDOMAIN;
+    tenantname = extract_env_var(constants.MDSP_USER_TENANT)
+    host = extract_env_var(constants.HOST_ENVIRONMENT)
+    link = "https://" + tenantname + "-assetmanager."+host+"."+domainName;
+    return link
+
 
 
 class AssettypeClientViewput(APIView):
@@ -127,6 +141,10 @@ class AspecttypeClientViewput(APIView):
                 response = client.save_aspect_type(request_object)
                 response = serialization_filter.sanitize_for_serialization(response)
                 response = json.dumps(response)
+                applink = {"ApplinK": getLink()}
+                response = json.loads(response)
+                response.update(applink)
+                print(json.dumps(response))
                 logger.info("Getting response successfully " + json.dumps(response))
             except exceptions.MindsphereError as err:
                 logger.error(err.message)
@@ -793,6 +811,7 @@ class LocationsClientViewUpdate(APIView):
                 'Location updated successfully', content_type="application/json", status=status.HTTP_200_OK
             )
 
+
 class StructureClientViewAspectsOfAsset(APIView):
     def get(self, request, **kwargs):
         """
@@ -829,7 +848,6 @@ class StructureClientViewAspectsOfAsset(APIView):
             return HttpResponse(
                 json.dumps(aspects_of_asset.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
-
 
 
 class AssetsClientViewGetroot(APIView):

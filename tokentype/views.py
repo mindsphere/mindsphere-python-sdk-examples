@@ -1,11 +1,11 @@
-
 from rest_framework.views import APIView
 from rest_framework import status
 from django.http import HttpResponse
 from mindsphere_core import RestClientConfig, exceptions
-from mindsphere_core import RestClientConfig, exceptions, UserToken, TenantCredentials, AppCredentials, mindsphere_core, token_service, commonutil
+from mindsphere_core import RestClientConfig, exceptions, UserToken, AppCredentials, mindsphere_core, token_service, \
+    commonutil
 import os
-from sdk_util import PROXY_HOST,PROXY_PORT
+from sdk_util import PROXY_HOST, PROXY_PORT
 import sdk_util
 from app.settings import logger
 import jwt
@@ -19,8 +19,9 @@ class TokenTypeView(APIView):
         List all assets.
         """
         sdk_util.TOKEN_SELECTOR = (sdk_util.TOKEN_SELECTOR + 1) % len(sdk_util.TOKEN_CIRCULAR_GROUP)
-        return HttpResponse('Token type is switched to :'+sdk_util.TOKEN_CIRCULAR_GROUP[sdk_util.TOKEN_SELECTOR]+' Credentials',
-                            content_type='application/json', status=status.HTTP_200_OK)
+        return HttpResponse(
+            'Token type is switched to :' + sdk_util.TOKEN_CIRCULAR_GROUP[sdk_util.TOKEN_SELECTOR] + ' Credentials',
+            content_type='application/text', status=status.HTTP_200_OK)
 
 
 class TokenView(APIView):
@@ -38,7 +39,7 @@ class TokenView(APIView):
             credentials = AppCredentials()
         else:
             logger.error('To work with technical token,'
-                  ' application should receieve authorization header.')
+                         ' application should receieve authorization header.')
             raise exceptions.MindsphereError('To work with technical token,'
                                              ' application should receieve authorization header.')
         if sdk_util._is_locally_hosted(request):
@@ -47,18 +48,18 @@ class TokenView(APIView):
             config = RestClientConfig()
         try:
             token = token_service.fetch_token(config, credentials)
-            payload =  commonutil._decode_jwt(token)
+            payload = commonutil._decode_jwt(token)
             # payload = jwt.decode(token, "secret", verify=False, algorithms=["RS256"])
         except Exception as e:
-            return HttpResponse(token_type+"::"+str(e),
+            return HttpResponse(token_type + "::" + str(e),
                                 content_type='application/json', status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        return HttpResponse("Decoded "+token_type + "::" + "\n" + str(payload),
+        return HttpResponse("Decoded " + token_type + "::" + "\n" + str(payload),
                             content_type='application/json', status=status.HTTP_200_OK)
 
 
 class LogsView(APIView):
-    #authentication_classes = (SessionAuthentication, BasicAuthentication)
-    #permission_classes = (IsAuthenticated,)
+    # authentication_classes = (SessionAuthentication, BasicAuthentication)
+    # permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         print(request.user)
@@ -71,8 +72,8 @@ class LogsView(APIView):
 
 
 class LogsClearView(APIView):
-    #authentication_classes = (SessionAuthentication, BasicAuthentication)
-    #permission_classes = (IsAuthenticated,)
+    # authentication_classes = (SessionAuthentication, BasicAuthentication)
+    # permission_classes = (IsAuthenticated,)
 
     def get(self, request):
         if request.user.is_superuser:
