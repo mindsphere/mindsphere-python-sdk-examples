@@ -24,6 +24,16 @@ class TokenTypeView(APIView):
             content_type='application/text', status=status.HTTP_200_OK)
 
 
+class TenantTypeView(APIView):
+
+    def get(self, request):
+        """
+        List all assets.
+        """
+
+        return HttpResponse('cfbsppu', content_type='application/string', status=status.HTTP_200_OK)
+
+
 class TokenView(APIView):
 
     def get(self, request):

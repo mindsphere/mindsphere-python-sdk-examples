@@ -1,0 +1,135 @@
+<!-- HTML for static distribution bundle build -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Custom Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui.css" >
+    <link rel="icon" type="image/png" href="./swagger-favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./swagger-favicon-16x16.png" sizes="16x16" />
+    <style>
+      html
+      {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+      }
+
+      *,
+      *:before,
+      *:after
+      {
+        box-sizing: inherit;
+      }
+
+      body
+      {
+        margin:0;
+        background: #fafafa;
+      }
+
+      .top-nav-bar{
+        position: fixed;
+        top: 0;
+        z-index: 99;
+        width: 100%;
+        overflow: hidden;
+        background: #333;
+        padding: 15px;
+      }
+      .nav-bar-icon{
+        margin-top: 1px;
+        float: left;
+        display: block;
+        text-decoration: none;
+      }
+      .nav-bar-title{
+        float: left;
+        display: block;
+        text-decoration: none;
+        margin-top: 7px;
+        margin-left: 10px;
+        font-size: 18px;
+        color: #ffffff;
+        font-family: sans-serif;
+      }
+      .nav-bar-select{
+        width: 30%;
+        float: right;
+        font-family: sans-serif;
+        display: inline-block;
+        cursor: pointer;
+        padding: 10px 15px;
+        outline: 0;
+        border-radius: 2px;
+        border: none;
+        background: #fafafa;
+        color: #3b4151;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+      select.classic {
+        background-image: linear-gradient(45deg, transparent 50%, #111 50%), linear-gradient(135deg, #111 50%, transparent 50%);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), 100% 0;
+        background-size: 5px 5px, 5px 5px, 3.5em 3.5em;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+ <div id="_mdspcontent">
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <div style="margin-top: 100px" id="swagger-ui"></div>
+    <script src="https://static.eu1.mindsphere.io/osbar/v4/js/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui-bundle.js"> </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui-standalone-preset.js"> </script>
+    <script>
+      _mdsp.init({
+        title: "MindSphere OS Bar Demo",
+        appId: "_mdspcontent"
+      });
+      function changeSwaggerUI(){
+        let selected_service_swaggerURL = document.getElementById("service-selector").value;
+        loadUI(selected_service_swaggerURL);
+      }
+
+      function loadUI(swaggerJsonURL){
+        // Begin Swagger UI call region
+        const ui = SwaggerUIBundle({
+          url: swaggerJsonURL,
+          validatorUrl: "",
+          dom_id: '#swagger-ui',
+          deepLinking: true,
+          docExpansion: 'none',
+          presets: [
+            SwaggerUIBundle.presets.apis,
+            SwaggerUIStandalonePreset
+          ],
+          plugins: [
+            CustomTopbarPlugin
+          ],
+          layout: "StandaloneLayout"
+        });
+        // End Swagger UI call region
+
+        window.ui = ui
+      }
+
+      function CustomTopbarPlugin() {
+        // this plugin overrides the Topbar component to return nothing
+        return {
+          components: {
+            Topbar: () => null
+          }
+        }
+      }
+
+      window.onload = function() {
+        loadUI("./swagger.json");
+      }
+  </script>
+  </body>
+     </div>
+</html>
