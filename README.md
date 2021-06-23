@@ -212,11 +212,11 @@ Now concerned developer should be able to access the application via launchpad.
     <p>
     <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/swaggerui-changes/images/Accessapp.png" width="400">
     </p>    
-4. Clicked on any endpoint showing on above image you will showing like
+4. By clicking on any endpoint showing on above image you should see like :
     <p>
     <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/swaggerui-changes/images/putaspectcall.png" width="400">
     </p>
-5. By clicking 'try it out' button you can make api call by putting correct parameters and requestbody. then you will get response shwing like
+5. By clicking 'try it out' button you can make api call by putting correct parameters and requestbody. then you will get response like :
     <p>
     <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/swaggerui-changes/images/respnseapi.png" width="400">
     </p>    
@@ -225,15 +225,9 @@ Now concerned developer should be able to access the application via launchpad.
     <p>
     <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/master/images/appurl.PNG" width="400">
     </p>
-7. You can test endpoint by replacing 'http//127.0.0.1:8000' with appropriate values. For example topevents endpoint from EventAnalytics API is tested like this. :
-<p>
-<img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/master/images/eventeg.PNG" width="400">
-</p>
-
-
 
 ###### Note 
-> we required xsrf token for calling put,pots/patch,delete api.so we need need to pass it in request headrer, This token is available in browser cache, we have fetched this token from cache  and put in request header, so we dont need to add manuaaly this.  
+> we required xsrf token for calling put,pots/patch,delete api. so we need need to pass it in request header, This token is available in browser cache, we have fetched this token from cache and put it in request header, so we dont need to add this by manually.  
 
 
 
