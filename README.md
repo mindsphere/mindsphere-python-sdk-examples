@@ -227,7 +227,7 @@ Now concerned developer should be able to access the application via launchpad.
     </p>
 
 ###### Note 
-> we required xsrf token for calling put,pots/patch,delete api. so we need need to pass it in request header, This token is available in browser cache, we have fetched this token from cache and put it in request header, so we dont need to add this by manually.  
+> we required xsrf token for calling put,pots/patch,delete api. so we need to pass it in request header, This token is available in browser cache, we have fetched this token from cache and put it in request header, so we dont need to add this by manually.  
 
 
 
