@@ -210,7 +210,7 @@ Now concerned developer should be able to access the application via launchpad.
 2. Click on your application tile.
 3. You should see something like :
     <p>
-    <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/swaggerui-changes/images/Accessapp.png" width="400">
+    <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/swaggerui-changes/images/Homescreen1.png" width="400">
     </p>    
 4. By clicking on any endpoint showing on above image you should see like :
     <p>
