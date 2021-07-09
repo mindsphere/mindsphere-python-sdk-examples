@@ -28,11 +28,15 @@ Application Credentials
 |6 | MDSP_USER_TENANT | Store the name of the tenant from which application is being accessed in environment variable named `MDSP_USER_TENANT`. |
 |7 | HOST_ENVIRONMENT | Store the region in environment variable named `HOST_ENVIRONMENT`. If not specified, HOST_ENVIRONMENT defaults to `eu1` in region Europe 1 SDK and to `cn1` in region China 1 SDK.
 
-
 - Above credentials ( App Credentials ) will suffice to use SDKs.
 - For more information about credentials please visit [Token Handling](https://developer.mindsphere.io/resources/mindsphere-sdk-java-v2/token_handling_v2.html)
 ###### Note 
 > App Credentials and Application Credentials refers to same concept. These terms might be used interchangeably in the document.
+
+###### Note 
+> From SP98 release, Tenant Credential support is removed from python SDKs. Older versions with tenant credential support are still available on [Siemens Industry Online Support (SIOS) Portal](https://support.industry.siemens.com/cs/document/109757603/mindsphere-sdk-for-java-and-node-js?dti=0&lc=en-US). This application uses latest library for mindsphere-core library with version 1.0.3. Using older version of mindsphere-core library will lead to breaking behaviour of application. Hence we strongly recommend you to use latest version for smooth experience.
+
+
 
 
 ##### env:
@@ -62,9 +66,11 @@ git clone https://github.com/mindsphere/mindsphere-python-sdk-examples.git
 - Download Python SDK from  [Download](#2---download).
 - Unzip the downloaded file.
 - Navigate to <some path where unzipped folder is located>/mindsphere-python-sdk_1.0.3/modules/
-- Copy .whl files of required dependent service/services in 'requirements' folder. (For this project(mindsphere-sdk-python-examples) we will need all the .whl files but you can choose to use only required subset of all avaiable SDKs for your project.)
-- `requirements` folder is already created for your convinience.
-- For convinience, requirements.txt is populated with relative path to copied dependencies.
+- Copy .whl files of required dependent service/services in 'requirements' folder. (For this project(mindsphere-sdk-python-examples) we will need all the .whl files but you can choose to use only required subset of all available SDKs for your project.)
+- Kindly note that Tenant Credential Support is removed from python SDKs from SP98 release. Hence we strongly recommend using
+  latest version(1.0.3) of mindsphere-core library.
+- `requirements` folder is already created for your convenience.
+- For convenience, requirements.txt is populated with relative path to copied dependencies.
 
 ###### Note 
 > There are two versions availalable for timeseries (3.3.2 and 3.4.1). Any of this two versions is suitable for `mindsphere-sdk-python-examples`. Make sure correct version is mentioned in requirements.txt before `pip install`.
@@ -216,7 +222,7 @@ Now concerned developer should be able to access the application via launchpad.
     <p>
     <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/swaggerui-changes/images/putaspectcall.png" width="400">
     </p>
-5. By clicking 'try it out' button you can make api call by putting correct parameters and requestbody. then you will get response like :
+5. By clicking 'Try it out' button you can make API call by putting correct parameters and request body. You will get response like :
     <p>
     <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/swaggerui-changes/images/respnseapi.png" width="400">
     </p>    
@@ -226,8 +232,25 @@ Now concerned developer should be able to access the application via launchpad.
     <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/master/images/appurl.PNG" width="400">
     </p>
 
+#### Create an asset via application.
+1. For creating an asset we will first create aspect type. From created aspect type we create Asset type. Next we finally create an asset based on created Asset type.
+2. First hit the endpoint PUT /assets/putaspect/{id}/{ifmatch}.
+3.  If call is succesful, note down aspect id and aspect name from the response.
+4. Next, hit PUT /assets/putaassettype /{id}/{ifmatch}. Pass noted aspect id and aspect name value in payload for creating asset type. 
+5. If call is succesful, note down id from the response.
+6. Next hit GET /assets/root to get root asset of the tenant. Note down id of an asset from the response.
+7. Finally we will now create an asset. Pass id from step 5 and parent id from step 6 in the payload for creating an asset.
+8. If asset creation is successful, you should see created asset in the call GET /assets/assets.
+9. All the created resources (aspect type, asset type and asset) are visible on Asset Manager application on MindSphere Launchpad.
+
+
+
 ###### Note 
-> we required xsrf token for calling put,pots/patch,delete api. so we need to pass it in request header, This token is available in browser cache, we have fetched this token from cache and put it in request header, so we dont need to add this by manually.  
+> Sample payload for endpoint is provided whenever required. For more information about payload, please refer `<service-name>/sampleinput` file. Fields in the payload can be deleted as long as all mandatory fields are passed.
+> For SP98 release, swagger endpoints are provided for asset management, timeseries and event analytics service only. For other services, endpoints can be tried via entering url in browswer.
+
+###### Note 
+> We require XSRF token for calling PUT, POST/PATCH, DELETE APIs (For GET endpoints, XSRF_TOKEN is not compulsory). The value of XSRF token can be passed in request header. This token is available in cookies by name `XSRF-TOKEN`. We have fetched this token from cache in the application and put it in request header.  
 
 
 
@@ -247,14 +270,14 @@ git clone https://github.com/mindsphere/mindsphere-python-sdk-examples.git
 - Download Python SDK from  [Download](#2---download).
 - Unzip the downloaded file.
 - Navigate to <some path where unzipped folder is located>/mindsphere-python-sdk_1.0.3/modules/
-- Copy .whl files of required dependent service/services in 'requirements' folder. (For this project(mindsphere-sdk-python-examples) we will need all the .whl files but you can choose to use only required subset of all avaiable SDKs for your project.)
-- `requirements` folder is already created for your convinience.
-- For convinience, requirements.txt is populated with relative path to copied dependencies.
+- Copy .whl files of required dependent service/services in 'requirements' folder. (For this project(mindsphere-sdk-python-examples) we will need all the .whl files but you can choose to use only required subset of all available SDKs for your project.)
+- `requirements` folder is already created for your convenience.
+- For convenience, requirements.txt is populated with relative path to copied dependencies.
 - Navigate inside the root directory of project if you are not in there.
 ```
 cd mindsphere-python-sdk-examples
 ```
-- Run below command to install required dependecies mentioned in requirements.txt file.
+- Run below command to install required dependencies mentioned in requirements.txt file.
 ```
 pip install -r requirements.txt
 ```
@@ -267,11 +290,15 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 ##### 4. Access the app.
-1. Navigate to 'http://127.0.0.1:8000' (You can use any browswer of your choice).
+1. Navigate to 'http://127.0.0.1:8000' (You can use any browser of your choice).
 2. Domain URL in this case will be 'http://127.0.0.1:8000'.
 <p>
 <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/swaggerui-changes/images/Homescreen.png" width="400">
 </p>
+
+###### Note 
+> Sample payload for endpoint is provided whenever required. For more information about payload, please refer `<service-name>/sampleinput` file.
+> For SP98 release, swagger endpoints are provided for asset management, timeseries and event analytics service only. For other services, endpoints can be tried via entering url in browser.
 
 
 ## 4 - Prepare the app to hand it over to Operator Cockpit

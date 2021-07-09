@@ -1,3 +1,4 @@
+from django.views.decorators.cache import never_cache
 from rest_framework.views import APIView
 from rest_framework import status
 from django.http import HttpResponse
@@ -99,6 +100,7 @@ class LogsClearView(APIView):
 
 class IndexView(APIView):
 
+    @never_cache
     def get(self, request):
         template_name = 'test_urls.html'
         return render(request, template_name)

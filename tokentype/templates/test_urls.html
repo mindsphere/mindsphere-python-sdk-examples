@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Swagger UI</title>
+    <title>MindSphere</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700"
           rel="stylesheet">
     <link rel="stylesheet" type="text/css"
@@ -81,7 +81,7 @@
                 "openapi": "3.0.0",
                 "info": {
                     "title": "Welcome to Mindsphere SDK Examples",
-                    "description": "As you have landed on this page means-\n\n* You have successfully built and run the Python SDK Example application.\n\n* As the application is up & running you can now execute below operations, provided that you have correct environment variables configured.\n\n* We would recommend to go sequentially from top to down with below operations as few operations are dependent on other operations above.\n\n    eg. GET endpoints need POST\/PUT endpoints to be executed before. Else they may return blank response\n\n* To create Asset, Aspect and Assettype must be present in the system i.e putaspect-->puassetType-->rootasset-->postasset\n\n* To create timeseries we must have entityID and propertysetname, for that we crate Asset first to get those values."
+                    "description": "As you have landed on this page means-\n\n* You have successfully built and run the Python SDK Example application.\n\n* As the application is up & running you can now execute below operations, provided that you have correct environment variables configured.\n\n* We would recommend to go sequentially from top to down with below operations as few operations are dependent on other operations above.\n\n    eg. GET endpoints need POST\/PUT endpoints to be executed before. Else they may return blank response\n\n* To create an asset, aspecttype and assettype must be present in the system i.e putaspect-->putassetType-->rootasset-->postasset.\n\n* To create timeseries we must have entityID and propertysetname, for that we create an asset first to get those values."
                 },
                 "servers": [{"url": url}],
                 "paths": {
