@@ -34,7 +34,7 @@ Application Credentials
 > App Credentials and Application Credentials refers to same concept. These terms might be used interchangeably in the document.
 
 ###### Note 
-> From SP98 release, Tenant Credential support is removed from python SDKs. Older versions with tenant credential support are still available on [Siemens Industry Online Support (SIOS) Portal](https://support.industry.siemens.com/cs/document/109757603/mindsphere-sdk-for-java-and-node-js?dti=0&lc=en-US). This application uses latest library for mindsphere-core library with version 1.0.3. Using older version of mindsphere-core library will lead to breaking behaviour of application. Hence we strongly recommend you to use latest version for smooth experience.
+> From now, Tenant Credential support is removed from Python SDKs. Older versions with tenant credential support are still available on [Siemens Industry Online Support (SIOS) Portal](https://support.industry.siemens.com/cs/document/109757603/mindsphere-sdk-for-java-and-node-js?dti=0&lc=en-US). This application uses latest library for mindsphere-core library with version 1.0.3. Using older version of mindsphere-core library will lead to breaking behaviour of application. Hence we strongly recommend you to use latest version for smooth experience.
 
 
 
@@ -67,7 +67,7 @@ git clone https://github.com/mindsphere/mindsphere-python-sdk-examples.git
 - Unzip the downloaded file.
 - Navigate to <some path where unzipped folder is located>/mindsphere-python-sdk_1.0.3/modules/
 - Copy .whl files of required dependent service/services in 'requirements' folder. (For this project(mindsphere-sdk-python-examples) we will need all the .whl files but you can choose to use only required subset of all available SDKs for your project.)
-- Kindly note that Tenant Credential Support is removed from python SDKs from SP98 release. Hence we strongly recommend using
+- Kindly note that Tenant Credential Support is removed from python SDKs from now. Hence we strongly recommend using
   latest version(1.0.3) of mindsphere-core library.
 - `requirements` folder is already created for your convenience.
 - For convenience, requirements.txt is populated with relative path to copied dependencies.
@@ -247,7 +247,8 @@ Now concerned developer should be able to access the application via launchpad.
 
 ###### Note 
 > Sample payload for endpoint is provided whenever required. For more information about payload, please refer `<service-name>/sampleinput` file. Fields in the payload can be deleted as long as all mandatory fields are passed.
-> For SP98 release, swagger endpoints are provided for asset management, timeseries and event analytics service only. For other services, endpoints can be tried via entering url in browswer.
+> For now, swagger endpoints are provided for **asset management, timeseries and event analytics** service only. 
+> For other services, endpoints can be tried via entering url in browswer.
 
 ###### Note 
 > We require XSRF token for calling PUT, POST/PATCH, DELETE APIs (For GET endpoints, XSRF_TOKEN is not compulsory). The value of XSRF token can be passed in request header. This token is available in cookies by name `XSRF-TOKEN`. We have fetched this token from cache in the application and put it in request header.  
@@ -298,7 +299,7 @@ python manage.py runserver
 
 ###### Note 
 > Sample payload for endpoint is provided whenever required. For more information about payload, please refer `<service-name>/sampleinput` file.
-> For SP98 release, swagger endpoints are provided for asset management, timeseries and event analytics service only. For other services, endpoints can be tried via entering url in browser.
+> For now, swagger endpoints are provided for **asset management, timeseries and event analytics** service only. For other services, endpoints can be tried via entering url in browser.
 
 
 ## 4 - Prepare the app to hand it over to Operator Cockpit

@@ -31,8 +31,8 @@ class TenantTypeView(APIView):
         """
         List all assets.
         """
-
-        return HttpResponse('cfbsppu', content_type='application/string', status=status.HTTP_200_OK)
+        
+        return HttpResponse(os.environ['MDSP_USER_TENANT'], content_type='application/string', status=status.HTTP_200_OK)
 
 
 class TokenView(APIView):
