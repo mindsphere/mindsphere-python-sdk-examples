@@ -1,4 +1,4 @@
-from mindsphere_core import RestClientConfig, exceptions, UserToken, TenantCredentials, AppCredentials
+from mindsphere_core import RestClientConfig, exceptions, UserToken, AppCredentials
 from assetmanagement.clients import AspecttypeClient,AssetsClient,AssettypeClient, LocationsClient,FilesClient
 from assetmanagement.clients import StructureClient
 from iotfileservices.clients import FileServiceClient
@@ -12,7 +12,7 @@ import os
 
 PROXY_HOST = "194.138.0.25"
 PROXY_PORT = "9400"
-TOKEN_CIRCULAR_GROUP = ['TENANT', 'USER', 'APP']
+TOKEN_CIRCULAR_GROUP = ['APP', 'USER']
 TOKEN_SELECTOR = 0
 
 
@@ -29,11 +29,6 @@ def build_sdk_client(class_name, request):
             credentials = UserToken(authorization=str(request.META.get('HTTP_AUTHORIZATION'))[7::])
             logger.info('Using User Token for ' + request.get_full_path())
     elif TOKEN_CIRCULAR_GROUP[TOKEN_SELECTOR] == TOKEN_CIRCULAR_GROUP[0]:
-        logger.info('Using Technical Token for ' + request.get_full_path())
-        if 'MINDSPHERE_CLIENT_ID' in os.environ:
-            var_value = os.environ['MINDSPHERE_CLIENT_ID']
-            credentials = TenantCredentials(client_id=var_value)
-    elif TOKEN_CIRCULAR_GROUP[TOKEN_SELECTOR] == TOKEN_CIRCULAR_GROUP[2]:
         credentials = AppCredentials()
     else:
         logger.error('Unpredicted use case, used token type not available', request.get_full_path())

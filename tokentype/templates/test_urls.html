@@ -1,134 +1,2279 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title>test_urls.html</title><style></style></head><body id="preview">
-<h2 class="code-line" data-line-start=0 data-line-end=1 ><a id="TOKEN_URLS_0"></a>TOKEN URLS</h2>
-<h4 class="code-line" data-line-start=2 data-line-end=3 ><a id="1Switch_token_type_from_User_token_to_Technical_token_and_vice_versa_2"></a>1-Switch token type from User token to Technical token and vice versa.</h4>
-<p class="has-line-data" data-line-start="4" data-line-end="5">This end point will display after switching what is the current token type. All the subsequent api calls will use this new changed token type. If You want to make api call with other token type, then hit this end point again. <a href="http://127.0.0.1:8000/tokenType/toggle">http://127.0.0.1:8000/tokenType/toggle</a></p>
-<h4 class="code-line" data-line-start=6 data-line-end=7 ><a id="2Current_token_6"></a>2-Current token.</h4>
-<p class="has-line-data" data-line-start="8" data-line-end="9">You need to login to access the token. You can use this to view the current token.&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="10" data-line-end="11"><a href="http://127.0.0.1:8000/token">http://127.0.0.1:8000/token</a></p>
-<h4 class="code-line" data-line-start=12 data-line-end=13 ><a id="3Check_the_logs_You_need_to_login_to_access_the_token_12"></a>3-Check the logs You need to login to access the token.</h4>
-<p class="has-line-data" data-line-start="14" data-line-end="15"><a href="http://127.0.0.1:8000/logs">http://127.0.0.1:8000/logs</a>&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="16" data-line-end="17"><a href="http://127.0.0.1:8000/logs/?lines=100">http://127.0.0.1:8000/logs/?lines=100</a></p>
-<h4 class="code-line" data-line-start=18 data-line-end=19 ><a id="4Clear_the_logs_18"></a>4-Clear the logs</h4>
-<p class="has-line-data" data-line-start="20" data-line-end="21">You need to have super user access</p>
-<p class="has-line-data" data-line-start="22" data-line-end="23"><a href="http://127.0.0.1:8000/cls">http://127.0.0.1:8000/cls</a></p>
-<h2 class="code-line" data-line-start=24 data-line-end=25 ><a id="ASSET_MANAGEMENT_URLS_24"></a>ASSET MANAGEMENT URLS</h2>
-<h4 class="code-line" data-line-start=26 data-line-end=27 ><a id="1_Create_aspect_type_26"></a>1. Create aspect type</h4>
-<p class="has-line-data" data-line-start="28" data-line-end="29">input-Your tenant name <a href="http://127.0.0.1:8000/aspects?tenantName=%7Btenant">http://127.0.0.1:8000/aspects?tenantName={tenant}</a>&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="30" data-line-end="31">save “id” and “name” from the response</p>
-<h4 class="code-line" data-line-start=32 data-line-end=33 ><a id="2Create_asset_type_32"></a>2.Create asset type</h4>
-<p class="has-line-data" data-line-start="34" data-line-end="35">input:Your tenant name, name From step1 response, id From step1 response&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="36" data-line-end="37"><a href="http://127.0.0.1:8000/assets/assettype/%7BYour_tenant%7D?aspectname=%7BnameFromstep1response%7D&amp;aspectid=%7BidFromstep1response%7D">http://127.0.0.1:8000/assets/assettype/{Your_tenant}?aspectname={nameFromstep1response}&amp;aspectid={idFromstep1response}</a>&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="38" data-line-end="39">save “id” from response</p>
-<h4 class="code-line" data-line-start=40 data-line-end=41 ><a id="3Create_asset_40"></a>3.Create asset</h4>
-<p class="has-line-data" data-line-start="42" data-line-end="43">input:“id” from step 2 response&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="44" data-line-end="45"><a href="http://127.0.0.1:8000/assets/assets/%7BidFromStep2%7D?parentid=%7Bparentid%7D">http://127.0.0.1:8000/assets/assets/{idFromStep2}?parentid={parentid}</a>&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="46" data-line-end="47">save “etag” and “asset_id” from response</p>
-<h4 class="code-line" data-line-start=48 data-line-end=49 ><a id="4Create_a_file_48"></a>4.Create a file</h4>
-<p class="has-line-data" data-line-start="50" data-line-end="51">input: Not reqd <a href="http://127.0.0.1:8000/assets/assetfiles">http://127.0.0.1:8000/assets/assetfiles</a>&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="52" data-line-end="53">save “id” from response</p>
-<h4 class="code-line" data-line-start=54 data-line-end=55 ><a id="5Associate_the_file_with_created_asset_54"></a>5.Associate the file with created asset</h4>
-<p class="has-line-data" data-line-start="56" data-line-end="57">input:asset id from step3,etag from step3, any value for key,fileid from step 4&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="58" data-line-end="59"><a href="http://127.0.0.1:8000/assets/assetfiles/%7Basset_id%7D?ifmatch=%7Betag%7D&amp;key=%7Bany_string%7D&amp;fileid=%7Bfileid%7D">http://127.0.0.1:8000/assets/assetfiles/{asset_id}?ifmatch={etag}&amp;key={any_string}&amp;fileid={fileid}</a>&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="60" data-line-end="61">save “etag” from response</p>
-<h4 class="code-line" data-line-start=62 data-line-end=63 ><a id="6Add_location_to_asset_62"></a>6.Add location to asset</h4>
-<p class="has-line-data" data-line-start="64" data-line-end="65">input-asset id from step 3, asset etag from step 5&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="66" data-line-end="67"><a href="http://127.0.0.1:8000/assets/assetlocation/%7Basset_id%7D/%7Basset_etag%7D">http://127.0.0.1:8000/assets/assetlocation/{asset_id}/{asset_etag}</a></p>
-<h4 class="code-line" data-line-start=68 data-line-end=69 ><a id="7Get_asset_by_ID_68"></a>7.Get asset by ID</h4>
-<p class="has-line-data" data-line-start="70" data-line-end="71">input-asset id from step 3 response&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="72" data-line-end="73"><a href="http://127.0.0.1:8000/assets/assetsget/%7BidFromStep3%7D">http://127.0.0.1:8000/assets/assetsget/{idFromStep3}</a>&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="74" data-line-end="75">save “etag” Ensure the response has “file_assignments” and “location” populated</p>
-<h4 class="code-line" data-line-start=76 data-line-end=77 ><a id="8Delete_asset_by_id_76"></a>8.Delete asset by id</h4>
-<p class="has-line-data" data-line-start="78" data-line-end="79">input-asset id from step 3 response, asset etag from step 7&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="80" data-line-end="81"><a href="http://127.0.0.1:8000/assets/assetsdelete/%7BidFromStep3%7D?ifmatch=%7Betag%7D">http://127.0.0.1:8000/assets/assetsdelete/{idFromStep3}?ifmatch={etag}</a></p>
-<h4 class="code-line" data-line-start=82 data-line-end=83 ><a id="9List_all_assets_82"></a>9.List all assets</h4>
-<p class="has-line-data" data-line-start="84" data-line-end="85">input-not required&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="86" data-line-end="87"><a href="http://127.0.0.1:8000/assets/assets">http://127.0.0.1:8000/assets/assets</a></p>
-<h4 class="code-line" data-line-start=88 data-line-end=89 ><a id="10_delete_asset_with_confirmation_88"></a>10. delete asset with confirmation</h4>
-<p class="has-line-data" data-line-start="90" data-line-end="91">input        : id and ifmatch</p>
-<p class="has-line-data" data-line-start="92" data-line-end="93">description  :  checking of asset deleted with confirmation.</p>
-<p class="has-line-data" data-line-start="94" data-line-end="95">urls :       : <a href="http://127.0.0.1:8000/assetsdeletewithconfirmation/%7Bassetid%7D/%7Bifmatch%7D">http://127.0.0.1:8000/assetsdeletewithconfirmation/{assetid}/{ifmatch}</a></p>
-<h4 class="code-line" data-line-start=96 data-line-end=97 ><a id="11_Aspect_type_filter_name_96"></a>11. Aspect type filter name</h4>
-<p class="has-line-data" data-line-start="98" data-line-end="99">input       : filterValue</p>
-<p class="has-line-data" data-line-start="100" data-line-end="101">description : Value based on which aspect types need to be filtered.</p>
-<p class="has-line-data" data-line-start="102" data-line-end="103">urls :       : <a href="http://127.0.0.1:8000/filteraspecttypename?filterValue=%7BfilterValue%7D">http://127.0.0.1:8000/filteraspecttypename?filterValue={filterValue}</a></p>
-<h4 class="code-line" data-line-start=104 data-line-end=105 ><a id="12_Aspect_type_filter_like_104"></a>12. Aspect type filter like</h4>
-<p class="has-line-data" data-line-start="106" data-line-end="107">input       : filterValue</p>
-<p class="has-line-data" data-line-start="108" data-line-end="109">description : Value based on which aspect types need to be filtered.</p>
-<p class="has-line-data" data-line-start="110" data-line-end="111">urls :       : <a href="http://127.0.0.1:8000/filteraspecttypelike?filterValue=engine&amp;filterValue=%7BfilterValue%7D">http://127.0.0.1:8000/filteraspecttypelike?filterValue=engine&amp;filterValue={filterValue}</a></p>
-<h4 class="code-line" data-line-start=112 data-line-end=113 ><a id="12_Assets_filter_starts_with_112"></a>12. Assets filter starts with</h4>
-<p class="has-line-data" data-line-start="114" data-line-end="115">input       : filterValue</p>
-<p class="has-line-data" data-line-start="116" data-line-end="117">description : Value based on which aspect types need to be filtered.</p>
-<p class="has-line-data" data-line-start="118" data-line-end="119">urls :       : <a href="http://127.0.0.1:8000/filterassetsstartwith?filterValue=%7BfilterValue%7D">http://127.0.0.1:8000/filterassetsstartwith?filterValue={filterValue}</a></p>
-<h4 class="code-line" data-line-start=120 data-line-end=121 ><a id="13_Assets_filter_of_type_120"></a>13. Assets filter of type</h4>
-<p class="has-line-data" data-line-start="122" data-line-end="123">input       : filterValue</p>
-<p class="has-line-data" data-line-start="124" data-line-end="125">description : filter assets of a particular asset type.</p>
-<p class="has-line-data" data-line-start="126" data-line-end="127">urls :       : <a href="http://127.0.0.1:8000/filterassetsoftype?filterValue=%7BfilterValue%7D">http://127.0.0.1:8000/filterassetsoftype?filterValue={filterValue}</a></p>
-<h4 class="code-line" data-line-start=128 data-line-end=129 ><a id="14_Asset_types_filter_ends_with_128"></a>14. Asset types filter ends with</h4>
-<p class="has-line-data" data-line-start="130" data-line-end="131">input       : filterValue</p>
-<p class="has-line-data" data-line-start="132" data-line-end="133">description : filter assets of a particular asset type.</p>
-<p class="has-line-data" data-line-start="134" data-line-end="135">urls :       : <a href="http://127.0.0.1:8000/filterassettypeendwith?filterValue=%7BfilterValue%7D">http://127.0.0.1:8000/filterassettypeendwith?filterValue={filterValue}</a></p>
-<h4 class="code-line" data-line-start=136 data-line-end=137 ><a id="15_Asset_types_filter_contains_with_136"></a>15. Asset types filter contains with</h4>
-<p class="has-line-data" data-line-start="138" data-line-end="139">input       : filterValue</p>
-<p class="has-line-data" data-line-start="140" data-line-end="141">description : Value based on which asset types need to be filtered.</p>
-<p class="has-line-data" data-line-start="142" data-line-end="143">urls :       : <a href="http://127.0.0.1:8000/filterassettypecontains?filterValue=%7BfilterValue%7D">http://127.0.0.1:8000/filterassettypecontains?filterValue={filterValue}}</a></p>
-<h2 class="code-line" data-line-start=144 data-line-end=145 ><a id="IOT_FILESERVICE_URLS_144"></a>IOT FILESERVICE URLS</h2>
-<h4 class="code-line" data-line-start=146 data-line-end=147 ><a id="1_create_file_146"></a>1. create file</h4>
-<p class="has-line-data" data-line-start="148" data-line-end="149">input        :  path param (entity)&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="150" data-line-end="151">description  :  Create file&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="152" data-line-end="153">urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicecreate/%3Cstr:entity_id%3E">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicecreate/&lt;str:entity_id&gt;</a>&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="154" data-line-end="155">save         : “file_path”</p>
-<h4 class="code-line" data-line-start=156 data-line-end=157 ><a id="1_update_file_156"></a>1. update file</h4>
-<p class="has-line-data" data-line-start="158" data-line-end="159">input        :  path param (entity) , (file_path) and (if_match)&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="160" data-line-end="161">description  :  update file&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="162" data-line-end="163">urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileserviceupdate/%7Bentity_id%7D/%7Bfile_path%7D?if_match=%7Bif_match_value%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileserviceupdate/{entity_id}/{file_path}?if_match={if_match_value}</a>&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="164" data-line-end="165">save         : “file_path”</p>
-<h4 class="code-line" data-line-start=166 data-line-end=167 ><a id="2_search_file_166"></a>2. search file</h4>
-<p class="has-line-data" data-line-start="168" data-line-end="169">input        :  path param (entity)&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="170" data-line-end="171">description  :  search file&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="172" data-line-end="173">urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicesearch/%3Cstr:entity_id%3E">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicesearch/&lt;str:entity_id&gt;</a>&lt;br&gt;</p>
-<h4 class="code-line" data-line-start=174 data-line-end=175 ><a id="3_get_file_174"></a>3. get file</h4>
-<p class="has-line-data" data-line-start="176" data-line-end="177">input        :  entity id , path param (entity)&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="178" data-line-end="179">description  :  get file&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="180" data-line-end="181">urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicegetfile/%3Cstr:entity_id%3E/%3Cstr:path%3E">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicegetfile/&lt;str:entity_id&gt;/&lt;str:path&gt;</a>&lt;br&gt;</p>
-<h4 class="code-line" data-line-start=182 data-line-end=183 ><a id="4_create_multi_part_file_182"></a>4. create multi part file</h4>
-<p class="has-line-data" data-line-start="184" data-line-end="185">input        :  path param (entity)&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="186" data-line-end="187">description  :  Create a multi part file&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="188" data-line-end="189">urls         : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicecreatemultipart/%3Cstr:entity_id%3E/%3Cstr:path%3E">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/files/fileservicecreatemultipart/&lt;str:entity_id&gt;/&lt;str:path&gt;</a>&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="190" data-line-end="191">save         : “file_path”</p>
-<h2 class="code-line" data-line-start=192 data-line-end=193 ><a id="EVENT_ANALYTICS_URLS_192"></a>EVENT ANALYTICS URLS</h2>
-<h4 class="code-line" data-line-start=194 data-line-end=195 ><a id="1_top_events_194"></a>1. top events</h4>
-<p class="has-line-data" data-line-start="196" data-line-end="197">input       : not required&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="198" data-line-end="199">description :  listing the topest events&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="200" data-line-end="201">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/topevents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/topevents</a></p>
-<h4 class="code-line" data-line-start=202 data-line-end=203 ><a id="2_count_events_202"></a>2. count events</h4>
-<p class="has-line-data" data-line-start="204" data-line-end="205">input       : not required&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="206" data-line-end="207">description : list the count of events&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="208" data-line-end="209">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/countEvents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/countEvents</a></p>
-<h4 class="code-line" data-line-start=210 data-line-end=211 ><a id="3_filter_events_210"></a>3. filter events</h4>
-<p class="has-line-data" data-line-start="212" data-line-end="213">input       : not required&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="214" data-line-end="215">description : filtering the events&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="216" data-line-end="217">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/filterEvents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/filterEvents</a></p>
-<h4 class="code-line" data-line-start=218 data-line-end=219 ><a id="4_remove_duplicates_218"></a>4. remove duplicates</h4>
-<p class="has-line-data" data-line-start="220" data-line-end="221">input       : not required&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="222" data-line-end="223">description : removeing duplicates from events&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="224" data-line-end="225">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/removeDuplicateEvents">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/removeDuplicateEvents</a></p>
-<h4 class="code-line" data-line-start=226 data-line-end=227 ><a id="5_pattern_matching_226"></a>5. pattern matching</h4>
-<p class="has-line-data" data-line-start="228" data-line-end="229">input       : not required&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="230" data-line-end="231">description : matching the event in pattern&lt;br&gt;</p>
-<p class="has-line-data" data-line-start="232" data-line-end="233">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/matchEventPattern">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/eventAnalytics/matchEventPattern</a></p>
-<h2 class="code-line" data-line-start=234 data-line-end=235 ><a id="Timeseries_234"></a>Timeseries</h2>
-<h4 class="code-line" data-line-start=236 data-line-end=237 ><a id="1_create_timeseries_236"></a>1. create timeseries:</h4>
-<p class="has-line-data" data-line-start="238" data-line-end="239">input       : not required</p>
-<p class="has-line-data" data-line-start="240" data-line-end="241">description : create timeseries with interval of 1 mintue</p>
-<p class="has-line-data" data-line-start="242" data-line-end="243">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/timeSeries/create/%7Bentityid%7D/%7Bpropertyname%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/timeSeries/create/{entityid}/{propertyname}</a></p>
-<p class="has-line-data" data-line-start="244" data-line-end="245">save        : timeseries</p>
-<h4 class="code-line" data-line-start=246 data-line-end=247 ><a id="2_delete_timeseries_246"></a>2. delete timeseries:</h4>
-<p class="has-line-data" data-line-start="248" data-line-end="249">input       : from and to required parameter</p>
-<p class="has-line-data" data-line-start="250" data-line-end="251">description : delete timeseries</p>
-<p class="has-line-data" data-line-start="252" data-line-end="253">urls        : <a href="https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/timeSeries/delete/%7Bentityid%7D/%7Bpropertyname%7D?from=%7Bfrom%7D/to=%7Bto%7D">https://mdspsdk-pythone2e-mdspsdk.eu1-int.mindsphere.io/timeSeries/delete/{entityid}/{propertyname}?from={from}/to={to}</a></p>
-<h2 class="code-line" data-line-start=254 data-line-end=255 ><a id="Aggregates_254"></a>Aggregates</h2>
-<p class="has-line-data" data-line-start="256" data-line-end="257">input       : entity id , propertyname , from{2018-01-24T05:03:41Z}, to {2018-01-24T05:10:41Z}, interval value {60}, intervel unit {second} and select{RRWheel}</p>
-<p class="has-line-data" data-line-start="258" data-line-end="259">description : which aggregates the timeseries data and give the response</p>
-<p class="has-line-data" data-line-start="260" data-line-end="261">urls        : <a href="http://127.0.0.1:8000/timeseriesaggregate/get/%7Bentityid%7D/%7Bpropertyset%7D/?from=%7Bfrom%7D&amp;to=%7Bto%7D&amp;intervalValue=%7BintervalValue%7D&amp;intervalUnit=%7Bintervalunit%7D&amp;select=%7Bselect%7D">http://127.0.0.1:8000/timeseriesaggregate/get/{entityid}/{propertyset}/?from={from}&amp;to={to}&amp;intervalValue={intervalValue}&amp;intervalUnit={intervalunit}&amp;select={select}</a></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MindSphere</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui.css">
+    <link rel="stylesheet" type="text/css" href="/swagger-ui/SwaggerHeader.css">
+    <style>
+        html {
+            box-sizing: border-box;
+            overflow: -moz-scrollbars-vertical;
+            overflow-y: scroll;
+        }
 
-</body></html>
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+            margin: 0;
+            background: #fafafa;
+        }
+    </style>
+</head>
+<div id="_mdspcontent">
+    <body>
+
+
+    <div class="top-nav-bar" id="swagger-ui">
+    </div>
+
+
+    <!-- Main app markup goes here -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="https://static.eu1.mindsphere.io/osbar/v4/js/main.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui-bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.24.2/swagger-ui-standalone-preset.js"></script>
+    <script language="Javascript" type="text/javascript">
+        _mdsp.init({
+            title: "MindSphere",
+            appId: "_mdspcontent"
+        });
+        window.onload = function () {
+
+            var tenantName = function () {
+                var tmp = null;
+                $.ajax({
+                    'async': false,
+                    'type': "GET",
+                    'url': "tenanttype/gettenant",
+                    'success': function (data) {
+                        tmp = data;
+                    }
+                });
+                return tmp;
+            }();
+            var randomId =  Math.floor(Math.random() * 40);
+            var url = window.location.href
+            var allcookies = document.cookie;
+
+
+// Get all the cookies pairs in an array
+            cookiearray = allcookies.split(';');
+// Now take key value pair out of this array
+            var xsrfToken = "";
+            for (var i = 0; i < cookiearray.length; i++) {
+                name = cookiearray[i].split('=')[0];
+                value = cookiearray[i].split('=')[1];
+                if (name == 'XSRF-TOKEN') {
+                    break;
+                }
+
+            }
+            xsrfToken += value;
+            var spec = {
+                "openapi": "3.0.0",
+                "info": {
+                    "title": "Welcome to Mindsphere SDK Examples",
+                    "description": "As you have landed on this page means-\n\n* You have successfully built and run the Python SDK Example application.\n\n* As the application is up & running you can now execute below operations, provided that you have correct environment variables configured.\n\n* We would recommend to go sequentially from top to down with below operations as few operations are dependent on other operations above.\n\n    eg. GET endpoints need POST\/PUT endpoints to be executed before. Else they may return blank response\n\n* To create an asset, aspecttype and assettype must be present in the system i.e putaspect-->putassetType-->rootasset-->postasset.\n\n* To create timeseries we must have entityID and propertysetname, for that we create an asset first to get those values."
+                },
+                "servers": [{"url": url}],
+                "paths": {
+                    "\/assets\/putaspect\/{id}\/{ifmatch}": {
+                        "put": {
+                            "tags": ["Asset-management"],
+                            "summary": "Create an aspect",
+                            "parameters": [{
+                                "in": "path",
+                                "name": "id",
+                                "description": "The type's id is a unique identifier. The id's length must be between 1 and 128 characters and matches the following symbols \"A-Z\", \"a-z\", \"0-9\", \"_\" and \".\" beginning with the tenant prefix what has a maximum of 8 characters. (e.g . ten_pref.type_id)",
+                                "schema": {"type": "string", "default": tenantName+".aspect"+randomId},
+                                "required": true
+                            }, {
+                                "in": "path",
+                                "name": "ifmatch",
+                                "schema": {"type": "integer", "default": "0"},
+                                "required": true,
+                                "description": "Last known version to facilitate optimistic locking"
+                            }],
+                            "operationId": "saveAspectType",
+                            "description": "Create or Update an aspect type. Only adding variables supported.",
+                            "requestBody": {
+                                "required": true,
+                                "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/AspectType"}}}
+                            },
+                            "responses": {
+                                "200": {
+                                    "description": "The aspect type has been created",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/AspectTypeResource"}}}
+                                }
+                            }
+
+                        }
+                    },
+                    "\/assets\/putassettype\/{id}\/{ifmatch}": {
+                        "put": {
+                            "tags": ["Asset-management"],
+                            "summary": "Create or Update an asset type",
+                            "parameters": [{
+                                "in": "path",
+                                "name": "id",
+                                "description": "The type's id is a unique identifier. The id's length must be between 1 and 128 characters and matches the following symbols \"A-Z\", \"a-z\", \"0-9\", \"_\" and \".\" beginning with the tenant prefix what has a maximum of 8 characters. (e.g . ten_pref.type_id)",
+                                "schema": {"default": tenantName+".assettype"+randomId, "type": "string"},
+                                "required": true
+                            }, {
+                                "in": "path",
+                                "name": "ifmatch",
+                                "schema": {"type": "integer", "default": "0"},
+                                "required": true,
+                                "description": "Last known version to facilitate optimistic locking"
+                            }],
+                            "operationId": "saveAssetType",
+                            "description": "Create or Update an asset type.",
+                            "requestBody": {
+                                "required": true,
+                                "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/AssetType"}}}
+                            },
+                            "responses": {
+                                "200": {
+                                    "description": "The aspect type has been created",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/AssetTypeResource"}}}
+                                }
+                            }
+                        }
+                    },
+                    "\/assets\/root": {
+                        "get": {
+                            "summary": "Returns the root asset of the user.",
+                            "operationId": "getRootAsset",
+                            "tags": ["Asset-management"],
+                            "responses": {
+                                "200": {
+                                    "description": "Read the root asset of the user, from which the whole asset hierarchy can be rebuilt.",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/RootAssetResource"}}}
+                                },
+                                "default": {
+                                    "description": "unexpected error",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/errors"}}}
+                                }
+                            }
+                        }
+                    },
+                    "\/assets\/postasset": {
+                        "post": {
+                            "tags": ["Asset-management"],
+                            "summary": "Create an asset",
+                            "operationId": "addAsset",
+                            "description": "Creates a new asset with the provided content. Only instantiable types could be used.",
+                            "requestBody": {
+                                "required": true,
+                                "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/Asset"}}}
+                            },
+                            "responses": {
+                                "201": {
+                                    "description": "The asset is created",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/AssetResourceWithHierarchyPath"}}}
+                                }
+                            }
+                        }
+                    },
+                    "\/assets\/assets": {
+                        "get": {
+                            "summary": "Get List of All Assets for tenant",
+                            "operationId": "getAllAssets",
+                            "tags": ["Asset-management"],
+                            "responses": {
+                                "200": {
+                                    "description": "First 10 assets present in tenant",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/AssetListResource"}}}
+                                },
+                                "default": {
+                                    "description": "unexpected error",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/errors"}}}
+                                }
+                            }
+                        }
+                    },
+                    "\/timeseries\/puttimeseriesdata\/{entityid}\/{propertysetname}": {
+                        "put": {
+                            "summary": "Create or update time series data for mutiple unique asset-aspect (entity-property set) combinations.",
+                            "tags": ["Time Series Operations"],
+                            "description": "Create or update time series data for one combination of an asset (entity) and an(a) aspect (property set). In case of an update of data at an already existing time, all properties at that time will be replaced by the ones provided in the request.\n",
+                            "parameters": [{
+                                "in": "path",
+                                "name": "entityid",
+                                "description": "unique identifier of the asset (entity)",
+                                "schema": {"type": "string"},
+                                "required": true
+                            }, {
+                                "in": "path",
+                                "name": "propertysetname",
+                                "schema": {"type": "string"},
+                                "required": true,
+                                "description": "Name of the aspect (property set)."
+                            }],
+                            "operationId": "createOrUpdateTimeseriesData",
+                            "requestBody": {
+                                "required": true,
+                                "content": {
+                                    "application\/json": {
+                                        "schema": {
+                                            "type": "array",
+                                            "items": {"$ref": "#\/definitions\/TimeSeriesDataItem"}
+                                        }
+                                    }
+                                }
+                            },
+                            "responses": {
+                                "204": {"description": "timeseries written\n"},
+                                "400": {
+                                    "description": "Bad request.\n",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/BadRequest"}}}
+                                },
+                                "401": {
+                                    "description": "unauthorized",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/Unauthorized"}}}
+                                },
+                                "default": {"description": "Other error with any status code and response body format."}
+                            }
+                        }
+                    },
+                    "\/timeseries\/puttimeseries": {
+                        "put": {
+                            "summary": "Create or update time series data for mutiple unique asset-aspect (entity-property set) combinations.",
+                            "tags": ["Time Series Operations"],
+                            "description": "Create or update time series data for multiple unique combinations of assets (entities) and aspects (property sets).\nIn case of an update of data at an already existing time, all properties at that time will be replaced by the ones provided in the request. All asset-aspect (entity-property set) combinations need to belong to the same tenant.\n\nRequest body limitations:\n1. A maximum of 5 asset-aspect (entity-property set) combinations can be provided\n2. The request body size must be equal or less than 100 kb\n3. A maximum of 100 time series data items can be provided overall\n",
+                            "operationId": "createOrUpdateTimeseries",
+                            "requestBody": {
+                                "required": true,
+                                "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/TimeSeries"}}}
+                            },
+                            "responses": {
+                                "202": {
+                                    "description": "Accepted. For each asset-aspect (entity-property set) pair a validation error can occur. In case an error is returned for an asset-aspect (entity-property set) pair, time series data for that pair is not considered. Possible validation errors are\n - 400: bad request schema for asset-aspect (entity-property set) pair\n - 404: asset (entity) and\/or aspect(proprety set) not found\n - 429: asset-aspect (entity-property set) pair could not be processed due to too many requests\n - default: unexpected error while processing\n",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/MultiStatusError"}}}
+                                },
+                                "400": {
+                                    "description": "Bad request, in case the resource is invalid.\nFew of the validations as below -\n- Total number of records for all assets (entites) and aspects (property sets) should not be more than 100 per PUT request.\n- Total size of the payload should not be more than 100 kb per PUT request.\n- Payload cannot have more than 5 asset (entity)\/aspect (property set) combinations.\n",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/MultiTimeseiresBadRequest"}}}
+                                },
+                                "401": {
+                                    "description": "unauthorized",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/Unauthorized"}}}
+                                },
+                                "default": {"description": "Other error with any status code and response body format."}
+                            }
+                        }
+                    },
+                    "\/timeseries\/gettimeseries\/{entityid}\/{propertysetname}": {
+                        "get": {
+                            "summary": "Retrieve time series data",
+                            "parameters": [{
+                                "in": "path",
+                                "name": "entityid",
+                                "description": "unique identifier of the asset (entity)",
+                                "schema": {"type": "string"},
+                                "required": true
+                            }, {
+                                "in": "path",
+                                "name": "propertysetname",
+                                "description": "Name of the aspect (property set).",
+                                "schema": {"type": "string"},
+                                "required": true
+                            }, {
+                                "in": "query",
+                                "name": "from",
+                                "description": "Beginning of the time range to be retrieved (exclusive).",
+                                "required": false,
+                                "schema": {"type": "string", "format": "date-time"}
+                            }, {
+                                "in": "query",
+                                "name": "to",
+                                "description": "End of the time range to be retrieved (inclusive).",
+                                "required": false,
+                                "schema": {"type": "string", "format": "date-time"}
+                            }, {
+                                "in": "query",
+                                "name": "limit",
+                                "description": "Maximum number of time series data items to be retrieved.",
+                                "required": false,
+                                "schema": {"type": "integer", "default": 2000, "maximum": 2000}
+                            }, {
+                                "in": "query",
+                                "name": "select",
+                                "description": "Comma-separated list of properties to be returned. By default all properties of an(a) aspect (property set) are considered.",
+                                "required": false,
+                                "schema": {"type": "string"}
+                            }, {
+                                "in": "query",
+                                "name": "sort",
+                                "description": "Define sorting order of returned data. Sorting can be chronologically ascending (<i>asc<\/i>) or descending (<i>desc<\/i>).",
+                                "required": false,
+                                "schema": {"type": "string", "enum": ["asc", "desc"], "default": "asc"}
+                            }, {
+                                "in": "query",
+                                "name": "latestValue",
+                                "description": "If true, only the latest value of each property is returned. Latest values must be at least two hours old and at maximum 30 days old, in order to be considered. The returned values might be co-located or spread over multiple timestamps. Each property appears at max once in the response. The select parameter can be used to limit the properties to be considered. Parameters from, to, and limit must not be used in conjunction with latest.",
+                                "required": false,
+                                "schema": {"type": "boolean", "default": false}
+                            }],
+                            "operationId": "retrieveTimeseries",
+                            "tags": ["Time Series Operations"],
+                            "description": "Retrieve time series data for one combination of an asset (entity) and an(a) aspect (property set). The maximum number of time series data items returned per request is defined by parameter <i>limit<\/i>. In case more time series data items are present in the requested time range, only a subset of data items will be returned and a header <i>link<\/i> is added to the response. The header value contains the request URL to fetch the next set of  time series data items, by increasing the <i>from<\/i> parameter accordingly. Returns the latest record if no range is provided.\n",
+                            "responses": {
+                                "200": {
+                                    "description": "Top 10 events.",
+                                    "content": {
+                                        "application\/json": {
+                                            "schema": {
+                                                "type": "array",
+                                                "items": {"$ref": "#\/definitions\/TimeSeriesDataItem"}
+                                            }
+                                        }
+                                    }
+                                },
+                                "default": {
+                                    "description": "unexpected error",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/errors"}}}
+                                }
+                            }
+                        }
+                    },
+                    "\/eventAnalytics\/topevents": {
+                        "get": {
+                            "summary": "Get top events.",
+                            "operationId": "getTopEvents",
+                            "tags": ["event-analytics"],
+                            "responses": {
+                                "200": {
+                                    "description": "Top 10 events.",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/TopEventOutput"}}}
+                                },
+                                "default": {
+                                    "description": "unexpected error",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/errors"}}}
+                                }
+                            }
+                        }
+                    },
+                    "\/eventAnalytics\/filterEvents": {
+                        "get": {
+                            "summary": "Get top events.",
+                            "operationId": "getfilteredEvents",
+                            "tags": ["event-analytics"],
+                            "responses": {
+                                "200": {
+                                    "description": "Get filtered events",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/EventArrayOutput"}}}
+                                },
+                                "default": {
+                                    "description": "unexpected error",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/errors"}}}
+                                }
+                            }
+                        }
+                    },
+                    "\/eventAnalytics\/countEvents": {
+                        "get": {
+                            "summary": "Get count of events.",
+                            "operationId": "getcountOfEvents",
+                            "tags": ["event-analytics"],
+                            "responses": {
+                                "200": {
+                                    "description": "Get count of events",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/EventCountOutput"}}}
+                                },
+                                "default": {
+                                    "description": "unexpected error",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/errors"}}}
+                                }
+                            }
+                        }
+                    },
+                    "\/eventAnalytics\/removeDuplicateEvents": {
+                        "get": {
+                            "summary": "Remove duplicate events.",
+                            "operationId": "removeDuplicateEvents",
+                            "tags": ["event-analytics"],
+                            "responses": {
+                                "200": {
+                                    "description": "Remove duplicate events.",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/DuplicateEventArrayOutput"}}}
+                                },
+                                "default": {
+                                    "description": "unexpected error",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/errors"}}}
+                                }
+                            }
+                        }
+                    },
+                    "\/eventAnalytics\/matchEventPattern": {
+                        "get": {
+                            "summary": "Match event pattern.",
+                            "operationId": "matchPatternevents",
+                            "tags": ["event-analytics"],
+                            "responses": {
+                                "200": {
+                                    "description": "Match event pattern.",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/PatternMatchingOutput"}}}
+                                },
+                                "default": {
+                                    "description": "unexpected error",
+                                    "content": {"application\/json": {"schema": {"$ref": "#\/definitions\/errors"}}}
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-ErrorTemplate": {
+                    "type": "object",
+                    "properties": {
+                        "timestamp": {"type": "string", "format": "date-time"},
+                        "status": {"type": "number"},
+                        "error": {"type": "string"},
+                        "exception": {"type": "string"},
+                        "message": {"type": "string"},
+                        "path": {"type": "string"}
+                    }
+                },
+                "definitions": {
+                    "TopEventsInputDataModel": {
+                        "description": "Data model describing the input for the <b>findTopEvents<\/b> functionality",
+                        "allOf": [{"$ref": "#\/definitions\/EventsInputModel"}, {
+                            "type": "object",
+                            "properties": {
+                                "numberOfTopPositionsRequired": {
+                                    "type": "integer",
+                                    "format": "int32",
+                                    "minimum": 1,
+                                    "default": 10,
+                                    "description": "How many top positions will be returned in the response. Has to be a positive integer. If not specified, the default value 10 will be used."
+                                }
+                            }
+                        }],
+                        "example": {
+                            "numberOfTopPositionsRequired": 5,
+                            "eventsMetadata": {"eventTextPropertyName": "text"},
+                            "events": [{
+                                "_time": "2017-10-01T12:00:00.001Z",
+                                "text": "INTRODUCING FUEL",
+                                "text_qc": 0
+                            }, {
+                                "_time": "2017-10-01T12:00:01.001Z",
+                                "text": "Status@Flame On",
+                                "text_qc": 0
+                            }, {"_time": "2017-10-01T12:00:02.001Z", "text": "Status@Flame On", "text_qc": 0}]
+                        },
+                        "required": ["events"]
+                    },
+                    "TopEventOutput": {
+                        "type": "array",
+                        "description": "Tuple containing frequency of event and event text",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "appearances": {"type": "integer", "format": "int64", "example": 76},
+                                "text": {"type": "string", "example": "event text"}
+                            }
+                        },
+                        "example": [{"appearances": 2, "text": "Status@Flame On"}, {
+                            "appearances": 1,
+                            "text": "INTRODUCING FUEL"
+                        }]
+                    },
+                    "EventSearchInputDataModel": {
+                        "description": "Data model describing the input for the <b>eventsSearch<\/b> functionality",
+                        "allOf": [{"$ref": "#\/definitions\/EventsInputModel"}, {
+                            "type": "object",
+                            "properties": {
+                                "filterList": {
+                                    "type": "array",
+                                    "items": {"type": "string"},
+                                    "description": "List of events which will be removed from the input list",
+                                    "example": ["START", "STOP"]
+                                }
+                            }
+                        }],
+                        "example": {
+                            "eventsMetadata": {"eventTextPropertyName": "text"},
+                            "filterList": ["INTRODUCING FUEL", "MEANINGLESS ALARM", "Status@Flame On"],
+                            "events": [{
+                                "_time": "2017-10-01T12:00:00.001Z",
+                                "text": "INTRODUCING FUEL",
+                                "text_qc": 0
+                            }, {
+                                "_time": "2017-10-01T12:00:01.001Z",
+                                "text": "Status@Flame On",
+                                "text_qc": 0
+                            }, {
+                                "_time": "2017-10-01T12:00:02.001Z",
+                                "text": "Status@Flame Off",
+                                "text_qc": 0
+                            }, {"_time": "2017-10-01T12:00:03.001Z", "text": "Error code: 340", "text_qc": 0}]
+                        },
+                        "required": ["filterList", "events", "eventsMetadata"]
+                    },
+                    "Event": {
+                        "type": "object",
+                        "description": "An event object (a tuple of time and text)",
+                        "properties": {
+                            "_time": {
+                                "type": "string",
+                                "format": "dateTime",
+                                "description": "Timestamp of the event in the ISO 8601",
+                                "example": "2017-10-01T12:00:00.001Z"
+                            },
+                            "text": {"type": "string", "description": "The text of the event", "example": "event text"},
+                            "text_qc": {
+                                "type": "integer",
+                                "format": "int32",
+                                "minimum": 0,
+                                "maximum": 1,
+                                "description": "Quality check flag"
+                            }
+                        },
+                        "required": ["_time", "text"]
+                    },
+                    "EventsInputModel": {
+                        "type": "object",
+                        "description": "Contains the events and the metadata regarding the events structure",
+                        "properties": {
+                            "eventsMetadata": {
+                                "description": "Metadata for the events list",
+                                "type": "object",
+                                "properties": {
+                                    "eventTextPropertyName": {
+                                        "type": "string",
+                                        "description": "The property name of the events list objects that contains the text of the event",
+                                        "example": "text"
+                                    }
+                                }
+                            }, "events": {"type": "array", "items": {"$ref": "#\/definitions\/Event"}}
+                        },
+                        "example": {
+                            "eventsMetadata": {"eventTextPropertyName": "text"},
+                            "events": [{
+                                "_time": "2017-10-01T12:00:00.001Z",
+                                "text": "INTRODUCING FUEL",
+                                "text_qc": 0
+                            }, {
+                                "_time": "2017-10-01T12:00:01.001Z",
+                                "text": "Status@Flame On",
+                                "text_qc": 0
+                            }, {
+                                "_time": "2017-10-01T12:00:02.001Z",
+                                "text": "Status@Flame Off",
+                                "text_qc": 0
+                            }, {
+                                "_time": "2017-10-01T12:00:03.001Z",
+                                "text": "Error code: 340",
+                                "text_qc": 0
+                            }, {"_time": "2017-10-01T12:00:03.001Z", "text": "Error code: 340", "text_qc": 0}]
+                        },
+                        "required": ["events", "eventsMetadata"]
+                    },
+                    "EventInput": {
+                        "type": "object",
+                        "description": "Contains the events and the metadata regarding the events structure",
+                        "properties": {
+                            "eventsMetadata": {
+                                "description": "Metadata for the events list",
+                                "type": "object",
+                                "properties": {
+                                    "eventTextPropertyName": {
+                                        "type": "string",
+                                        "description": "The property name of the events list objects that contains the text of the event",
+                                        "example": "text"
+                                    },
+                                    "splitInterval": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "description": "The window length represents the value in milliseconds of the period in which user wants to split input interval",
+                                        "example": 3
+                                    }
+                                }
+                            }, "events": {"type": "array", "items": {"$ref": "#\/definitions\/Event"}}
+                        },
+                        "example": {
+                            "eventsMetadata": {"eventTextPropertyName": "text", "splitInterval": 5000},
+                            "events": [{
+                                "_time": "2017-10-01T12:00:00.001Z",
+                                "text": "INTRODUCING FUEL",
+                                "text_qc": 0
+                            }, {
+                                "_time": "2017-10-01T12:00:01.001Z",
+                                "text": "Status@Flame On",
+                                "text_qc": 0
+                            }, {
+                                "_time": "2017-10-01T12:00:02.001Z",
+                                "text": "Status@Flame Off",
+                                "text_qc": 0
+                            }, {
+                                "_time": "2017-10-01T12:00:03.001Z",
+                                "text": "Error code: 340",
+                                "text_qc": 0
+                            }, {
+                                "_time": "2017-10-01T12:00:04.001Z",
+                                "text": "Error code: 340",
+                                "text_qc": 0
+                            }, {
+                                "_time": "2017-10-01T12:00:06.001Z",
+                                "text": "INTRODUCING FUEL",
+                                "text_qc": 0
+                            }, {
+                                "_time": "2017-10-01T12:00:08.001Z",
+                                "text": "Status@Flame On",
+                                "text_qc": 0
+                            }, {"_time": "2017-10-01T12:00:09.001Z", "text": "Status@Flame Off", "text_qc": 0}]
+                        },
+                        "required": ["events", "eventsMetadata"]
+                    },
+                    "EventCountOutput": {
+                        "type": "object",
+                        "description": "Model containing startTime, endTime and number of events produced between startTime and endTime",
+                        "properties": {
+                            "output": {
+                                "type": "array",
+                                "items": {"$ref": "#\/definitions\/EventCountOutputItem"}
+                            }
+                        },
+                        "example": {
+                            "output": [{
+                                "startTime": "2017-10-01T12:00:00.001Z",
+                                "endTime": "2017-10-01T12:00:05Z",
+                                "eventCount": 5
+                            }, {
+                                "startTime": "2017-10-01T12:00:05.001Z",
+                                "endTime": "2017-10-01T12:00:10Z",
+                                "eventCount": 3
+                            }]
+                        },
+                        "required": ["output"]
+                    },
+                    "EventCountOutputItem": {
+                        "type": "object",
+                        "description": "Item containing one element from the count output",
+                        "properties": {
+                            "startTime": {
+                                "type": "string",
+                                "format": "dateTime",
+                                "description": "Timestamp of the event in the ISO 8601",
+                                "example": "2017-10-01T12:00:00.001Z"
+                            },
+                            "endTime": {
+                                "type": "string",
+                                "format": "dateTime",
+                                "description": "Timestamp of the event in the ISO 8601",
+                                "example": "2017-10-01T12:00:00.001Z"
+                            },
+                            "eventCount": {"type": "integer", "format": "int64", "example": 76}
+                        },
+                        "example": {
+                            "startTime": "2017-10-01T12:00:00.001Z",
+                            "endTime": "2017-10-01T12:00:04.001Z",
+                            "eventCount": 5
+                        }
+                    },
+                    "EventArrayOutput": {
+                        "type": "object",
+                        "properties": {"output": {"type": "array", "items": {"$ref": "#\/definitions\/Event"}}},
+                        "example": {
+                            "output": [{
+                                "_time": "2017-10-01T12:00:02.001Z",
+                                "text": "Status@Flame Off",
+                                "text_qc": 0
+                            }, {"_time": "2017-10-01T12:00:03.001Z", "text": "Error code: 340", "text_qc": 0}]
+                        },
+                        "required": ["output"]
+                    },
+                    "DuplicateEventArrayOutput": {
+                        "type": "object",
+                        "properties": {"output": {"type": "array", "items": {"$ref": "#\/definitions\/Event"}}},
+                        "example": {
+                            "output": [{
+                                "_time": "2017-10-01T12:00:00.001Z",
+                                "text_qc": 0,
+                                "text": "INTRODUCING FUEL"
+                            }, {
+                                "_time": "2017-10-01T12:00:01.001Z",
+                                "text_qc": 0,
+                                "text": "Status@Flame On"
+                            }, {
+                                "_time": "2017-10-01T12:00:02.001Z",
+                                "text_qc": 0,
+                                "text": "Status@Flame Off"
+                            }, {
+                                "_time": "2017-10-01T12:00:03.001Z",
+                                "text_qc": 0,
+                                "text": "Error code: 340"
+                            }, {
+                                "_time": "2017-10-01T12:00:06.001Z",
+                                "text_qc": 0,
+                                "text": "INTRODUCING FUEL"
+                            }, {
+                                "_time": "2017-10-01T12:00:08.001Z",
+                                "text_qc": 0,
+                                "text": "Status@Flame On"
+                            }, {"_time": "2017-10-01T12:00:09.001Z", "text_qc": 0, "text": "Status@Flame Off"}]
+                        },
+                        "required": ["output"]
+                    },
+                    "PatternMatchingInputDataModel": {
+                        "description": "Data model describing the input for the <b>Pattern Matching<\/b> functionality",
+                        "type": "object",
+                        "properties": {
+                            "maxPatternInterval": {
+                                "type": "integer",
+                                "format": "int32",
+                                "description": "The maximum time length (in milliseconds) of the sliding window where the pattern occurs",
+                                "example": 100
+                            },
+                            "patternsList": {"type": "array", "items": {"$ref": "#\/definitions\/PatternDefinition"}},
+                            "nonEvents": {
+                                "type": "array",
+                                "items": {"type": "string"},
+                                "description": "List of events which will be removed from the input list",
+                                "example": ["Error 2.. occurred", "STOPPING ENGINE"]
+                            },
+                            "eventsInput": {"$ref": "#\/definitions\/EventsInputModel"}
+                        },
+                        "example": {
+                            "maxPatternInterval": 200000,
+                            "patternsList": [{
+                                "pattern": [{
+                                    "eventText": "INTRODUCING FUEL",
+                                    "minRepetitions": 1,
+                                    "maxRepetitions": 2
+                                }, {
+                                    "eventText": "Status@Flame On",
+                                    "minRepetitions": 0,
+                                    "maxRepetitions": 1
+                                }, {
+                                    "eventText": "Module STOP due to parameter assignment",
+                                    "minRepetitions": 1,
+                                    "maxRepetitions": 1
+                                }]
+                            }, {
+                                "pattern": [{
+                                    "eventText": "Downloading the module database causes module .. restart",
+                                    "minRepetitions": 1,
+                                    "maxRepetitions": 1
+                                }, {
+                                    "eventText": "The SIMATIC mode was selected for time-of-day synchronization of the module with Id: ..",
+                                    "minRepetitions": 1,
+                                    "maxRepetitions": 1
+                                }]
+                            }],
+                            "nonEvents": ["Error 2.. occurred", "STOPPING ENGINE"],
+                            "eventsInput": {
+                                "eventsMetadata": {"eventTextPropertyName": "text"},
+                                "events": [{
+                                    "_time": "2017-10-01T12:00:00.001Z",
+                                    "text": "Downloading the module database causes module 11 restart",
+                                    "text_qc": 0
+                                }, {
+                                    "_time": "2017-10-01T12:00:01.001Z",
+                                    "text": "The direction for forwarding the time of day is recognized automatically by the module",
+                                    "text_qc": 0
+                                }, {
+                                    "_time": "2017-10-01T12:00:02.001Z",
+                                    "text": "Status@Flame On",
+                                    "text_qc": 0
+                                }, {
+                                    "_time": "2017-10-01T12:00:03.001Z",
+                                    "text": "The SIMATIC mode was selected for time-of-day synchronization of the module with Id: 33",
+                                    "text_qc": 0
+                                }, {
+                                    "_time": "2017-10-01T12:00:06.001Z",
+                                    "text": "INTRODUCING FUEL",
+                                    "text_qc": 0
+                                }, {
+                                    "_time": "2017-10-01T12:00:09.001Z",
+                                    "text": "Module STOP due to parameter assignment",
+                                    "text_qc": 0
+                                }]
+                            }
+                        }
+                    },
+                    "PatternMatchingOutput": {
+                        "description": "Data model describing the output for the <b>Pattern Matching<\/b> functionality",
+                        "type": "object",
+                        "properties": {
+                            "output": {
+                                "type": "array",
+                                "items": {"$ref": "#\/definitions\/PatternFoundByMatching"}
+                            }
+                        },
+                        "example": {
+                            "output": [{
+                                "patternIndex": 1,
+                                "timeWindow": {
+                                    "startTimestamp": "2017-10-01T12:00:00.001Z",
+                                    "endTimestamp": "2017-10-01T12:00:03.001Z"
+                                },
+                                "matchedEvents": [{
+                                    "_time": "2017-10-01T12:00:00.001Z",
+                                    "text_qc": 0,
+                                    "text": "Downloading the module database causes module 11 restart"
+                                }, {
+                                    "_time": "2017-10-01T12:00:03.001Z",
+                                    "text_qc": 0,
+                                    "text": "The SIMATIC mode was selected for time-of-day synchronization of the module with Id: 33"
+                                }]
+                            }, {
+                                "patternIndex": 0,
+                                "timeWindow": {
+                                    "startTimestamp": "2017-10-01T12:00:06.001Z",
+                                    "endTimestamp": "2017-10-01T12:00:09.001Z"
+                                },
+                                "matchedEvents": [{
+                                    "_time": "2017-10-01T12:00:06.001Z",
+                                    "text_qc": 0,
+                                    "text": "INTRODUCING FUEL"
+                                }, {
+                                    "_time": "2017-10-01T12:00:09.001Z",
+                                    "text_qc": 0,
+                                    "text": "Module STOP due to parameter assignment"
+                                }]
+                            }]
+                        }
+                    },
+                    "PatternFoundByMatching": {
+                        "description": "Data model describing one sequence that matches a pattern",
+                        "type": "object",
+                        "properties": {
+                            "patternIndex": {
+                                "type": "integer",
+                                "description": "The index of the pattern based on request object"
+                            },
+                            "timeWindow": {"type": "object", "items": {"$ref": "#\/definitions\/TimeWindow"}},
+                            "pattern": {"type": "array", "items": {"$ref": "#\/definitions\/MatchingPattern"}},
+                            "matchedEvents": {"type": "array", "items": {"$ref": "#\/definitions\/Event"}}
+                        }
+                    },
+                    "TimeWindow": {
+                        "type": "object",
+                        "description": "The time interval of matched pattern, containing the following information startTimestam, endTimestamp.",
+                        "properties": {
+                            "startTimestamp": {
+                                "type": "string",
+                                "format": "dateTime",
+                                "description": "The start timestamp of the matched pattern."
+                            },
+                            "endTimestamp": {
+                                "type": "string",
+                                "format": "dateTime",
+                                "description": "The end timestamp of the matched pattern."
+                            }
+                        },
+                        "required": ["startTimestamp", "endTimestamp"],
+                        "example": [{"startTimestamp": "2017-10-01T12:00:00.001Z"}, {"endTimestamp": "2017-10-01T12:00:10.001Z"}]
+                    },
+                    "MatchingPattern": {
+                        "type": "object",
+                        "description": "Object containing an event description and an operator that specifies the number of appearances required for the event",
+                        "properties": {
+                            "eventText": {"type": "string", "description": "Event identifier."},
+                            "minRepetitions": {
+                                "type": "integer",
+                                "default": "1;",
+                                "description": "The minimum number of desired repetitions of the event inside the pattern."
+                            },
+                            "maxRepetitions": {
+                                "type": "integer",
+                                "default": 1,
+                                "description": "The maximum number of desired repetitions of the event inside the pattern."
+                            }
+                        },
+                        "required": ["eventText"],
+                        "example": [{
+                            "eventText": "INTRODUCING FUEL2",
+                            "minRepetitions": 1,
+                            "maxRepetitions": 3
+                        }, {
+                            "eventText": "The SIMATIC mode was selected for time-of-day synchronization of the module",
+                            "minRepetitions": 0,
+                            "maxRepetitions": 1
+                        }, {
+                            "eventText": "Module STOP due to parameter assignment",
+                            "minRepetitions": 1,
+                            "maxRepetitions": 1
+                        }]
+                    },
+                    "PatternDefinition": {
+                        "type": "object",
+                        "description": "The collection of patterns used for matching into the events list.",
+                        "properties": {
+                            "folderId": {
+                                "type": "string",
+                                "description": "The id used to reference the folder where the file with the pattern is stored."
+                            },
+                            "fileId": {
+                                "type": "string",
+                                "description": "The id used to reference the file where the pattern is stored."
+                            },
+                            "patternId": {
+                                "type": "string",
+                                "description": "The id used to reference a specific pattern. It is unique inside this collection."
+                            },
+                            "pattern": {"type": "array", "items": {"$ref": "#\/definitions\/MatchingPattern"}}
+                        },
+                        "example": {
+                            "patternId": "78c6801e-c502-4223-98eb-f0ba56ca2023",
+                            "pattern": [{
+                                "eventText": "INTRODUCING FUEL",
+                                "minRepetitions": 1,
+                                "maxRepetitions": 3
+                            }, {
+                                "eventText": "The SIMATIC mode was selected for time-of-day synchronization of the module",
+                                "minRepetitions": 0,
+                                "maxRepetitions": 1
+                            }, {
+                                "eventText": "Module STOP due to parameter assignment",
+                                "minRepetitions": 1,
+                                "maxRepetitions": 1
+                            }]
+                        }
+                    },
+                    "VndError": {
+                        "type": "object",
+                        "properties": {"logref": {"type": "string"}, "message": {"type": "string"}}
+                    },
+                    "AssetTypeBase": {
+                        "type": "object",
+                        "required": ["name"],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 128,
+                                "pattern": "[\\p{L}_0-9_\\. -]+",
+                                "description": "The type's name.",
+                                "example": "X-Wing"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "description",
+                                "maxLength": 255,
+                                "example": "Hyperspace jump capable space ship"
+                            },
+                            "parentTypeId": {"$ref": "#\/definitions\/AssetTypeId"},
+                            "instantiable": {
+                                "type": "boolean",
+                                "default": true,
+                                "example": true,
+                                "description": "If instances can be created from this type. A non-instantiable type could be changed to be instantiable but not the other way around."
+                            },
+                            "scope": {
+                                "type": "string",
+                                "enum": ["public", "private"],
+                                "default": "private",
+                                "example": "private",
+                                "description": "Visibility of the assettype. Setting this property to public makes it available to other tenants. Private types are only visible to the user's own tenant. Currently only private types could be created."
+                            }
+                        }
+                    },
+                    "AssetType": {
+                        "type": "object",
+                        "allOf": [{"$ref": "#\/definitions\/AssetTypeBase"}, {
+                            "properties": {
+                                "aspects": {
+                                    "type": "array",
+                                    "description": "Aspects of the asset-type. Once added aspects cannot be removed.",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "maxLength": 64,
+                                                "pattern": "[a-zA-Z0-9_]+",
+                                                "example": "leftWing",
+                                                "description": "Name of the aspect. It has to be unique inside the type-family (ancestors and descendants).Cannot be changed. Reserved words (id, name, description, tenant, etag, scope, properties, propertySets, extends, variables, aspects, parentTypeId) cannot be used as aspect names."
+                                            }, "aspectTypeId": {"$ref": "#\/definitions\/AspectTypeId"}
+                                        }
+                                    }
+                                },
+                                "variables": {
+                                    "type": "array",
+                                    "description": "Direct variables of the asset-type. Variable names has to be unique inside the whole type-family (ancestors and descendants). Once added variables cannot be changed or removed.",
+                                    "items": {"$ref": "#\/definitions\/VariableDefinition"}
+                                },
+                                "fileAssignments": {
+                                    "type": "array",
+                                    "items": {"$ref": "#\/definitions\/FileAssignment"}
+                                }
+                            }
+                        }]
+                    },
+                    "AssetTypeResource": {
+                        "type": "object", "allOf": [{"$ref": "#\/definitions\/AssetTypeBase"}, {
+                            "properties": {
+                                "id": {"$ref": "#\/definitions\/AssetTypeId"},
+                                "tenantId": {"$ref": "#\/definitions\/tenantId"},
+                                "etag": {"$ref": "#\/definitions\/ETag"},
+                                "aspects": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "description": "Name of the aspect type, it must be unique for the asset type.",
+                                                "example": "leftWing"
+                                            },
+                                            "aspectType": {"allOf": [{"$ref": "#\/definitions\/AspectTypeResource"}]},
+                                            "_links": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "origin": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "href": {
+                                                                "type": "string",
+                                                                "description": "Link to the asset type defining the aspect. *Only visible if aspect is inherited.*"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "variables": {
+                                    "type": "array",
+                                    "description": "Direct variables of the asset-type. Variable names has to be unique inside the whole type-family (ancestors and descendants). Once added variables cannot be changed or removed.",
+                                    "items": {"$ref": "#\/definitions\/VariableDefinitionResource"}
+                                },
+                                "fileAssignments": {
+                                    "type": "array",
+                                    "items": {"$ref": "#\/definitions\/FileAssignmentResource"}
+                                },
+                                "sharing": {"$ref": "#\/definitions\/SharingResource"},
+                                "_links": {"$ref": "#\/definitions\/AssetTypeLinks"}
+                            }
+                        }]
+                    },
+                    "AssetTypeLinks": {
+                        "type": "object",
+                        "properties": {
+                            "self": {"$ref": "#\/definitions\/rel.self"},
+                            "parent": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Link to the parent asset type"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "AspectType": {
+                        "type": "object", "required": ["name", "category", "variables"], "properties": {
+                            "name": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 128,
+                                "pattern": "[a-zA-Z0-9_]+",
+                                "description": "Name of the aspect type. It has to be unique inside the tenant and cannot be changed later.",
+                                "example": "aspect"+randomId
+                            },
+                            "category": {
+                                "type": "string",
+                                "enum": ["dynamic", "static"],
+                                "description": "If the aspect-type is used for static data or time-series. Cannot be changed once the aspect-type is created."
+                            },
+                            "scope": {
+                                "type": "string",
+                                "enum": ["public", "private"],
+                                "default": "private",
+                                "example": "private",
+                                "description": "Visibility of aspecttype. Setting this property to public makes it available to other tenants. Private types are only visible to the user's own tenant. Currently only private types can be created."
+                            },
+                            "description": {
+                                "type": "string",
+                                "maxLength": 255,
+                                "pattern": "[^\\']*",
+                                "description": "The description of the aspect type",
+                                "example": "The engine of the Millenium Falcon"
+                            },
+                            "variables": {
+                                "type": "array",
+                                "minItems": 1,
+                                "description": "Variables of the aspect-type. Variable names should be unique inside an aspect-type. Once a variable is added to the aspect that it cannot be renamed or removed. Only variables of static aspect-type can have default values.",
+                                "items": {"$ref": "#\/definitions\/AspectVariable"}
+                            }
+                        }
+                    },
+                    "AspectTypeResource": {
+                        "type": "object",
+                        "allOf": [{"$ref": "#\/definitions\/AspectType"}, {
+                            "properties": {
+                                "id": {"$ref": "#\/definitions\/AspectTypeId"},
+                                "tenantId": {"$ref": "#\/definitions\/tenantId"},
+                                "etag": {"$ref": "#\/definitions\/ETag"},
+                                "sharing": {"$ref": "#\/definitions\/SharingResource"},
+                                "_links": {"$ref": "#\/definitions\/AspectTypeLinks"}
+                            }
+                        }]
+                    },
+                    "AspectTypeLinks": {"type": "object", "properties": {"self": {"$ref": "#\/definitions\/rel.self"}}},
+                    "uniqueId": {
+                        "type": "string",
+                        "pattern": "[0-9a-f]+",
+                        "minLength": 32,
+                        "maxLength": 32,
+                        "example": "c27a28b6eb16b507fabc11e75da8b4ce"
+                    },
+                    "Asset": {
+                        "type": "object",
+                        "required": ["typeId", "parentId"],
+                        "allOf": [{"$ref": "#\/definitions\/AssetUpdate"}, {
+                            "properties": {
+                                "typeId": {"$ref": "#\/definitions\/AssetTypeId"},
+                                "parentId": {"$ref": "#\/definitions\/uniqueId"},
+                                "timezone": {"$ref": "#\/definitions\/timezone"},
+                                "twinType": {"$ref": "#\/definitions\/twinType"}
+                            }
+                        }]
+                    },
+                    "twinType": {
+                        "type": "string",
+                        "description": "Indicates that the asset is a real asset (performance) or for simulation. If omitted on creation then it defaults to performance. Setting the twinType to simulation allows high resolution timestamps (microsecond precision).",
+                        "enum": ["performance", "simulation"],
+                        "default": "performance"
+                    },
+                    "AssetUpdate": {
+                        "type": "object",
+                        "required": ["name"],
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 128,
+                                "pattern": "[^\\\/\\\\]*",
+                                "description": "Name of the asset",
+                                "example": "Millenium Falcon"
+                            },
+                            "externalId": {
+                                "type": "string",
+                                "description": "The id given by the user",
+                                "maxLength": 255,
+                                "example": "SN 123456-123-123456"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "The description of the asset",
+                                "maxLength": 255,
+                                "example": "The ship of Han Solo and Chewbacca"
+                            },
+                            "location": {"$ref": "#\/definitions\/Location"},
+                            "variables": {"type": "array", "items": {"$ref": "#\/definitions\/Variable"}},
+                            "aspects": {"type": "array", "items": {"$ref": "#\/definitions\/Aspect"}},
+                            "fileAssignments": {"type": "array", "items": {"$ref": "#\/definitions\/FileAssignment"}}
+                        }
+                    },
+                    "AssetMove": {
+                        "type": "object",
+                        "required": ["newParentId"],
+                        "properties": {"newParentId": {"$ref": "#\/definitions\/uniqueId"}}
+                    },
+                    "AssetResource": {
+                        "allOf": [{"$ref": "#\/definitions\/Asset"}, {
+                            "properties": {
+                                "tenantId": {"$ref": "#\/definitions\/tenantId"},
+                                "subTenant": {
+                                    "type": "string",
+                                    "description": "The id of the end-customer.",
+                                    "maxLength": 255,
+                                    "example": "UnkarPlutt Inc."
+                                },
+                                "t2Tenant": {
+                                    "type": "string",
+                                    "description": "The id of the end-customer. This field is DEPRECATED please use subTenant instead.",
+                                    "maxLength": 255,
+                                    "example": "DEPRECATED: use subTenant instead"
+                                },
+                                "assetId": {"$ref": "#\/definitions\/uniqueId"},
+                                "fileAssignments": {
+                                    "type": "array",
+                                    "items": {"$ref": "#\/definitions\/FileAssignmentResource"}
+                                },
+                                "locks": {"type": "array", "items": {"$ref": "#\/definitions\/LockResource"}},
+                                "deleted": {"type": "string", "format": "date-time"},
+                                "twinType": {
+                                    "type": "string",
+                                    "enum": ["performance", "simulation"],
+                                    "default": "performance"
+                                },
+                                "sharing": {"$ref": "#\/definitions\/SharingResource"},
+                                "etag": {"$ref": "#\/definitions\/ETag"},
+                                "_links": {"$ref": "#\/definitions\/AssetLinks"}
+                            }
+                        }]
+                    },
+                    "RootAssetResource": {
+                        "allOf": [{"$ref": "#\/definitions\/AssetResource"}, {
+                            "properties": {
+                                "hierarchyPath": {
+                                    "type": "array",
+                                    "items": {"type": "string"},
+                                    "example": [],
+                                    "description": "Hieararchy path is empty for the root asset"
+                                }
+                            }
+                        }]
+                    },
+                    "AssetResourceWithHierarchyPath": {
+                        "allOf": [{"$ref": "#\/definitions\/AssetResource"}, {
+                            "properties": {
+                                "hierarchyPath": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "assetId": {"$ref": "#\/definitions\/uniqueId"},
+                                            "name": {
+                                                "type": "string",
+                                                "description": "Name of the asset",
+                                                "example": "Millenium Falcon's parent"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }]
+                    },
+                    "SharingResource": {
+                        "type": "object",
+                        "description": "Contains sharing information.",
+                        "properties": {
+                            "modes": {
+                                "type": "array",
+                                "description": "List of sharing modes applicable for this resource. The currently supported modes are SHARER and RECEIVER. SHARER means this resource is shared by my tenant. RECEIVER means this resource is shared with my tenant. An empty array means this resource is not shared. New modes might be introduced later and clients must expect additional items to be contained in the array.",
+                                "items": {"type": "string", "enum": ["SHARER", "RECEIVER"]}
+                            }
+                        }
+                    },
+                    "AssetLinks": {
+                        "type": "object",
+                        "properties": {
+                            "self": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "URL to get the asset"
+                                    }
+                                }
+                            },
+                            "parent": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "URL to get the parent of the asset"
+                                    }
+                                }
+                            },
+                            "children": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "URL to get the children of the asset"
+                                    }
+                                }
+                            },
+                            "variables": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "URL to get the variable definitions of the asset"
+                                    }
+                                }
+                            },
+                            "aspects": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "URL to get the aspect structure of the asset"
+                                    }
+                                }
+                            },
+                            "t2Tenant": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "URL to get the end-customer of the asset"
+                                    }
+                                }
+                            },
+                            "location": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "URL to update or delete the location of the asset"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "Location": {
+                        "type": "object",
+                        "properties": {
+                            "country": {"type": "string", "maxLength": 255, "example": "Austria"},
+                            "region": {
+                                "type": "string",
+                                "description": "County or other region code or name",
+                                "maxLength": 255,
+                                "example": "Tyrol"
+                            },
+                            "locality": {
+                                "type": "string",
+                                "maxLength": 255,
+                                "pattern": "[\\p{L}0-9_ -\\']*",
+                                "example": "Innsbruck"
+                            },
+                            "streetAddress": {
+                                "type": "string",
+                                "maxLength": 255,
+                                "example": "Industriestra\u00c3\u0178e 21 A\/II"
+                            },
+                            "postalCode": {"type": "string", "maxLength": 255, "example": "6020"},
+                            "longitude": {
+                                "type": "number",
+                                "description": "The longitude part of the geographic coordinates",
+                                "minimum": -180,
+                                "maximum": 180,
+                                "example": 53.5125546
+                            },
+                            "latitude": {
+                                "type": "number",
+                                "description": "The latitude part of the geographic coordinates",
+                                "minimum": -90,
+                                "maximum": 90,
+                                "example": 9.9763411
+                            }
+                        }
+                    },
+                    "LockResource": {
+                        "type": "object",
+                        "properties": {
+                            "id": {"$ref": "#\/definitions\/uniqueId"},
+                            "service": {
+                                "type": "string",
+                                "description": "Service creating the lock",
+                                "example": "AgentManagement"
+                            },
+                            "reason": {
+                                "type": "string",
+                                "description": "Reason of lock",
+                                "example": "Agent is onboarded, cannot delete asset until offboard finished"
+                            },
+                            "reasonCode": {
+                                "type": "string",
+                                "description": "Code of the reason",
+                                "example": "agentmanagement.agent.onboarded"
+                            },
+                            "_links": {"type": "object", "properties": {"self": {"$ref": "#\/definitions\/rel.self"}}}
+                        }
+                    },
+                    "FileAssignmentResource": {
+                        "type": "object",
+                        "allOf": [{"$ref": "#\/definitions\/FileAssignment"}, {"properties": {"_links": {"$ref": "#\/definitions\/FileAssignmentLinks"}}}]
+                    },
+                    "AspectVariable": {
+                        "type": "object",
+                        "allOf": [{"$ref": "#\/definitions\/VariableDefinition"}, {
+                            "properties": {
+                                "qualityCode": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "Indicates whether the variable has quality code. Cannot be changed.",
+                                    "example": true
+                                }
+                            }
+                        }]
+                    },
+                    "Aspect": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 64,
+                                "pattern": "[a-zA-Z0-9_]+",
+                                "example": "astroDroid"
+                            }, "variables": {"type": "array", "items": {"$ref": "#\/definitions\/Variable"}}
+                        }
+                    },
+                    "AspectResource": {
+                        "type": "object",
+                        "required": ["name"],
+                        "properties": {
+                            "aspectTypeId": {
+                                "type": "string",
+                                "description": "ID of the Aspect type",
+                                "example": "tenant.asp.engine"
+                            },
+                            "holderAssetId": {"$ref": "#\/definitions\/uniqueId"},
+                            "name": {
+                                "type": "string",
+                                "pattern": "[a-zA-Z0-9_]+",
+                                "description": "Name of the aspect",
+                                "example": "engine"
+                            },
+                            "category": {"type": "string", "enum": ["dynamic", "static"]},
+                            "description": {
+                                "type": "string",
+                                "pattern": "[^\\']*",
+                                "description": "The description of the aspect",
+                                "example": "The engine of the Millenium Falcon"
+                            },
+                            "variables": {"type": "array", "items": {"$ref": "#\/definitions\/AspectVariable"}},
+                            "_links": {"$ref": "#\/definitions\/AspectLinks"}
+                        }
+                    },
+                    "AspectLinks": {
+                        "type": "object",
+                        "properties": {
+                            "self": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Link to the aspect"
+                                    }
+                                }
+                            },
+                            "asset": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Link to the asset"
+                                    }
+                                }
+                            },
+                            "aspectType": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Link to the origin aspect type of the aspect"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "FileAssignmentLinks": {
+                        "type": "object",
+                        "properties": {
+                            "download": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Link to download the file"
+                                    }
+                                }
+                            },
+                            "metadata": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Link to get metadata of the file"
+                                    }
+                                }
+                            },
+                            "origin": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Link to access the file assignment. Only visible if assignment is inherited"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "Variable": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 64,
+                                "pattern": "[a-zA-Z0-9_]+",
+                                "example": "color"
+                            }, "value": {"type": "string", "minLength": 1, "maxLength": 255, "example": "yellow"}
+                        }
+                    },
+                    "VariableUpdate": {
+                        "type": "object", "properties": {
+                            "name": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 64,
+                                "pattern": "[a-zA-Z_][a-zA-Z0-9_]*",
+                                "description": "Name of the variable. Once set cannot be changed. Reserved words (id, name, description, tenant, etag, scope, properties, propertySets, extends, variables, aspects, parentTypeId) cannot be used as variable names.",
+                                "example": "temperature"
+                            },
+                            "unit": {
+                                "type": "string",
+                                "maxLength": 32,
+                                "pattern": "[^\\']*",
+                                "description": "Unit of measurement. Cannot be changed.",
+                                "example": "C\/F"
+                            },
+                            "length": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 100000,
+                                "description": "The max length of the variable's value. The length field is only used for variables of string or big_string dataType. Max length for string is 255 and max length for big_string 100000. Cannot be changed.",
+                                "example": 5
+                            },
+                            "defaultValue": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 255,
+                                "description": "The default value of the variable. It must be compatible with the dataType! The default value will be inherited by the asset type's child types and by the asset instantiating it. It can be defined in aspect types and asset types.",
+                                "example": "25\/77"
+                            }
+                        }
+                    },
+                    "VariableDefinition": {
+                        "allOf": [{"$ref": "#\/definitions\/VariableUpdate"}],
+                        "required": ["name", "dataType"],
+                        "properties": {
+                            "dataType": {
+                                "type": "string",
+                                "enum": ["BOOLEAN", "INT", "LONG", "DOUBLE", "STRING", "TIMESTAMP", "BIG_STRING"],
+                                "description": "Data type of the variable. BIG_STRING could only be used by variables in dynamic aspect-types. Cannot be changed.",
+                                "example": "STRING"
+                            },
+                            "searchable": {
+                                "type": "boolean",
+                                "default": false,
+                                "description": "Indicates whether sorting and filtering is allowed on this variable. Only usable for static properties. Cannot be changed.",
+                                "example": true
+                            }
+                        }
+                    },
+                    "VariableDefinitionResource": {
+                        "allOf": [{"$ref": "#\/definitions\/VariableDefinition"}, {
+                            "properties": {
+                                "_links": {
+                                    "properties": {
+                                        "origin": {
+                                            "description": "Link to the asset type defining the variable. *Only visible if variable is inherited.*",
+                                            "properties": {"href": {"type": "string"}}
+                                        }
+                                    }
+                                }
+                            }
+                        }]
+                    },
+                    "VariableUpdateMap": {
+                        "additionalProperties": {"$ref": "#\/definitions\/VariableUpdate"},
+                        "example": {
+                            "temperature": {
+                                "name": "engine_temperature",
+                                "unit": "C\/F",
+                                "length": 5,
+                                "defaultValue": "25\/77"
+                            }
+                        }
+                    },
+                    "KeyedFileAssignment": {
+                        "type": "object",
+                        "properties": {
+                            "fileId": {
+                                "type": "string",
+                                "description": "The id of the file to be assigned",
+                                "example": "c27a28b6eb16b507fabc11e75da8b4ce"
+                            }
+                        }
+                    },
+                    "FileAssignment": {
+                        "type": "object",
+                        "properties": {
+                            "key": {
+                                "type": "string",
+                                "pattern": "[\\w]+",
+                                "example": "logo_small",
+                                "description": "Keyword for the file to be assigned to an asset."
+                            },
+                            "fileId": {
+                                "type": "string",
+                                "example": "c27a28b6eb16b507fabc11e75da8b4ce",
+                                "description": "The id of the file to be assigned"
+                            }
+                        }
+                    },
+                    "FileMetadataResource": {
+                        "type": "object", "properties": {
+                            "id": {"$ref": "#\/definitions\/uniqueId"},
+                            "name": {"type": "string", "description": "File name given by the user", "example": "logo"},
+                            "originalFileName": {
+                                "type": "string",
+                                "description": "Original filename of the file",
+                                "example": "logo_small.png"
+                            },
+                            "description": {
+                                "type": "string",
+                                "description": "File description",
+                                "example": "Company logo"
+                            },
+                            "tenantId": {"$ref": "#\/definitions\/tenantId"},
+                            "subTenant": {
+                                "type": "string",
+                                "description": "The id of the end-customer",
+                                "example": "UnkarPlutt Inc."
+                            },
+                            "uploaded": {
+                                "description": "The time of the file upload",
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "lastModified": {
+                                "description": "The time of the latest modification of the file",
+                                "type": "string",
+                                "format": "date-time"
+                            },
+                            "isAssigned": {
+                                "description": "Is the file used in any file assignment",
+                                "type": "boolean",
+                                "example": false
+                            },
+                            "scope": {
+                                "type": "string",
+                                "enum": ["public", "private"],
+                                "default": "private",
+                                "example": "private",
+                                "description": "The visibility of the file. PRIVATE hides files between subTenants and the t1Tenant's files from the subTenants. PUBLIC is visible for every user of the tenant."
+                            },
+                            "etag": {"$ref": "#\/definitions\/ETag"},
+                            "_links": {
+                                "type": "object",
+                                "properties": {
+                                    "self": {"$ref": "#\/definitions\/rel.self"},
+                                    "download": {
+                                        "title": "link for downloading the file",
+                                        "properties": {"href": {"type": "string"}}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tenantId": {
+                        "type": "string",
+                        "pattern": "[a-zA-Z0-9-_.]+",
+                        "maxLength": 255,
+                        "description": "The unique identifier of the tenant",
+                        "example": "mdsp"
+                    },
+                    "timezone": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "description": "The timezone to be used for timeseries aggregation. By default it is inherited from the tenant's defaultTimezone, but can be overwritten only during asset creation. The timezone value should be set to a Java time zone ID such as \"America\/LosAngeles\" or \"Etc\/GMT+2\". Time zones that 15 or 45 minutes off a UTC hour are not supported, such as Nepal standard time (UTC+05:45). Time zones that are 30 minutes off a UTC hour are supported, such as India (UTC+05:30). Once an asset is created with a specific timezone, it cannot be changed later.",
+                        "example": "Europe\/Berlin"
+                    },
+                    "AssetTypeId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128,
+                        "pattern": "[A-Za-z0-9_]{1,8}\\.[A-Za-z0-9_]+",
+                        "description": "The asset type's id is a unique identifier. The id's length must be between 1 and 128 characters and matches the following symbols \"A-Z\", \"a-z\", \"0-9\", \"_\" and \".\" beginning with the tenant prefix what has a maximum of 8 characters. (e.g . ten_pref.type_id). Once set cannot be changed.",
+                        "example": "mdsp.spaceship"
+                    },
+                    "AspectTypeId": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128,
+                        "pattern": "[A-Za-z0-9_]{1,8}\\.[A-Za-z0-9_]+",
+                        "description": "The aspect type's id is a unique identifier. The id's length must be between 1 and 128 characters and matches the following symbols \"A-Z\", \"a-z\", \"0-9\", \"_\" and \".\" beginning with the tenant prefix what has a maximum of 8 characters. (e.g . ten_pref.type_id). Once set cannot be changed.",
+                        "example": "mdsp.wing"
+                    },
+                    "Page": {
+                        "type": "object",
+                        "properties": {
+                            "size": {"type": "integer"},
+                            "totalElements": {"type": "integer"},
+                            "totalPages": {"type": "integer"},
+                            "number": {"type": "integer"}
+                        }
+                    },
+                    "PagingLinks": {
+                        "type": "object",
+                        "properties": {
+                            "self": {"$ref": "#\/definitions\/rel.self"},
+                            "first": {
+                                "type": "object",
+                                "title": "link to first page",
+                                "properties": {"href": {"type": "string"}}
+                            },
+                            "prev": {
+                                "type": "object",
+                                "title": "link to previous page",
+                                "properties": {"href": {"type": "string"}}
+                            },
+                            "next": {
+                                "type": "object",
+                                "title": "link to next page",
+                                "properties": {"href": {"type": "string"}}
+                            },
+                            "last": {
+                                "type": "object",
+                                "title": "link to last page",
+                                "properties": {"href": {"type": "string"}}
+                            }
+                        }
+                    },
+                    "rel.self": {"type": "object", "title": "self link", "properties": {"href": {"type": "string"}}},
+                    "errors": {
+                        "type": "object",
+                        "properties": {
+                            "errors": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {"type": "string"},
+                                        "errorcode": {"type": "string"},
+                                        "logref": {"type": "string"},
+                                        "message": {"type": "string"}
+                                    },
+                                    "example": {
+                                        "code": "assetmngmnt.code",
+                                        "errorcode": "assetmngmnt.errorcode",
+                                        "logref": "c27a28b6eb16b507fabc11e75da8b4ce",
+                                        "message": "Some meaningful message about the problems origin"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "ETag": {
+                        "type": "integer",
+                        "description": "incremental counter for optimistic locking",
+                        "example": 1
+                    },
+                    "BillboardResource": {
+                        "type": "object",
+                        "properties": {
+                            "self": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Link to the billboard url"
+                                    }
+                                }
+                            },
+                            "aspectTypes": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Link to aspect-types resource"
+                                    }
+                                }
+                            },
+                            "assetTypes": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Link to asset-types resource"
+                                    }
+                                }
+                            },
+                            "assets": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Link to assets resource"
+                                    }
+                                }
+                            },
+                            "files": {
+                                "type": "object",
+                                "properties": {
+                                    "href": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Link to files resource"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "AssetTypeListResource": {
+                        "type": "object",
+                        "properties": {
+                            "_embedded": {
+                                "type": "object",
+                                "properties": {
+                                    "assetTypes": {
+                                        "type": "array",
+                                        "items": {"$ref": "#\/definitions\/AssetTypeResource"}
+                                    }
+                                }
+                            },
+                            "page": {"$ref": "#\/definitions\/Page"},
+                            "_links": {"$ref": "#\/definitions\/PagingLinks"}
+                        }
+                    },
+                    "AspectTypeListResource": {
+                        "type": "object",
+                        "properties": {
+                            "_embedded": {
+                                "type": "object",
+                                "properties": {
+                                    "aspectTypes": {
+                                        "type": "array",
+                                        "items": {"$ref": "#\/definitions\/AspectTypeResource"}
+                                    }
+                                }
+                            },
+                            "page": {"$ref": "#\/definitions\/Page"},
+                            "_links": {"$ref": "#\/definitions\/PagingLinks"}
+                        }
+                    },
+                    "AssetListResource": {
+                        "type": "object",
+                        "properties": {
+                            "embedded": {
+                                "type": "object",
+                                "properties": {
+                                    "assets": {
+                                        "type": "array",
+                                        "items": {"$ref": "#\/definitions\/AssetResource"}
+                                    }
+                                }
+                            },
+                            "page": {"$ref": "#\/definitions\/Page"},
+                            "links": {"$ref": "#\/definitions\/PagingLinks"}
+                        }
+                    },
+                    "VariableListResource": {
+                        "type": "object",
+                        "properties": {
+                            "_embedded": {
+                                "type": "object",
+                                "properties": {
+                                    "variables": {
+                                        "type": "array",
+                                        "items": {"$ref": "#\/definitions\/VariableDefinition"}
+                                    }
+                                }
+                            },
+                            "page": {"$ref": "#\/definitions\/Page"},
+                            "_links": {"$ref": "#\/definitions\/PagingLinks"}
+                        }
+                    },
+                    "AspectListResource": {
+                        "type": "object",
+                        "properties": {
+                            "_embedded": {
+                                "type": "object",
+                                "properties": {
+                                    "aspects": {
+                                        "type": "array",
+                                        "items": {"$ref": "#\/definitions\/AspectResource"}
+                                    }
+                                }
+                            },
+                            "page": {"$ref": "#\/definitions\/Page"},
+                            "_links": {"$ref": "#\/definitions\/PagingLinks"}
+                        }
+                    },
+                    "FileMetadataListResource": {
+                        "type": "object",
+                        "properties": {
+                            "_embedded": {
+                                "type": "object",
+                                "properties": {
+                                    "files": {
+                                        "type": "array",
+                                        "items": {"$ref": "#\/definitions\/FileMetadataResource"}
+                                    }
+                                }
+                            },
+                            "page": {"$ref": "#\/definitions\/Page"},
+                            "_links": {"$ref": "#\/definitions\/PagingLinks"}
+                        }
+                    },
+                    "TimeSeries": {
+                        "description": "Time series of a set of asset-aspect (entity-property set) combinations.",
+                        "type": "object",
+                        "properties": {
+                            "timeseries": {
+                                "type": "array",
+                                "items": {"$ref": "#\/definitions\/TimeSeriesItem"},
+                                "example": [{
+                                    "entityId": "entityId1",
+                                    "propertySetName": "propertySetName1",
+                                    "data": [{
+                                        "_time": "2019-02-10T23:00:00Z",
+                                        "rpm": "rpmValue1",
+                                        "rpm_qc": "rpm_qcValue1",
+                                        "enginetemperature": "enginetemperatureValue1"
+                                    }, {
+                                        "time": "2019-02-10T23:01:00Z",
+                                        "rpm": "rpmValue2",
+                                        "rpm_qc": "rpm_qcValue2",
+                                        "enginetemperature": "enginetemperatureValue2"
+                                    }]
+                                }, {
+                                    "entityId": "entityId2",
+                                    "propertySetName": "propertySetName2",
+                                    "data": [{
+                                        "_time": "2019-02-10T23:00:00Z",
+                                        "height": "heightValue",
+                                        "height_qc": "height_qcValue",
+                                        "carmanual": "carmanualValue"
+                                    }]
+                                }, {
+                                    "entityId": "entityId3",
+                                    "propertySetName": "propertySetName3",
+                                    "data": [{
+                                        "_time": "2019-02-10T23:00:00Z",
+                                        "speed": "speedValue",
+                                        "speed_qc": "speed_qcValue",
+                                        "width": "widthValue"
+                                    }]
+                                }]
+                            }
+                        }
+                    },
+                    "TimeSeriesDataItem": {
+                        "type": "object",
+                        "required": ["_time"],
+                        "properties": {
+                            "_time": {
+                                "type": "string",
+                                "description": "Timestamp of the data points.",
+                                "format": "date-time"
+                            },
+                            "fields": {
+                                "type": "object",
+                                "additionalProperties": {
+                                    "type": "object",
+                                    "description": "Properties as defined by the aspect (property set) containing the time series data."
+                                }
+                            }
+                        },
+                        "example": {
+                            "_time": "2019-02-10T23:01:00Z",
+                            "exampleproperty0": "examplepropertyValue",
+                            "exampleproperty0_qc": "exampleproperty0_qc_Value",
+                            "exampleproperty1": "exampleproperty1Value"
+                        }
+                    },
+                    "TimeSeriesItem": {
+                        "type": "object",
+                        "required": ["entityId", "propertySetName", "data"],
+                        "properties": {
+                            "entityId": {
+                                "type": "string",
+                                "description": "asset (entity) Id of timeseries data."
+                            },
+                            "propertySetName": {
+                                "type": "string",
+                                "description": "aspect (property set) name of timeseries data."
+                            },
+                            "data": {
+                                "type": "array",
+                                "description": "Timeseries data for corresponsding asset (entity) Id and aspect (property set) name.",
+                                "items": {"$ref": "#\/definitions\/TimeSeriesDataItem"}
+                            }
+                        }
+                    },
+                    "MultiTimeseiresBadRequest": {
+                        "type": "object",
+                        "properties": {
+                            "timestamp": {"type": "string", "format": "date-time"},
+                            "status": {"type": "number"},
+                            "error": {"type": "string"},
+                            "exception": {"type": "string"},
+                            "message": {"type": "string"},
+                            "path": {"type": "string"}
+                        },
+                        "example": {
+                            "timestamp": "2019-04-08T06:32:01.261+0000",
+                            "status": 400,
+                            "error": "Bad Request",
+                            "exception": "com.siemens.mindsphere.iot.exception.IotException",
+                            "message": "Size of payload should not be more than 100 kb",
+                            "path": "\/api\/iottimeseries\/v3\/timeseries"
+                        }
+                    },
+                    "MultiStatusError": {
+                        "description": "a (errors, errorObject).",
+                        "type": "object",
+                        "properties": {
+                            "errors": {
+                                "type": "array",
+                                "items": {"$ref": "#\/definitions\/MultiStatusErrorItem"}
+                            }
+                        }
+                    },
+                    "MultiStatusErrorItem": {
+                        "type": "object",
+                        "properties": {
+                            "timestamp": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2019-04-08T06:32:01.261+0000"
+                            },
+                            "status": {"type": "number", "example": 404},
+                            "error": {"type": "string", "example": "Not Found"},
+                            "exception": {
+                                "type": "string",
+                                "example": "com.siemens.mindsphere.iot.exception.IotException"
+                            },
+                            "message": {
+                                "type": "string",
+                                "example": "[6007] Invalid value ' for request param - propertysetname"
+                            },
+                            "entityId": {"type": "string", "example": "entityId2"},
+                            "propertySetName": {"type": "string", "example": "propertySetName2"},
+                            "path": {"type": "string", "example": "\/api\/iottimeseries\/v3\/timeseries"}
+                        }
+                    },
+                    "Unauthorized": {
+                        "type": "object",
+                        "properties": {
+                            "id": {"type": "string", "format": "uuid"},
+                            "message": {"type": "string", "example": "Not authorized to access this resource."}
+                        }
+                    },
+                    "BadRequest": {
+                        "type": "object",
+                        "properties": {
+                            "timestamp": {"type": "string", "format": "date-time"},
+                            "status": {"type": "number"},
+                            "error": {"type": "string"},
+                            "exception": {"type": "string"},
+                            "message": {"type": "string"},
+                            "path": {"type": "string"}
+                        },
+                        "example": {
+                            "timestamp": "2019-04-08T06:32:01.261+0000",
+                            "status": 400,
+                            "error": "Bad Request",
+                            "exception": "com.siemens.mindsphere.iot.exception.IotException",
+                            "message": "[6008] Invalid date format '2018-10-16T00:00:00Z111' for request param - from",
+                            "path": "\/api\/iottimeseries\/v3\/timeseries\/entityId\/propertySetName"
+                        }
+                    }
+                },
+                "parameters": {
+                    "TypeId": {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 128,
+                        "required": true,
+                        "pattern": "[A-Za-z0-9_]{1,8}\\.[A-Za-z0-9_]+",
+                        "description": "The type's id is a unique identifier. The id's length must be between 1 and 128 characters and matches the following symbols \"A-Z\", \"a-z\", \"0-9\", \"_\" and \".\" beginning with the tenant prefix what has a maximum of 8 characters. (e.g . ten_pref.type_id)"
+                    },
+                    "uniqueId": {
+                        "name": "id",
+                        "in": "path",
+                        "type": "string",
+                        "pattern": "[0-9A-F]{32}",
+                        "required": true,
+                        "description": "Unique identifier"
+                    },
+                    "fileKey": {
+                        "name": "key",
+                        "in": "path",
+                        "type": "string",
+                        "pattern": "[\\w]+",
+                        "required": true,
+                        "description": "Keyword for the file to be assigned to an asset or asset type."
+                    },
+                    "fileId": {
+                        "name": "fileId",
+                        "in": "path",
+                        "type": "string",
+                        "pattern": "[0-9A-F]{32}",
+                        "required": true,
+                        "description": "Unique identifier of the file."
+                    },
+                    "page": {
+                        "name": "page",
+                        "in": "query",
+                        "type": "integer",
+                        "description": "Specifies the requested page index"
+                    },
+                    "size": {
+                        "name": "size",
+                        "in": "query",
+                        "type": "integer",
+                        "description": "Specifies the number of elements in a page"
+                    },
+                    "sort": {
+                        "name": "sort",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Specifies the ordering of returned elements"
+                    },
+                    "filter": {
+                        "name": "filter",
+                        "in": "query",
+                        "type": "string",
+                        "description": "Specifies the additional filtering criteria"
+                    },
+                    "ifNoneMatch": {
+                        "name": "If-None-Match",
+                        "in": "header",
+                        "type": "string",
+                        "description": "ETag hash of previous request to allow caching"
+                    },
+                    "ifNoneMatchStar": {
+                        "name": "If-None-Match",
+                        "in": "header",
+                        "type": "string",
+                        "description": "Set ifNoneMatch header to \"*\" for ensuring create request"
+                    },
+                    "ifMatch": {
+                        "name": "If-Match",
+                        "in": "header",
+                        "type": "string",
+                        "description": "Last known version to facilitate optimistic locking.\n*Required for modification.\n"
+                    },
+                    "ifMatchMandatory": {
+                        "name": "If-Match",
+                        "in": "header",
+                        "type": "string",
+                        "required": true,
+                        "description": "Last known version to facilitate optimistic locking"
+                    },
+                    "ifMatchVariable": {
+                        "name": "If-Match",
+                        "in": "header",
+                        "type": "string",
+                        "required": true,
+                        "description": "Last known version of asset type to facilitate optimistic locking. Etag from asset type response to be used."
+                    },
+                    "exploded": {
+                        "name": "exploded",
+                        "in": "query",
+                        "type": "boolean",
+                        "description": "Specifies if the asset type should include all of it's inherited variables and aspects. Default is false."
+                    },
+                    "includeShared": {
+                        "name": "includeShared",
+                        "in": "query",
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Specifies if the operation should take into account shared (received) assets, aspects and asset types. Received resources are not visible in case includeShared=false. For query operations, received resources are not returned. Endpoints addressing individual resources respond with 404. In case received resources are referenced in a request parameter or property, they are treated as not existing."
+                    },
+                    "basicFieldsOnly": {
+                        "name": "basicFieldsOnly",
+                        "in": "query",
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Specifies if the assets should include all of it's inherited variables and aspects from assettype and aspecttype."
+                    }
+                }
+            };
+            // Build a system
+            const ui = SwaggerUIBundle({
+                spec: spec,
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                plugins: [
+                    CustomTopbarPlugin
+                ],
+                layout: "StandaloneLayout",
+                requestInterceptor: function (req) {
+                    req.headers = {
+                        'X-XSRF-TOKEN': xsrfToken,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    };
+                    return req;
+                }
+            })
+
+            window.ui = ui
+
+        }
+
+        function codeAddress() {
+
+            var tenantname = null;
+            $.ajax({
+                'async': false,
+                type: "GET",
+                contentType: 'application/string; charset=utf-8',
+                dataType: "TEXT",
+                url: 'tenanttype/gettenant',
+                success: function (data) {
+                    alert(data)
+                    tenantname = data
+                    return tenantname
+
+                }
+            });
+
+        }
+
+
+        function CustomTopbarPlugin() {
+
+            // this plugin overrides the Topbar component to return nothing
+            return {
+                components: {
+                    Topbar: () => null
+                }
+            }
+        }
+
+
+    </script>
+    </body>
+</div>
+</html>

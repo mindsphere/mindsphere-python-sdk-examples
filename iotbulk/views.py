@@ -1,12 +1,14 @@
 from rest_framework.views import APIView
 import sdk_util
 from django.http import HttpResponse
-from mindsphere_core import exceptions
+from mindsphere_core import exceptions, log_config
 from rest_framework import status
 from iottsbulk import RetrieveTimeseriesRequest, CreateImportJobRequest, BulkImportInput, FileInfo,Data
 from iottsbulk import RetrieveImportJobRequest
 import json
 from app.settings import logger
+
+logger = log_config.default_logging()
 
 
 class BulkImportOperationsClientViewImportjobget(APIView):
@@ -30,14 +32,18 @@ class BulkImportOperationsClientViewImportjobget(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("iotbulk/importjobget/<str:id> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 id = kwargs.get("id", "")
+                logger.info("RequestParam is- Id:"+id)
                 request = RetrieveImportJobRequest()
                 request.id = id
                 response = client.retrieve_import_job(request)
+                logger.info("Getting response successfully for importjobget "+response)
             except exceptions.MindsphereError as err:
+                logger.error("getting error for importjobget "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -72,6 +78,7 @@ class ReadOperationsClientViewImportjob(APIView):
 
 
         """
+        logger.info("iotbulk/retrievetimeseries/<str:entityid>/<str:propertyname>/<str:from>/<str:to> invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -79,15 +86,17 @@ class ReadOperationsClientViewImportjob(APIView):
                 property_name = kwargs.get("propertyname", "")
                 _from = kwargs.get("from", "")
                 to = kwargs.get("to", "")
+                logger.info(
+                    "Request params are- enitityID:" + entity_id + " propertyName: " + property_name + " from:" + _from + " to:" + to)
                 retrieveTimeseriesRequest = RetrieveTimeseriesRequest()
                 retrieveTimeseriesRequest.entity = entity_id
                 retrieveTimeseriesRequest.property_set_name = property_name
                 retrieveTimeseriesRequest._from = _from
                 retrieveTimeseriesRequest.to = to
                 response = client.retrieve_timeseries(retrieveTimeseriesRequest)
-                logger.info("Response")
-                logger.info(response)
+                logger.info("Getting response successfully for retrievetimeseries "+response)
             except exceptions.MindsphereError as err:
+                logger.error("getting error for retrievetimeseries " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -115,6 +124,7 @@ class BulkImportOperationsClientViewImportjobpost(APIView):
         throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("iotbulk/importjobpost invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
@@ -136,9 +146,9 @@ class BulkImportOperationsClientViewImportjobpost(APIView):
                 bulkImportInput.data = dataList
                 createImportJobRequest.bulk_import_input = bulkImportInput
                 response = client.create_import_job(createImportJobRequest)
-                logger.info("Response")
-                logger.info(response)
+                logger.info("Getting response successfully for importjobpost " + response)
             except exceptions.MindsphereError as err:
+                logger.error("getting error for importjobpost " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",

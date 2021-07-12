@@ -1,10 +1,13 @@
 from rest_framework.views import APIView
 import sdk_util
 from django.http import HttpResponse
-from mindsphere_core import exceptions
+from mindsphere_core import exceptions, log_config
 from rest_framework import status
 from . import data_generator
 import json
+
+logger = log_config.default_logging()
+
 
 class EventOperationsClientViewTopEvent(APIView):
     def get(self, request):
@@ -22,11 +25,14 @@ class EventOperationsClientViewTopEvent(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("eventAnalytics/topevents invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 response = client.top_events(data_generator.get_top_events_data())
+                logger.info("Getting response successfully for topevents "+ json.dumps(response))
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for topevents "+err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
@@ -64,18 +70,21 @@ class EventOperationsClientViewFilterEvent(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("eventAnalytics/filterEvents invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 response = client.filter_events(data_generator.get_filter_events_data())
+                logger.info("Getting response successfully for filterEvents " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for filterEvents " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(response.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -102,18 +111,21 @@ class EventOperationsClientViewCountEvent(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("eventAnalytics/countEvents invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 response = client.count_events(data_generator.get_count_events_data())
+                logger.info("Getting response successfully for countEvents " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for countEvents " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(response.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -141,18 +153,21 @@ class EventOperationsClientViewRemoveDuplicateEvent(APIView):
             throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("eventAnalytics/removeDuplicateEvents invoked")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 response = client.remove_duplicate_events(data_generator.remove_duplicates_data())
+                logger.info("Getting response successfully for removeDuplicateEvents " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for removeDuplicateEvents " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(response.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
 
 
@@ -193,17 +208,19 @@ class PatternOperationsClientViewMatchPatternsOverEvents(APIView):
          throws MindsphereError if an error occurs while attempting to invoke the sdk call.
 
         """
+        logger.info("eventAnalytics/matchEventPattern invoked.")
         client = sdk_util.build_sdk_client(self.__class__.__name__, request)
         if request.method == "GET":
             try:
                 response = client.match_patterns_over_events(data_generator.get_pattern_matching_data())
+                logger.info("Getting response successfully for matchEventPattern " + json.dumps(response.to_dict))
             except exceptions.MindsphereError as err:
+                logger.error("Getting error for matchEventPattern " + err)
                 return HttpResponse(
                     err,
                     content_type="application/json",
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
             return HttpResponse(
-                json.dumps(response.to_dict()), content_type="application/json", status=status.HTTP_200_OK
+                json.dumps(response.to_dict), content_type="application/json", status=status.HTTP_200_OK
             )
-

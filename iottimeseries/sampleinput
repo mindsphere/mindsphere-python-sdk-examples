@@ -1,0 +1,24 @@
+1.Endpoint timeseries/puttimeseries:
+
+body:
+{
+	"timeseries": [{
+		"entityId": "8f736d1b30c84e408df02db658ee36bf",
+		"propertySetName": "testaspect3095",
+		"data": [{
+			"_time": "2019-03-10T23:00:00Z",
+			"test": "15"
+		}]
+	}]
+}
+
+
+2 Endpoint timeseries/puttimeseriesdata/<str:entityid>/<str:propertyname>
+
+Manadatory pathparam:
+entityId: "8f736d1b30c84e408df02db658ee36bf"
+Description - unique identifier of the asset (entity)
+propertySetName: "testaspect3095"
+Description - Name of the aspect (property set).
+body:
+[{"_time": "2020-11-11T02:52:00Z", "test": 15}]

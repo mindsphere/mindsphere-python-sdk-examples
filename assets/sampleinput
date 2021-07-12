@@ -1,0 +1,69 @@
+1.Endpoint -assets/putaspect/<str:id>/<str:ifmatch>
+
+Mandatory params:
+id= cfbsppu.test2405
+Description - The type's id is a unique identifier. The id's length must be between 1 and 128 characters and matches the following symbols "A-Z", "a-z", "0-9", "_" and "." beginning with the tenant prefix what has a maximum of 8 characters. (e.g . ten_pref.type_id)
+ifmatch = 0
+Description - Last known version to facilitate optimistic locking
+{
+  "name": "test2405",
+  "category": "dynamic",
+  "scope": "private",
+  "description": "The engine of the Millenium Falcon",
+  "variables": [
+    {
+      "name": "temperature",
+      "unit": "C/F",
+      "length": 5,
+      "defaultValue": "25/77",
+      "dataType": "STRING",
+      "searchable": true,
+      "qualityCode": true
+    }
+  ]
+}
+
+2.assets/putassettype/<str:id>/<str:ifmatch>
+Mandatory params:
+id= cfbsppu.test2405
+Description - The type's id is a unique identifier. The id's length must be between 1 and 128 characters and matches the following symbols "A-Z", "a-z", "0-9", "_" and "." beginning with the tenant prefix what has a maximum of 8 characters. (e.g . ten_pref.type_id)
+ifmatch = 0
+Description - Last known version to facilitate optimistic locking
+
+{
+  "name": "X-Wing2405",
+  "description": "Hyperspace jump capable space ship",
+  "parentTypeId": "core.basicasset",
+  "instantiable": true,
+  "scope": "private",
+  "aspects": [],
+  "variables": [],
+  "fileAssignments": []
+}
+
+
+3.Endpoint assets/root call and get parentid for creating asset
+
+4.Endpoint assets/postasset
+
+{
+  "name": "Millenium Falcon11",
+  "externalId": "SN 123456-123-123456",
+  "description": "The ship of Han Solo and Chewbacca",
+  "location": {
+
+  },
+  "variables": [
+
+  ],
+  "aspects": [
+
+  ],
+  "fileAssignments": [
+
+  ],
+  "typeId": "cfbsppu.test2405",
+  "parentId": "57284b35bc0444f3a0f44ab1f5e8edde",
+  "timezone": "Europe/Berlin",
+  "twinType": "performance"
+}
