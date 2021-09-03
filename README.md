@@ -304,3 +304,86 @@ python manage.py runserver
 
 ## 4 - Prepare the app to hand it over to Operator Cockpit
 Please refer [Handing over app to Operator Cockpit](https://developer.mindsphere.io/howto/howto-develop-and-register-an-application.html#handover-the-application-to-the-operator-tenant)
+
+
+
+## 5 - Core to Third Party Supoort:
+
+ Core to Third Party support allows MindSphere to call POST API in your API type application based on some event.
+Such events could be ingestion of data to timeseries, application provisioning to tenant etc.
+
+
+###### :warning: NOTE!!! This feature is only available for early access users.
+
+ We have made this application(mindsphere-python-sdk-examples) compatible to core to third party support while maintaining support for existing capabilities.
+
+In order to achieve this, there are few steps you will need to follow.
+
+#### 1. Provide POST endpoint in your application which will called by MindSphere.
+- In mindsphere-python-sdk-examples, we have added POST /alertNotifications endpoint to be called by MindSphere.
+  
+#### 2. Provide access to MindSphere to call your application endpoint.
+- You need to give permission to MindSphere to call API endpoint in your API type application.
+
+- This demo application is monolithic application i.e. it has both UI and API part clubbed as a single unit.
+  There are two challenges with it:
+    - For MindSphere to call endpoint in your application, it has to be of API type.
+    - API type applications are not accessible via MindSphere launchpad.
+
+-  Hence if we create this mindsphere-python-sdk-examples as Standard application, MindSphere will not be able to      call    endpoint of application and if we create it as `API` type application then it will not be accessible via launchpad.
+
+- To tackle this issues we register same application once as Standard application and once as `API` type application.
+    2A) Register application as API` type.
+    -   1. Deploy the demo application on cloud foundry. Refer <section>.
+    -   2. Create application in Developer Cockpit by name - `demoapiapp`. Provide application type as `API` and provide URL for application you get in i). Refer <section>
+    -   3. Provide access to messagebroker (part of MindSphere which is actually going to call your endpoint).
+        - 3.1 Navigate to `Authorization Management` tab.
+        - 3.2 Search your application by its internal name. `
+        - 3.3 Navigate to `App Roles` tab on the left vertical bar.
+        - 3.4 Click on `Message Broker` tab.
+        - 3.5 Click on `Grant access` button. A dialogue box should appear.
+        - 3.6 Check the boxes for application scopes which you wish to provide to message broker.
+        - 3.7 Click on `Save` button.
+    <p>
+    <img src="https://github.com/mindsphere/mindsphere-python-sdk-examples/blob/swaggerui-changes/images/MessageBrokerScopes.PNG" width="400">
+    </p>
+    
+    -   4. Register the application.
+       
+    2B) Register the application as Standard(UI) application.
+    -    1. Create application in Developer Cockpit by name - `demouiapp`. Provide application type as `Standard` and provide URL for application you get in 2A. Refer <section>
+    -    2. Add `demoapiapp` as API Dependency is `demouiapp`.
+        <photo>
+    -    3. API access to UI app.
+        <photo>
+    -    4. Register the application.
+        
+#### 3. Subscribe to topic/event based on which you want MindSphere to call your endpoint. 
+   - Follow : Assign the App and Access via Launchpad section and access the application.
+   
+   - First 4 endpoints are concerned with core to third party support. Other remaining endpoints are exactly same as  last delivery and are not changed.
+    Those 4 endpoints are described below:
+        1) `PUT` `/subscribe/{bakcendappName}/versions/{version}/topics/{topicName}` : Allows to subscribe to message broker topic.
+            - 1.1 backendappName : Internal name of API type application you provided.
+            - 1.2 version : version of API type application you provided.
+            - 1.3 topicName: Name of the topic for which you would like to subscribe. For e.g. to subscribe for
+              timeseries data ingest, topic name could be `mdsp.core.timeseries.v1.pubsub.data.ingest`.
+            - 1.4 For subscribing you need to provide URL for API type application in the request body. These url should be in the form of `https://gateway.<mindsphere-zone>.mindsphere.io/api/<internal-name-of-api-app>-<tenant- name>/<version-of-application>/`.
+        2) `DELETE` `/unsubscribe/{bakcendappName}/versions/{version}/topics/{topicName}` : Allows to unsubscribe to message broker topic.
+        3) `GET` `/readNotification` : Read contents of messages received from messagebroker and stored in csv file.
+        4) `DELETE` `/deleteContent` : Delete contents of messages received from messagebroker and stored in csv file.
+
+   - For subscribing to message broker use first endpoint.
+
+   
+#### 4. Process the data.
+-  Once we get request on POST endpoint /alertNotifications, we simply store received payload in csv file. 
+-  You can  have your own business logic to process this data for e.g. any prediction algorithm to estimate    future    values or generate some alerts etc.
+
+#### 5. View the data.
+- Use `GET /readNotification` to see data stored in csv file.
+ 
+
+> Note : You can use DELETE /  to wipe out csv file contents in case there are too many entries to go through. You can use /unsubscribe to unsubscribe from the topic. If you unsubscribe, MindSphere will not call endpoint POST /alertNotifications endpoint in your application. You can subscribe again whenever you want to start getting call from MindSphere to your API application.
+ 
+
