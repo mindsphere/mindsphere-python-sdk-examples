@@ -33,12 +33,6 @@ Application Credentials
 ###### Note 
 > App Credentials and Application Credentials refers to same concept. These terms might be used interchangeably in the document.
 
-###### Note 
-> From now, Tenant Credential support is removed from Python SDKs. Older versions with tenant credential support are still available on [Siemens Industry Online Support (SIOS) Portal](https://support.industry.siemens.com/cs/document/109757603/mindsphere-sdk-for-java-and-node-js?dti=0&lc=en-US). This application uses latest library for mindsphere-core library with version 1.0.3. Using older version of mindsphere-core library will lead to breaking behaviour of application. Hence we strongly recommend you to use latest version for smooth experience.
-
-
-
-
 ##### env:
   HOST_ENVIRONMENT: eu1
 If not specified, HOST_ENVIRONMENT defaults to eu1 in region Europe 1 SDK and to cn1 in region China 1 SDK.

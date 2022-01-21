@@ -7,8 +7,8 @@
 applications:
 - name: routi
   instances: 1 #instances of application you want to spin
-  path: mindsphere-python-sdk-examples/.  #directory path where application is present
-  memory: 500MB #memory requirement for application
+  path: ./  #directory path where application is present
+  memory: 50MB #memory requirement for application
   random-route: true
   env:
     HOST_ENVIRONMENT: <YOUR-HOST-ENVIRONMENT-HERE> #If not specified, HOST_ENVIRONMENT defaults to eu1 in region Europe 1 SDK and to cn1 in region China 1 SDK.
