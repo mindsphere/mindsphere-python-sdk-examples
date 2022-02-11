@@ -8,4 +8,5 @@ urlpatterns = [
     path('logs/', views.LogsView.as_view()),
     path('cls/', views.LogsClearView.as_view()),
     path('', views.IndexView.as_view()),
+    path('app-info.json', views.AppInfoView.as_view()),
 ]

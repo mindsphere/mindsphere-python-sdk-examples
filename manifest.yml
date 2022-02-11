@@ -18,6 +18,5 @@ applications:
     MDSP_OS_VM_APP_VERSION: <YOUR-APPLICATION-VERSION--HERE> #application version provided in Developer Cockpit at a time of application creation.
     MDSP_KEY_STORE_CLIENT_ID: <YOUR-CLIENT-ID-HERE> #CLIENT_ID of application received from `App Credentials` in Developer Cockpit
     MDSP_KEY_STORE_CLIENT_SECRET: <YOUR-HOST-TENANT-HERE> #CLIENT_SECRET of application received from `App Credentials` in Developer Cockpit
-    #For mindsphere-java-sdk-examples above environment variables are sufficient.
-    #You can append your own environment variables here.
+
     

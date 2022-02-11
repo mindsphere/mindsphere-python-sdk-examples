@@ -34,6 +34,14 @@ class TenantTypeView(APIView):
         
         return HttpResponse(os.environ['MDSP_USER_TENANT'], content_type='application/string', status=status.HTTP_200_OK)
 
+class AppInfoView(APIView):
+
+    def get(self, request):
+        """
+        Show Application Info.
+        """
+        
+        return HttpResponse("Python SDK Sample Example", content_type='application/string', status=status.HTTP_200_OK)
 
 class TokenView(APIView):
 
